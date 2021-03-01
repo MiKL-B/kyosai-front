@@ -1,0 +1,124 @@
+/* body html ... */
+* {
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --dark: black;
+  --light: white;
+}
+ body {
+  background: url("background-4664911_960_720.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+} 
+/* NAV */
+.logo-kyosai {
+  height: 450px;
+  object-fit: cover;
+}
+.icone {
+  font-size: 50px;
+}
+.presentation {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.text-presentation {
+  padding: 20px;
+  width: 450px;
+  text-align: justify;
+}
+input{
+  outline:none;
+  border:none;
+  padding:10px;
+  border-radius:20px;
+}
+/* MAIN */
+
+.container {
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.box {
+  text-shadow: 0px 0px 2px var(--dark);
+  position: relative;
+  font-weight: bold;
+  text-transform: uppercase;
+  line-height: 300px;
+  text-align: center;
+  width: 300px;
+  height: 300px;
+  margin: 40px 0;
+  transition: 0.5s;
+}
+.box:hover {
+  transform: scale(1.1);
+  background: none;
+}
+img {
+  transition: 0.5s;
+}
+.box:hover img {
+  opacity: 100 !important;
+}
+.imagedessin {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  margin-left: 40px;
+}
+.casquettemario {
+  position: absolute;
+  top: 0;
+  height: 100%;
+}
+.carocosplay {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  object-fit: cover;
+}
+.quiestce {
+  position: absolute;
+  top: 0;
+  margin-left: 20%;
+  height: 100%;
+}
+.quiestcegaming:hover{
+transform:scale(2);
+}
+/* FOOTER */
+
+.content1 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 40px 0;
+}
+.para {
+  width: 350px;
+  text-align: justify;
+}
+.info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+}
+.content {
+  width: 450px;
+}
+
+@media screen and (max-width:1250px){
+  .logo-kyosai {
+    height: 450px;
+    object-fit: fill;
+  }
+
+}
