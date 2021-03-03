@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full">
+<html lang="en" >
 
 <head>
     <meta charset="UTF-8" />
@@ -13,22 +13,22 @@
     <title>Accueil</title>
 </head>
 
-<body class="relative" >
-    <img class="w-full h-full absolute z-0" src="assets/background-4664911_960_720.webp">
+<body class="relative bg-blue-100">
+  <!--<img class="absolute max-w-screen"src="assets/background-4664911_960_720.webp">-->
     <!--wrapper-->
-    <div id="wrapper">
+    <div id="wrapper" class="flex flex-wrap">
         <!--header-->
         <header id="header" >
             <div class="inner ">
                 <!--logo-->
-                <a href="index.html" class="logo flex flex-row h-40 relative">
-                    <span class="symbol"><img class="ml-48 h-full" src="assets/cropped-161105-kyosai_logo_smol.png" alt></span>
-                    <span class="title text-red-400 font-black text-4xl absolute top-12 left-96">KYOSAI</span>
+                <a href="index.html" class="logo flex flex-row h-62 lg:h-40  relative">
+                    <span class="symbol"><img class="ml-42 h-full lg:ml-48" src="assets/cropped-161105-kyosai_logo_smol.png" alt></span>
+                    <span class="title text-red-400 font-black text-4xl absolute sm:relative text-center ml-80 sm:ml-0 lg:absolute mt-28 lg:mt-0  lg:top-12 lg:left-96">KYOSAI</span>
                 </a>
                 <!--nav-->
                 <nav>
                     <ul>
-                        <li class="top-10 right-20 text-5xl font-bold bg-gray-100 px-3 p-1 fixed"><a href="#menu"><i
+                        <li class="top-20 right-28 lg:top-10 lg:right-20 text-7xl lg:text-5xl font-bold bg-gray-100 px-3 p-1 fixed rounded-lg opacity-80 hover:text-pink-400"><a href="#menu"><i
                                     class="fa fa-bars"></i></a></li>
                     </ul>
                 </nav>
@@ -36,65 +36,68 @@
         </header>
         <!--menu-->
         <!--main-->
-        <div id="main">
+        <div id="main " >
             <div class="inner">
-                <header>
-                    <h1 class="text-5xl mx-52 mb-12 font-bold relative">Association sur la pop-culture, le papercraft, le </br>
+                <header class="">
+                    <h1 class="text-8xl mx-10  lg:mx-52 mb-12 font-bold relative lg:text-5xl sm:text-5xl">Association sur la pop-culture, le papercraft, le </br>
                         dessin et autres activités manuelles.</br>
                         <a class="text-blue-500">Bonne humeur incluse !</a>
                     </h1>
 
-                    <p class="mx-52 text-lg mb-10 relative">L'association Kyosai est une association de loi 1901 qui base son
+                    <p class="mx-10 lg:mx-52 text-4xl lg:text-lg sm:text-lg mb-10 relative ">L'association Kyosai est une association de loi 1901 qui base son
                         activité sur la promotion de la
                         pop-culture, qu'elle soit franco-belge, américaine</br>ou japonaise.
                         Cette association propose à ses membres de réaliser du papercraft, des illustrations, du cosplay
                         et d'autres activités manuelle et</br>digitale.</p>
                 </header>
-                <section class="tiles flex flex-wrap flex-row mx-52">
+                <section class="tiles flex flex-wrap  flex-row mx-72 sm:mx-52">
                     <!--papercraft-->
                   
-                        <article class="style1 w-80 h-80 p-5 m-5 relative transition duration-500 transform hover:scale-110 group "><span class="image"><img class="h-full"
+                        <article class="style1  h-96 w-96 lg:h-80 lg:w-80 p-5  m-5  relative transition duration-500 transform hover:scale-110 group "><span class="image"><img class="h-full"
                                     src="assets/casquette-mario.png" alt></span>
                             <a  href="views/papercraft.html">
-                                <h2
-                                    class="uppercase font-bold text-white text-xl tracking-widest absolute top-36 left-24 z-50">
+                             
+                                <div class="content absolute inset-0 bg-pink-400 opacity-90 rounded-lg  hover:bg-transparent transition duration-500">
+                                   <h2 class="uppercase font-bold text-white text-2xl lg:text-xl tracking-widest absolute top-40 left-28 lg:top-36 lg:left-24 ">
                                     papercraft</h2>
-                                <div class="content absolute inset-0 bg-pink-400 opacity-70 ">
                                     <p class="text-white text-lg text-center opacity-0 group-hover:opacity-100 transition duration-500 absolute inset-0 top-48">Atelier de papercraft</p>
                                 </div>
                             </a>
                         </article>
               
                     <!--dessin-->
-                    <article class="style2 w-80 p-5  m-5 relative h-80 transition duration-500 transform hover:scale-110 group"><span class="image"><img
+                    <article class="style2 h-96 w-96 lg:h-80 lg:w-80 p-5  m-5 relative  transition duration-500 transform hover:scale-110 group "><span class="image"><img
                                 class="h-full m-auto" src="assets/lamia_happy_smol.png" alt></span>
                         <a href="views/dessin.html">
-                            <h2 class="uppercase font-bold text-white text-xl tracking-widest absolute top-36 left-24  z-50 ">
+                         
+                            <div class="content absolute inset-0 bg-blue-200 opacity-90 rounded-lg hover:bg-transparent transition duration-500">
+                                   <h2 class="uppercase font-bold text-white text-2xl lg:text-xl tracking-widest absolute top-40 left-28 lg:top-36 lg:left-24  ">
                                 dessin</h2>
-                            <div class="content absolute inset-0 bg-blue-200 opacity-70 ">
                                 <p class="text-white text-lg text-center opacity-0 group-hover:opacity-100 transition duration-500 absolute inset-0 top-48">Atelier de dessin</p>
                             </div>
                         </a>
                     </article>
                     <!--cosplay-->
-                    <article class="style3 w-80 p-5 h-80  m-5 relative transition duration-500 transform hover:scale-110 group"><span class="image"><img
+                    <article class="style3 h-96 w-96 lg:h-80 lg:w-80  p-5   m-5 relative transition duration-500 transform hover:scale-110 group "><span class="image"><img
                                 class="h-full" src="assets/caro.jpg" alt></span>
                         <a href="views/cosplay.html">
-                            <h2 class="uppercase font-bold text-white text-xl tracking-widest absolute top-36 left-24  z-50">
+                        
+                            <div class="content absolute inset-0 bg-green-300 opacity-90 rounded-lg hover:bg-transparent transition duration-500 ">
+                                    <h2 class="uppercase font-bold text-white text-2xl lg:text-xl tracking-widest absolute top-40 left-28 lg:top-36 lg:left-24 ">
                                 cosplay</h2>
-                            <div class="content absolute inset-0 bg-green-300 opacity-70 ">
                                 <p class="text-white text-lg text-center opacity-0 group-hover:opacity-100 transition duration-500  absolute inset-0 top-48">Atelier de cosplay</p>
                             </div>
                         </a>
                     </article>
                     <!--art gaming-->
 
-                    <article class="style4 w-80 p-5 h-80  m-5 relative transition duration-500 transform hover:scale-110 group"><span class="image"><img
+                    <article class="style4 h-96 w-96 lg:h-80 lg:w-80  p-5   m-5 relative transition duration-500 transform hover:scale-110 group"><span class="image"><img
                                 class="h-full " src="assets/201128---Icone_QuiEstCePKMN.png"></span>
                         <a href="views/gaming.html">
-                            <h2 class="uppercase font-bold text-white text-xl tracking-widest absolute top-36 left-24  z-50">
+                          
+                            <div class="content absolute inset-0 bg-yellow-200 opacity-90 rounded-lg  hover:bg-transparent transition duration-500">
+                                  <h2 class="uppercase font-bold text-white text-2xl lg:text-xl tracking-widest absolute top-40 left-28 lg:top-36 lg:left-24 ">
                                 art gaming</h2>
-                            <div class="content absolute inset-0 bg-yellow-200 opacity-70 ">
                                 <p class="text-white text-lg text-center opacity-0 group-hover:opacity-100 transition duration-500 absolute inset-0 top-48">Atelier d'art gaming</p>
                             </div>
                         </a>
@@ -104,34 +107,37 @@
         </div>
         <!--footer-->
         <footer class="py-24 bg-gray-100 flex flex-row justify-center relative " id="footer">
-            <div class="inner mx-52 p-12 flex mr-10 ">
-                <section >
-                    <h2 class="text-xl font-bold uppercase tracking-widest -mt-9 mb-10">Restons en contact</h2>
+            <div class="inner mx-52 p-12 flex flex-col mr-10 lg:flex-row">
+              
+                    
+           
+                <section class="mb-20 lg:mb-0" >
+                    <h2 class="text-4xl lg:text-xl font-bold uppercase tracking-widest -mt-9 mb-10">Restons en contact</h2>
                     <form method="POST" action="#" class="mr-50">
                         <div class="fields flex flex-row flex-wrap">
                             <div class="fields half ">
-                                <input type="text" name="name" id="name" placeholder="Name" class="bg-transparent pl-0 mr-5 pr-56 p-5 border-b-2 focus:outline-none focus:border-pink-400 text-xl " >
+                                <input type="text" name="name" id="name" placeholder="Name" class="bg-transparent pl-0 mr-5 pr-56 p-5 border-b-2 focus:outline-none focus:border-pink-400 text-3xl  lg:text-xl" >
                             </div>
                             <div class="fields half">
-                                <input type="emain" name="email" id="email" placeholder="Email" class="bg-transparent pl-0 pr-56 p-5 border-b-2 focus:outline-none focus:border-pink-400 text-xl">
+                                <input type="emain" name="email" id="email" placeholder="Email" class="bg-transparent pl-0 pr-56 p-5 border-b-2 focus:outline-none focus:border-pink-400 text-3xl lg:text-xl">
                             </div>
                       
                             <div class="field">
                                 <div class="textarea-wrapper">
                                     <textarea name="message" id="message" placeholder="Message" rows="1"
-                                        style="overflow: hidden; resize: none; height: 100px;"class="bg-transparent pl-0 pr-96 p-5 border-b-2 focus:outline-none focus:border-pink-400 text-xl"></textarea>
+                                        style="overflow: hidden; resize: none; height: 100px;"class="bg-transparent pl-0 pr-96 p-5 border-b-2 focus:outline-none focus:border-pink-400 text-3xl lg:text-xl"></textarea>
                                 </div>
                             </div>
                         </div>
                         <ul class="actions">
                             <li>
-                                <input type="submit" value="Send" class="primary mt-8 py-4 px-7 bg-gray-600 text-white font-bold uppercase rounded-md hover:bg-pink-400 cursor-pointer">
+                                <input type="submit" value="Send" class="primary mt-8 py-7 px-10 lg:py-4 lg:px-7 bg-gray-600 text-white font-bold uppercase rounded-md hover:bg-pink-400 cursor-pointer">
                             </li>
                         </ul>
                     </form>
                 </section>
                 <section>
-                    <h2 class="text-xl font-bold uppercase tracking-widest -mt-9 mb-10">Nous suivre</h2>
+                    <h2 class="text-4xl lg:text-xl font-bold uppercase tracking-widest -mt-9 mb-10">Nous suivre</h2>
                     <ul class="icons mr-44 flex flex-row ">
                         <li class="mr-3 p-2 text-4xl border-2 border-gray-400 text-gray-400 hover:border-pink-400 hover:text-pink-400 rounded-lg"><a href="https://www.facebook.com/kyosai.asso"><i class="fa fa-facebook"
                                     aria-hidden="true"></i><span class="label"></span></a></li>
@@ -145,7 +151,8 @@
                                     class="label"></span></a></li>
                     </ul>
                 </section>
-                <ul class="copyright flex flex-row absolute bottom-10 text-gray-300">
+   
+                <ul class="copyright flex flex-row absolute left-44 sm:left-0 bottom-10 text-gray-300 text-2xl sm:text-lg">
                     <li>@ untitled all rights reserved  | </li>
               
                     <li>  design: <a>lien</a>|</li>
