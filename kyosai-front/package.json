@@ -4,7 +4,8 @@
   "scripts": {
     "develop": "gridsome develop",
     "explore": "gridsome explore",
-    "build": "gridsome build"
+    "build": "gridsome build",
+    "tailwind:build":"npx tailwind build kyosai-front/src/style.css -o kyosai-front/dist/style.css"
   },
   "dependencies": {
     "gridsome": "^0.7.0"
