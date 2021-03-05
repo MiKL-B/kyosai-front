@@ -12,7 +12,7 @@
   @apply bg-transparent;
 }
 .article {
-  @apply h-96 w-96  p-5 mx-auto   mb-2 relative transition duration-500 transform;
+  @apply h-96 w-96  p-5 mx-auto  mb-2 relative transition duration-500 transform;
 }
 .article:hover {
   @apply scale-110 group;

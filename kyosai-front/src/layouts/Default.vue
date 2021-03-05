@@ -105,6 +105,7 @@
             </form>
           </section>
           <!--FOLLOW-->
+       
           <section>
             <h2
               class="text-4xl lg:text-xl font-bold uppercase tracking-widest mb-10"
@@ -112,39 +113,8 @@
               Nous suivre
             </h2>
             <ul class="icons mr-44 flex flex-row">
-              <li
-                class="mr-3 p-2 text-4xl border-2 border-gray-400 text-gray-400 hover:border-pink-400 hover:text-pink-400 rounded-lg"
-              >
-                <a href="https://www.facebook.com/kyosai.asso"
-                  ><i class="fa fa-facebook" aria-hidden="true"></i
-                  ><span class="label"></span
-                ></a>
-              </li>
-              <li
-                class="mr-3 p-2 text-4xl border-2 border-gray-400 text-gray-400 hover:border-pink-400 hover:text-pink-400 rounded-lg"
-              >
-                <a
-                  href="https://www.instagram.com/asso_kyosai/?fbclid=IwAR1IxNP1jUFVc7XRr0R-Adpen4RHWzgB1Yia9MIPNu5a0o5YW6RjLwvJ0zY"
-                  ><i class="fa fa-instagram" aria-hidden="true"></i
-                  ><span class="label"></span
-                ></a>
-              </li>
-              <li
-                class="mr-3 p-2 text-4xl border-2 border-gray-400 text-gray-400 hover:border-pink-400 hover:text-pink-400 rounded-lg"
-              >
-                <a href="https://twitter.com/AssoKyosai"
-                  ><i class="fa fa-twitter" aria-hidden="true"></i
-                  ><span class="label"></span
-                ></a>
-              </li>
-              <li
-                class="mr-3 p-2 text-4xl border-2 border-gray-400 text-gray-400 hover:border-pink-400 hover:text-pink-400 rounded-lg"
-              >
-                <a href="#"
-                  ><i class="fa fa-phone" aria-hidden="true"></i
-                  ><span class="label"></span
-                ></a>
-              </li>
+            <SocialLink v-for="link in links" :key="link.title" :link="link"/>
+           
             </ul>
           </section>
           <!--COPYRIGHT-->
@@ -175,7 +145,40 @@
     </nav>
   </div>
 </template>
+<script>
+import SocialLink from "~/components/SocialLink.vue"
+export default {
+  components:{SocialLink},
+  metaInfo: {
 
+  },
+  data(){
+return{
+    links:[{
+        title:"https://www.facebook.com/kyosai.asso",
+        icone:"fa fa-facebook"
+    },
+    {
+        title:"https://www.instagram.com/asso_kyosai/?fbclid=IwAR1IxNP1jUFVc7XRr0R-Adpen4RHWzgB1Yia9MIPNu5a0o5YW6RjLwvJ0zY",
+        icone:"fa fa-instagram"
+    },
+    {
+        title:"https://twitter.com/AssoKyosai",
+        icone:"fa fa-twitter"
+    },
+    {
+        title:"",
+        icone:"fa fa-phone"
+    }
+  
+
+    ]
+}
+  }
+}
+
+  
+</script>
 <static-query>
 query {
   metadata {
