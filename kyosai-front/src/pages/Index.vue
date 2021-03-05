@@ -1,5 +1,5 @@
 <template>
-  <Layout>
+  <Layout  >
 
     <!-- Learn how to use images here: https://gridsome.org/docs/images -->
     <!--<g-image alt="Example image" src="~/favicon.png" width="135" />-->
@@ -8,16 +8,18 @@
       <a href="https://github.com/gridsome/gridsome" target="_blank" rel="noopener">GitHub</a>
     </p>-->
  <!--main-->
+
+ <div id="wrapper" class="flex flex-wrap ">
         <div id="main ">
             <div class="inner">
                 <header class="">
-                    <h1 class="text-8xl mx-10  lg:mx-52 mb-12 font-bold relative lg:text-5xl sm:text-5xl">Association
+                    <h1 class="text-8xl mx-10  lg:mx-52 mb-12 font-bold relative lg:text-5xl sm:text-5xl ">Association
                         sur la pop-culture, le papercraft, le </br>
                         dessin et autres activités manuelles.</br>
                         <a class="bleu">Bonne humeur incluse !</a>
                     </h1>
 
-                    <p class="mx-10 lg:mx-52 text-4xl lg:text-lg sm:text-lg mb-10 relative ">L'association Kyosai est
+                    <p class="mx-10 lg:mx-52 text-4xl sm:text-2xl   mb-10 relative ">L'association Kyosai est
                         une association de loi 1901 qui base son
                         activité sur la promotion de la
                         pop-culture, qu'elle soit franco-belge, américaine</br>ou japonaise.
@@ -100,6 +102,8 @@
                 </section>
             </div>
         </div>
+      </div>
+    
   <!--<GridImage/>-->
   </Layout>
 </template>
