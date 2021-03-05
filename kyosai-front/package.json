@@ -4,10 +4,12 @@
   "scripts": {
     "develop": "gridsome develop",
     "explore": "gridsome explore",
-    "build": "gridsome build",
-    "tailwind:build":"npx tailwind build kyosai-front/src/style.css -o kyosai-front/dist/style.css"
+    "build": "gridsome build"
   },
   "dependencies": {
     "gridsome": "^0.7.0"
+  },
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^4.0.2"
   }
 }
