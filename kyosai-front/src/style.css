@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.bleu {
-  @apply text-blue-500;
-}
 .content-article {
   @apply absolute inset-0 opacity-90 rounded-lg   transition duration-500;
 }

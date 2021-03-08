@@ -1,5 +1,5 @@
 <template>
-  <Layout  >
+  <Layout>
 
     <!-- Learn how to use images here: https://gridsome.org/docs/images -->
     <!--<g-image alt="Example image" src="~/favicon.png" width="135" />-->
@@ -11,23 +11,23 @@
 
  <div id="wrapper" class="flex flex-wrap ">
         <div id="main ">
-            <div class="inner">
-                <header class="">
-                    <h1 class="text-8xl mx-10  lg:mx-52 mb-12 font-bold relative lg:text-5xl sm:text-5xl ">Association
-                        sur la pop-culture, le papercraft, le <br>
-                        dessin et autres activités manuelles.<br>
-                        <a class="bleu">Bonne humeur incluse !</a>
+            <div>
+                <header>
+                    <h1 class="text-8xl mx-10 lg:mx-52 mb-12 font-bold relative lg:text-5xl sm:text-5xl">Association
+                        sur la pop-culture, le papercraft, le 
+                        dessin et autres activités manuelles.
+                        <a class="text-blue-500">Bonne humeur incluse !</a>
                     </h1>
 
-                    <p class="mx-10 lg:mx-52 text-4xl sm:text-2xl   mb-10 relative ">L'association Kyosai est
+                    <p class="mx-10 lg:mx-52 text-4xl sm:text-2xl mb-10 relative">L'association Kyosai est
                         une association de loi 1901 qui base son
                         activité sur la promotion de la
-                        pop-culture, qu'elle soit franco-belge, américaine<br>ou japonaise.
+                        pop-culture, qu'elle soit franco-belge, américaine ou japonaise.
                         Cette association propose à ses membres de réaliser du papercraft, des illustrations, du cosplay
-                        et d'autres activités manuelle et<br>digitale.</p>
+                        et d'autres activités manuelle et digitale.</p>
                 </header>
                 <!--section articles-->
-                <section class="tiles flex flex-wrap  flex-row mx-52">
+                <section class="flex flex-wrap flex-row mx-52">
                 <GridImage v-for="section in sections" :key="section.title" :section="section"/>
                 </section>
             </div>
@@ -59,22 +59,30 @@ return{
         imageUrl:"/dessin.png",
         link:"/dessin",
         subtitle:"Atelier de dessin",
-           color:"bg-blue-200"
+        color:"bg-blue-200"
     },
     {
         title:"cosplay",
         imageUrl:"/cosplay.jpg",
         link:"/cosplay",
         subtitle:"Atelier de cosplay",
-           color:"bg-green-300"
+        color:"bg-green-300"
     },
     {
         title:"art gaming",
         imageUrl:"/artgaming.png",
-        link:"/artgaming",
+        link:"/gaming",
         subtitle:"Atelier d'art gaming",
-           color:"bg-yellow-200"
+        color:"bg-yellow-200"
     },
+      {
+        title:"convention",
+        imageUrl:"/kyosai.jpg",
+        link:"/convention",
+        subtitle:"Conventions et salons",
+        color:"bg-purple-500"
+    },
+
     ]
 }
   }
