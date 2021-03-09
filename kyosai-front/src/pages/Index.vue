@@ -16,7 +16,7 @@
                     <h1 class="text-8xl mx-10 lg:mx-52 mb-12 font-bold relative lg:text-5xl sm:text-5xl">Association
                         sur la pop-culture, le papercraft, le 
                         dessin et autres activités manuelles.
-                        <a class="text-blue-500">Bonne humeur incluse !</a>
+                        <a class="text-blue-400">Bonne humeur incluse !</a>
                     </h1>
 
                     <p class="mx-10 lg:mx-52 text-4xl sm:text-2xl mb-10 relative">L'association Kyosai est
@@ -59,7 +59,7 @@ return{
         imageUrl:"/dessin.png",
         link:"/dessin",
         subtitle:"Atelier de dessin",
-        color:"bg-blue-200"
+        color:"bg-blue-400"
     },
     {
         title:"cosplay",
@@ -77,7 +77,7 @@ return{
     },
       {
         title:"convention",
-        imageUrl:"/kyosai.jpg",
+        imageUrl:"/logo.png",
         link:"/convention",
         subtitle:"Conventions et salons",
         color:"bg-purple-500"

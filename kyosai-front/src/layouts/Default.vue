@@ -22,8 +22,7 @@
       <!--<g-link to="/">{{ $static.metadata.siteName }}</g-link>-->
       <!--logo-->
       <g-link to="/" class="flex flex-row h-62 lg:h-40 relative">
-        <span><img class="ml-42 h-full lg:ml-48" src="/logo.png" alt
-        /></span>
+        <span><img class="ml-42 h-full lg:ml-48" src="/logo.png" alt /></span>
 
         <span
           class="c-title text-red-400 font-black text-6xl sm:text-4xl absolute sm:relative text-center ml-80 sm:ml-0 lg:absolute mt-32 lg:mt-0 lg:top-16 lg:left-96"
@@ -67,7 +66,7 @@
                     placeholder="Name"
                     class="bg-transparent pl-0 w-screen md:w-96 h-20 border-b-2 focus:outline-none focus:border-pink-400 text-3xl lg:text-xl"
                   />
-            </div>
+                </div>
                 <!--email-->
                 <div>
                   <input
@@ -123,7 +122,7 @@
           >
             <li>@ untitled all rights reserved |</li>
 
-            <li>design: <a>lien</a>|</li>
+            <li>design: <a> lien </a> |</li>
 
             <li>demo image <a>lien</a></li>
           </ul>
@@ -148,7 +147,7 @@
 <script>
 import SocialLink from "~/components/SocialLink.vue";
 export default {
-  components: { SocialLink } ,
+  components: { SocialLink },
 
   metaInfo: {},
   data() {
@@ -171,7 +170,7 @@ export default {
           url: "",
           icone: "fa fa-phone",
         },
-      ]
+      ],
     };
   },
 };
@@ -205,4 +204,21 @@ body {
 .c-title {
   font-family: "Papyrus";
 }
+h2 {
+  transition: 0.5s;
+}
+article h2 {
+  text-shadow: 0px 0px 5px black;
+}
+article:hover h2 {
+  transform: translateY(-20px);
+}
+
+article p {
+  text-shadow: 0px 0px 5px black;
+}
+article:hover p {
+  transform: translateY(-20px);
+}
+
 </style>
