@@ -201,8 +201,12 @@ body {
   background-position: center;
   font-family: "Source Sans Pro";
 }
+
 .c-title {
   font-family: "Papyrus";
+}
+.c-paragraphe {
+  font-family: "Source sans pro";
 }
 h2 {
   transition: 0.5s;
@@ -220,5 +224,4 @@ article p {
 article:hover p {
   transform: translateY(-20px);
 }
-
 </style>
