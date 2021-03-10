@@ -7,6 +7,7 @@
     "build": "gridsome build"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "gridsome": "^0.7.0",
     "tailwindcss": "^2.0.3"
   },
