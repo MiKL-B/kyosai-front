@@ -224,4 +224,10 @@ article p {
 article:hover p {
   transform: translateY(-20px);
 }
+.gallery-row{
+display:flex;
+flex-wrap:wrap;
+}
+
+
 </style>

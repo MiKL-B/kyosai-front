@@ -2,24 +2,35 @@
     <layout>
 
 <!-- MAIN -->
-<main>
-   <h1 class="text-center text-4xl">Nos Cosplays</h1>
-   <div>
-<p>Quelques photos prise dans un décor printanier ...</p>
-   </div>
-</main>
 
+<span v-html="cosplayContent"></span>
     </layout>
 </template>
 
 <script>
-
+const axios = require('axios');
 
 export default {
  
   metaInfo: {
     title: 'cosplay',
   
+  },
+    created(){
+  
+axios.get('https://public-api.wordpress.com/rest/v1.1/sites/assokyosai.wordpress.com/posts/2187/')
+  .then( (response)=> {
+    // handle success
+    console.log(response);
+    this.cosplayContent = response.data.content;
+
+   
+  })
+  },
+    data(){
+    return{
+      cosplayContent:"loading",
+    }
   }
 }
 </script>

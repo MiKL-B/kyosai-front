@@ -1,8 +1,6 @@
 <template>
   <Layout>
-    <h1>About us</h1>
-
-    <p>{{content}}</p>
+<span v-html="myContent"></span>
   </Layout>
 </template>
 
@@ -17,18 +15,21 @@ export default {
   },
   created(){
   
-axios.get('https://public-api.wordpress.com/rest/v1.2/sites/assokyosai.wordpress.com')
+axios.get('https://public-api.wordpress.com/rest/v1.1/sites/assokyosai.wordpress.com/posts/297/')
   .then( (response)=> {
     // handle success
     console.log(response);
-    this.content = response.data;
+    this.myContent = response.data.content;
+
+   
   })
-  
   },
 
   data(){
     return {
-      content:"loading"
+      myContent:"loading",
+   
+
     }
   }
 }

@@ -2,29 +2,35 @@
     <layout>
 
 <!-- MAIN -->
-<main>
-    <h1 class="text-center text-4xl">Nos Papercrafts</h1>
-    <div>
-
-   <p>Le papercraft est, avec le dessin, le nerf de l'association. Cet art réputé difficile demande avant tout de la patience, et les ateliers
-       sont le moment idéal pour pratiquer et construire. Avis aux amateurs !
-   </p>
-   <p>Voici les template des papercrafts à imprimer de l'atelier de samedi soir pour japan impact en ligne. Prédécoupage recommandé !</p>
-   <p>Voici, ci-dessous, une galerie non-exhaustive des créations de nos membres</p>
-</div>
-</main>
+<span v-html="papercraftContent"></span>
 
     </layout>
 </template>
 
 <script>
 
-
+const axios = require('axios');
 export default {
 
   metaInfo: {
     title: 'papercraft',
   
+  },
+      created(){
+  
+axios.get('https://public-api.wordpress.com/rest/v1.1/sites/assokyosai.wordpress.com/posts/257/')
+  .then( (response)=> {
+    // handle success
+    console.log(response);
+    this.papercraftContent = response.data.content;
+
+   
+  })
+  },
+  data(){
+    return{
+      papercraftContent:"loading",
+    }
   }
-}
+  }
 </script>
