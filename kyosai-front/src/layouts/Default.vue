@@ -18,8 +18,9 @@
       type="text/css"
       media="all"
     />
+
     <header class="header">
-      <!--<g-link to="/">{{ $static.metadata.siteName }}</g-link>-->
+  
       <!--logo-->
       <g-link to="/" class="flex flex-row h-62 lg:h-40 relative">
         <span><img class="ml-42 h-full lg:ml-48" src="/logo.png" alt /></span>
@@ -33,10 +34,22 @@
       <nav>
         <ul>
           <li
-            class="top-7 right-20 sm:top-10 sm:right-20 text-7xl lg:text-5xl font-bold bg-gray-100 px-3 p-1 fixed rounded-lg hover:text-pink-400 z-10"
+            class="top-7 right-20 sm:top-10 sm:right-20 text-7xl lg:text-5xl font-bold bg-gray-100 px-3 p-1 fixed rounded-lg  z-10"
           >
-            <a href="#"><i class="fa fa-bars"></i></a>
+      
+            <div @click="showSidenav =! showSidenav" class="menu-btn" :class="{'open':showSidenav}" >
+            <span></span>
+            </div>
           </li>
+          <!--MENU BURGER-->
+
+          <div v-if="showSidenav" class="sidenav" >
+            <h2 class="uppercase font-bold text-2xl pl-10 my-28">{{ titre }}</h2>
+            <ul>
+            <MenuBurgerLink v-for="burger in burgers" :key="burger.menu" :burger="burger" />
+             
+            </ul>
+          </div>
         </ul>
       </nav>
     </header>
@@ -129,25 +142,15 @@
         </div>
       </footer>
     </div>
-    <!--MENU BURGER-->
-    <nav>
-      <div>
-        <h2></h2>
-        <ul>
-          <li><a href=""></a></li>
-          <li><a href=""></a></li>
-          <li><a href=""></a></li>
-          <li><a href=""></a></li>
-        </ul>
-      </div>
-      <a></a>
-    </nav>
   </div>
 </template>
 <script>
+
+import MenuBurgerLink from "~/components/MenuBurgerLink.vue";
 import SocialLink from "~/components/SocialLink.vue";
 export default {
-  components: { SocialLink },
+  
+  components: { SocialLink, MenuBurgerLink},
 
   metaInfo: {},
   data() {
@@ -171,9 +174,28 @@ export default {
           icone: "fa fa-phone",
         },
       ],
+      burgers:[
+        {
+          link:"/convention",
+          menu:"Convention"
+        }
+        ,
+        {
+          link:"/about",
+          menu:"About"
+        }
+      ],
+      showSidenav: false,
+      titre: "Menu", 
+     
     };
+    	
   },
+
+
 };
+
+
 </script>
 <static-query>
 query {
@@ -224,9 +246,74 @@ article p {
 article:hover p {
   transform: translateY(-20px);
 }
-.gallery-row{
-display:flex;
-flex-wrap:wrap;
+/*DISPLAY IMAGE POSTS */
+.gallery-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+/*MENU BURGER STYLE */
+ .sidenav{
+   position: fixed;
+  height: 100vh;
+  right:0;
+  width:400px;
+  color:#fff;
+  background:#585858;
+  top: 0;
+  z-index: 1;
+}
+
+.menu-btn {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 40px;
+  cursor: pointer;
+}
+.menu-btn span {
+  content: "";
+  position: absolute;
+  height: 5px;
+  width: 100%;
+  background: black;
+  transition: all 0.5s ease-in-out;
+}
+.menu-btn::before {
+  content: "";
+  top: 0;
+  position: absolute;
+  height: 5px;
+  width: 100%;
+  background: black;
+  transition: all 0.5s ease-in-out;
+}
+.menu-btn::after {
+  content: "";
+  bottom: 0;
+  position: absolute;
+  height: 5px;
+  width: 100%;
+  background: black;
+  transition: all 0.5s ease-in-out;
+}
+.menu-btn.open {
+  transition: 0.5s;
+
+  
+}
+.menu-btn.open span{
+  transition: all 0.5s ease-in-out;
+  opacity: 0%;
+}
+.menu-btn.open::before {
+  transition: all 0.5s ease-in-out;
+  transform: translateY(17px) rotate(-45deg);
+}
+.menu-btn.open::after {
+  transition: all 0.5s ease-in-out;
+  transform: translateY(-17px) rotate(45deg);
 }
 
 

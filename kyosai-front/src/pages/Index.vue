@@ -9,7 +9,7 @@
     <!--main-->
 
     <div id="wrapper" class="flex flex-wrap">
-      <div id="main ">
+      <div id="main">
         <div>
           <header>
             <h1
@@ -82,13 +82,7 @@ export default {
           subtitle: "Atelier d'art gaming",
           color: "bg-yellow-200",
         },
-        {
-          title: "convention",
-          imageUrl: "/logo.png",
-          link: "/convention",
-          subtitle: "Conventions et salons",
-          color: "bg-purple-500",
-        },
+    
       ],
     };
   },
