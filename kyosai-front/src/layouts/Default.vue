@@ -1,8 +1,11 @@
 <template>
-  <div class="layout relative source-font ">
+  <div class=" relative  ">
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
 
     <link
       rel="stylesheet"
@@ -11,22 +14,14 @@
       type="text/css"
       media="all"
     />
-    <link
-      rel="stylesheet"
-      id="fa-fonts-css"
-      href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome-font-awesome.min.css?ver=5.2"
-      type="text/css"
-      media="all"
-    />
-
-    <header class="header flex">
+    <header class="header flex mx-auto">
   
       <!--logo-->
-      <g-link to="/" class=" flex-row h-62 lg:h-40  ">
-        <span><img class="ml-42 h-full lg:ml-48" src="/logo.png" alt /></span>
+      <g-link to="/" class="flex  flex-row h-62 lg:h-40 ">
+       <img class="ml-42 h-60 lg:h-full lg:ml-48" src="/logo.png" alt />
   </g-link>
         <span
-          class="c-title text-red-400 font-black text-6xl sm:text-4xl absolute sm:relative text-center ml-80 sm:ml-0 lg:absolute mt-32 lg:mt-0 lg:top-16 lg:left-96"
+          class="c-title text-red-400 font-black text-4xl sm:text-3xl absolute sm:relative text-center ml-80 sm:ml-0 lg:absolute mt-32 lg:mt-0 lg:top-16 lg:left-96"
           >KYOSAI</span
         >
     
@@ -39,7 +34,7 @@
 
           <div v-if="showSidenav" class="sidenav h-full" >
             <h2 class="uppercase font-bold text-2xl pl-10 my-10">{{ titre }}</h2>
-            <div class="w-80">
+            <div class="w-80" >
             <ul>
             <MenuBurgerLink  v-for="burger in burgers" :key="burger.menu" :burger="burger" />
              
@@ -131,9 +126,9 @@
           >
             <li>@ untitled all rights reserved |</li>
 
-            <li>design: <a> lien </a> |</li>
+            <li>design: <a href="#">  </a> |</li>
 
-            <li>demo image <a>lien</a></li>
+            <li>demo image <a href="#"></a></li>
           </ul>
         </div>
       </footer>
@@ -245,9 +240,19 @@ article:hover p {
 /*DISPLAY IMAGE POSTS */
 .gallery-row {
   display: flex;
+flex-wrap:wrap;
+flex-direction:column;
+justify-content:center;
 
 }
-
+.c-link-span-content p a{
+  color:#60a5fa;
+  font-weight: bold;
+}
+.c-text-span-content p {
+  text-align:justify;
+  width:theme("width.96");
+}
 /*MENU BURGER STYLE */
 
  .sidenav{
@@ -257,8 +262,8 @@ article:hover p {
   color:#fff;
   background:#585858;
   z-index: 2;
-  width:400px;
-  transition: 0.5s;
+width:theme("width.96")
+
 }
 
 .menu-btn {
@@ -266,10 +271,10 @@ article:hover p {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 60px;
-  height: 40px;
+width:theme("width.12");
+  height:theme("height.10");
   cursor: pointer;
-   transition:transform 0.5s;
+   transition: 0.5s;
 }
 .menu-btn span {
   content: "";
@@ -308,6 +313,7 @@ article:hover p {
 .menu-btn.open span{
   transition: all 0.5s ease-in-out;
   opacity: 0%;
+
 }
 .menu-btn.open::before {
   transition: all 0.5s ease-in-out;

@@ -1,19 +1,14 @@
 <template>
   <Layout>
-    <!-- Learn how to use images here: https://gridsome.org/docs/images -->
-    <!--<g-image alt="Example image" src="~/favicon.png" width="135" />-->
-    <!-- <p class="home-links">
-      <a href="https://gridsome.org/docs/" target="_blank" rel="noopener">Gridsome Docs</a>
-      <a href="https://github.com/gridsome/gridsome" target="_blank" rel="noopener">GitHub</a>
-    </p>-->
+
     <!--main-->
 
     <div id="wrapper" class="flex flex-wrap">
       <div id="main">
-        <div>
+  
           <header>
             <h1
-              class="c-paragraphe text-8xl mx-10 lg:mx-52 mb-12 font-bold relative lg:text-5xl sm:text-5xl"
+              class="c-paragraphe text-4xl  mx-10 lg:mx-52 mb-12 font-bold relative  sm:text-5xl flex flex-wrap"
             >
               Association sur la pop-culture, le papercraft, le dessin et autres
               activités manuelles.
@@ -21,7 +16,7 @@
             </h1>
 
             <p
-              class="c-paragraphe mx-10 lg:mx-52 text-4xl sm:text-2xl mb-10 relative"
+              class="c-paragraphe mx-10 lg:mx-52 text-4xl text-justify sm:text-2xl mb-10  "
             >
               L'association Kyosai est une association de loi 1901 qui base son
               activité sur la promotion de la pop-culture, qu'elle soit
@@ -38,7 +33,7 @@
               :section="section"
             />
           </section>
-        </div>
+     
       </div>
     </div>
   </Layout>

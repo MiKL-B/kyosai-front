@@ -1,8 +1,9 @@
 <template>
-    <layout>
+    <layout >
 
 <!-- MAIN -->
-<span class="text-2xl md:text-lg flex flex-col flex-wrap items-center text-justify " v-html="papercraftContent"></span>
+
+<span class=" c-text-span-content text-lg flex flex-col flex-wrap items-center mx-auto  " v-html="papercraftContent"></span>
 
     </layout>
 </template>

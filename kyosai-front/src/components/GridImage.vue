@@ -1,6 +1,6 @@
 <template>
   <article
-    class="h-96 w-96 lg:h-80 lg:w-80 mx-auto mb-2 relative transition duration-500 transform hover:scale-110 group"
+    class="h-96 w-96 lg:h-80 lg:w-80 mx-auto mb-5 relative transition duration-500 transform hover:scale-110 group"
   >
     <span
       ><img

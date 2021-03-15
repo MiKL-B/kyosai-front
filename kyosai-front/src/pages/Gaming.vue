@@ -3,7 +3,7 @@
 
 <!-- MAIN -->
 
-<span class=" text-2xl md:text-lg text-justify flex flex-col  w-full mx-auto items-center" v-html="gamingContent"></span>
+<span class="c-text-span-content c-link-span-content text-lg flex flex-col flex-wrap items-center mx-auto  " v-html="gamingContent"></span>
 
     </layout>
 </template>

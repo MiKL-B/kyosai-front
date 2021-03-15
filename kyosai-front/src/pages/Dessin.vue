@@ -2,7 +2,7 @@
     <layout>
 
 <!-- MAIN -->
-<span class="text-2xl md:text-lg flex flex-col flex-wrap  text-justify   place-items-center" v-html="dessinContent"></span>
+<span class="c-text-span-content text-lg flex flex-col flex-wrap items-center mx-auto  "  v-html="dessinContent"></span>
 
     </layout>
 </template>

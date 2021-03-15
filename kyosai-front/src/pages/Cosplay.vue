@@ -3,7 +3,7 @@
 
 <!-- MAIN -->
 
-<span class="text-2xl md:text-lg flex flex-col flex-wrap items-center  " v-html="cosplayContent"></span>
+<span class="c-text-span-content flex flex-col text-lg flex-wrap items-center mx-auto   " v-html="cosplayContent"></span>
     </layout>
 </template>
 
