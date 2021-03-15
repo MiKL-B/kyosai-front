@@ -3,7 +3,7 @@
 
 <!-- MAIN -->
 
-<span v-html="gamingContent"></span>
+<span class=" text-2xl md:text-lg text-justify flex flex-col  w-full mx-auto items-center" v-html="gamingContent"></span>
 
     </layout>
 </template>
@@ -22,7 +22,7 @@ export default {
 axios.get('https://public-api.wordpress.com/rest/v1.1/sites/assokyosai.wordpress.com/posts/2536/')
   .then( (response)=> {
     // handle success
-    console.log(response);
+    //console.log(response);
     this.gamingContent = response.data.content;
 
    
@@ -30,7 +30,7 @@ axios.get('https://public-api.wordpress.com/rest/v1.1/sites/assokyosai.wordpress
   },
     data(){
     return{
-      gamingContent:"loading",
+      gamingContent:"",
     }
   }
 

@@ -3,7 +3,7 @@
 
 <!-- MAIN -->
 
-<span v-html="cosplayContent"></span>
+<span class="text-2xl md:text-lg flex flex-col flex-wrap items-center  " v-html="cosplayContent"></span>
     </layout>
 </template>
 
@@ -21,7 +21,7 @@ export default {
 axios.get('https://public-api.wordpress.com/rest/v1.1/sites/assokyosai.wordpress.com/posts/2187/')
   .then( (response)=> {
     // handle success
-    console.log(response);
+    //console.log(response);
     this.cosplayContent = response.data.content;
 
    
@@ -29,7 +29,7 @@ axios.get('https://public-api.wordpress.com/rest/v1.1/sites/assokyosai.wordpress
   },
     data(){
     return{
-      cosplayContent:"loading",
+      cosplayContent:"",
     }
   }
 }

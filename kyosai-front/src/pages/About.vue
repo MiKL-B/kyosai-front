@@ -1,6 +1,6 @@
 <template>
   <Layout>
-<span v-html="myContent"></span>
+<span class="text-2xl md:text-lg  flex flex-col flex-wrap items-center text-justify w-96 mx-auto" v-html="aboutContent"></span>
   </Layout>
 </template>
 
@@ -18,8 +18,8 @@ export default {
 axios.get('https://public-api.wordpress.com/rest/v1.1/sites/assokyosai.wordpress.com/posts/297/')
   .then( (response)=> {
     // handle success
-    console.log(response);
-    this.myContent = response.data.content;
+    //console.log(response);
+    this.aboutContent = response.data.content;
 
    
   })
@@ -27,7 +27,7 @@ axios.get('https://public-api.wordpress.com/rest/v1.1/sites/assokyosai.wordpress
 
   data(){
     return {
-      myContent:"loading",
+      aboutContent:"loading",
    
 
     }

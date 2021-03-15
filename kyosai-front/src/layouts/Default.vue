@@ -1,5 +1,5 @@
 <template>
-  <div class="layout relative source-font">
+  <div class="layout relative source-font ">
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,38 +19,34 @@
       media="all"
     />
 
-    <header class="header">
+    <header class="header flex">
   
       <!--logo-->
-      <g-link to="/" class="flex flex-row h-62 lg:h-40 relative">
+      <g-link to="/" class=" flex-row h-62 lg:h-40  ">
         <span><img class="ml-42 h-full lg:ml-48" src="/logo.png" alt /></span>
-
+  </g-link>
         <span
           class="c-title text-red-400 font-black text-6xl sm:text-4xl absolute sm:relative text-center ml-80 sm:ml-0 lg:absolute mt-32 lg:mt-0 lg:top-16 lg:left-96"
           >KYOSAI</span
         >
-      </g-link>
+    
 
       <nav>
-        <ul>
-          <li
-            class="top-7 right-20 sm:top-10 sm:right-20 text-7xl lg:text-5xl font-bold bg-gray-100 px-3 p-1 fixed rounded-lg  z-10"
-          >
-      
-            <div @click="showSidenav =! showSidenav" class="menu-btn" :class="{'open':showSidenav}" >
+            <div @click="showSidenav =! showSidenav" class="menu-btn  top-7 right-20 sm:top-10 sm:right-20 text-7xl lg:text-5xl font-bold bg-gray-100 px-3 p-1 fixed rounded-lg  z-10" :class="{'open':showSidenav}" >
             <span></span>
             </div>
-          </li>
           <!--MENU BURGER-->
 
-          <div v-if="showSidenav" class="sidenav" >
-            <h2 class="uppercase font-bold text-2xl pl-10 my-28">{{ titre }}</h2>
+          <div v-if="showSidenav" class="sidenav h-full" >
+            <h2 class="uppercase font-bold text-2xl pl-10 my-10">{{ titre }}</h2>
+            <div class="w-80">
             <ul>
-            <MenuBurgerLink v-for="burger in burgers" :key="burger.menu" :burger="burger" />
+            <MenuBurgerLink  v-for="burger in burgers" :key="burger.menu" :burger="burger" />
              
             </ul>
+            </div>
           </div>
-        </ul>
+      
       </nav>
     </header>
     <slot />
@@ -249,18 +245,20 @@ article:hover p {
 /*DISPLAY IMAGE POSTS */
 .gallery-row {
   display: flex;
-  flex-wrap: wrap;
+
 }
+
 /*MENU BURGER STYLE */
+
  .sidenav{
-   position: fixed;
-  height: 100vh;
+  position: fixed;
   right:0;
-  width:400px;
+  top: 0;
   color:#fff;
   background:#585858;
-  top: 0;
-  z-index: 1;
+  z-index: 2;
+  width:400px;
+  transition: 0.5s;
 }
 
 .menu-btn {
@@ -271,38 +269,42 @@ article:hover p {
   width: 60px;
   height: 40px;
   cursor: pointer;
+   transition:transform 0.5s;
 }
 .menu-btn span {
   content: "";
   position: absolute;
-  height: 5px;
+  height:theme("height.1");
   width: 100%;
-  background: black;
+  background: #585858;
   transition: all 0.5s ease-in-out;
 }
 .menu-btn::before {
   content: "";
   top: 0;
   position: absolute;
-  height: 5px;
+  height:theme("height.1");
   width: 100%;
-  background: black;
-  transition: all 0.5s ease-in-out;
+  background: #585858;
+  transition: all theme("transitionDuration.500") ease-in-out;
 }
 .menu-btn::after {
   content: "";
   bottom: 0;
   position: absolute;
-  height: 5px;
+  height:theme("height.1");
   width: 100%;
-  background: black;
+  background: #585858;
   transition: all 0.5s ease-in-out;
 }
-.menu-btn.open {
-  transition: 0.5s;
 
-  
-}
+.menu-btn.open {
+  transition: 0.5s ;
+  transform:translateX(-350px) rotate(180deg);
+  background:none;
+
+  }
+
 .menu-btn.open span{
   transition: all 0.5s ease-in-out;
   opacity: 0%;

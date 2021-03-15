@@ -2,7 +2,7 @@
     <layout>
 
 <!-- MAIN -->
-<span v-html="papercraftContent"></span>
+<span class="text-2xl md:text-lg flex flex-col flex-wrap items-center text-justify " v-html="papercraftContent"></span>
 
     </layout>
 </template>
@@ -21,7 +21,7 @@ export default {
 axios.get('https://public-api.wordpress.com/rest/v1.1/sites/assokyosai.wordpress.com/posts/257/')
   .then( (response)=> {
     // handle success
-    console.log(response);
+    //console.log(response);
     this.papercraftContent = response.data.content;
 
    
@@ -29,7 +29,7 @@ axios.get('https://public-api.wordpress.com/rest/v1.1/sites/assokyosai.wordpress
   },
   data(){
     return{
-      papercraftContent:"loading",
+      papercraftContent:"",
     }
   }
   }

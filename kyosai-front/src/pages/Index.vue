@@ -49,7 +49,7 @@ import GridImage from "~/components/GridImage.vue";
 export default {
   components: { GridImage },
   metaInfo: {
-    title: "Bienvenue sur",
+    title: "welcome",
   },
   data() {
     return {
