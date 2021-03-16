@@ -1,5 +1,5 @@
 <template>
-  <div class=" relative  ">
+<div>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta
@@ -14,25 +14,27 @@
       type="text/css"
       media="all"
     />
-    <header class="header flex mx-auto">
+
+    <header class="min-w-full flex flex-wrap">
   
       <!--logo-->
-      <g-link to="/" class="flex  flex-row h-62 lg:h-40 ">
-       <img class="ml-42 h-60 lg:h-full lg:ml-48" src="/logo.png" alt />
-  </g-link>
-        <span
-          class="c-title text-red-400 font-black text-4xl sm:text-3xl absolute sm:relative text-center ml-80 sm:ml-0 lg:absolute mt-32 lg:mt-0 lg:top-16 lg:left-96"
+      <g-link to="/" class="flex flex-wrap flex-col mx-5">
+       <img class="h-28" src="/logo.png" alt />
+         <span
+          class="c-title text-red-400 font-black text-2xl mb-10 "
           >KYOSAI</span
         >
+  </g-link>
+      
     
 
-      <nav>
-            <div @click="showSidenav =! showSidenav" class="menu-btn  top-7 right-20 sm:top-10 sm:right-20 text-7xl lg:text-5xl font-bold bg-gray-100 px-3 p-1 fixed rounded-lg  z-10" :class="{'open':showSidenav}" >
-            <span></span>
+      <nav class="min-w-full ">
+            <div @click="showSidenav =! showSidenav" class="menu-btn right-5 top-5 text-7xl  font-bold  fixed rounded-lg  z-10 " :class="{'open':showSidenav}" >
+            <span ></span>
             </div>
           <!--MENU BURGER-->
 
-          <div v-if="showSidenav" class="sidenav h-full" >
+          <div v-if="showSidenav" class="sidenav h-full " >
             <h2 class="uppercase font-bold text-2xl pl-10 my-10">{{ titre }}</h2>
             <div class="w-80" >
             <ul>
@@ -46,29 +48,30 @@
     </header>
     <slot />
     <!--footer-->
-    <div class="flex flex-wrap">
+    <!--a revoir-->
+
       <footer
-        class="min-h-full px-10 py-24 md:px-0 bg-gray-100 flex flex-row justify-center"
+        class="min-w-full  py-10 md:px-0 bg-gray-100 flex  flex-wrap flex-col "
         id="footer"
       >
-        <div class="mx-36 lg:mx-52 flex flex-col lg:flex-row">
+        <div class="mx-5 lg:mx-52 flex flex-col lg:flex-row">
           <!--CONTACT-->
           <section class="mb-20 lg:mb-0">
             <h2
-              class="text-4xl lg:text-xl font-bold uppercase tracking-widest mb-10"
+              class="text-xl lg:text-xl font-bold uppercase tracking-widest mb-10 text-center"
             >
               Restons en contact
             </h2>
             <!--form-->
-            <form method="POST" action="#" class="mr-50">
-              <div class="flex flex-row flex-wrap">
+            <form method="POST" action="#" class="">
+              <div class="flex flex-col flex-wrap">
                 <div>
                   <input
                     type="text"
                     name="name"
                     id="name"
                     placeholder="Name"
-                    class="bg-transparent pl-0 w-screen md:w-96 h-20 border-b-2 focus:outline-none focus:border-pink-400 text-3xl lg:text-xl"
+                    class="bg-transparent  w-72  h-20 border-b-2 focus:outline-none focus:border-pink-400 text-xl"
                   />
                 </div>
                 <!--email-->
@@ -78,7 +81,7 @@
                     name="email"
                     id="email"
                     placeholder="Email"
-                    class="bg-transparent pl-0 w-screen md:w-96 h-20 border-b-2 focus:outline-none focus:border-pink-400 text-3xl lg:text-xl"
+                    class="bg-transparent  w-72 mb-2 h-20 border-b-2 focus:outline-none focus:border-pink-400 text-xl "
                   />
                 </div>
 
@@ -91,7 +94,7 @@
                       cols="1"
                       rows="45"
                       style="overflow: hidden; resize: none; height: 100px"
-                      class="bg-transparent pl-0 w-screen md:w-96 h-20 border-b-2 focus:outline-none focus:border-pink-400 text-3xl lg:text-xl"
+                      class="bg-transparent w-72 my-2 h-20 border-b-2 focus:outline-none focus:border-pink-400 text-xl "
                     ></textarea>
                   </div>
                 </div>
@@ -102,7 +105,7 @@
                   <input
                     type="submit"
                     value="Send"
-                    class="mt-8 py-7 px-10 lg:py-4 lg:px-7 w-full lg:w-32 bg-gray-600 text-white font-bold uppercase rounded-md hover:bg-pink-400 cursor-pointer text-4xl md:text-base"
+                    class="mt-8 py-7 w-72 bg-gray-600 text-white font-bold uppercase rounded-md hover:bg-pink-400 cursor-pointer  text-xl"
                   />
                 </li>
               </ul>
@@ -112,17 +115,17 @@
 
           <section>
             <h2
-              class="text-4xl lg:text-xl font-bold uppercase tracking-widest mb-10"
+              class="text-xl lg:text-xl font-bold uppercase tracking-widest mb-10 text-center"
             >
               Nous suivre
             </h2>
-            <ul class="mr-44 flex flex-row">
+            <ul class=" flex flex-row mx-5">
               <SocialLink v-for="link in links" :key="link.url" :link="link" />
             </ul>
           </section>
           <!--COPYRIGHT-->
           <ul
-            class="flex flex-row relative lg:absolute lg:bottom-10 mt-10 mx-10: text-gray-300 text-2xl sm:text-lg"
+            class="flex flex-col  mt-10 mx-5 text-gray-300 text-xl "
           >
             <li>@ untitled all rights reserved |</li>
 
@@ -131,9 +134,8 @@
             <li>demo image <a href="#"></a></li>
           </ul>
         </div>
-      </footer>
-    </div>
-  </div>
+</footer>
+</div>
 </template>
 <script>
 
@@ -167,14 +169,35 @@ export default {
       ],
       burgers:[
         {
-          link:"/convention",
-          menu:"Convention"
+          link:"/",
+          menu:"Accueil"
         }
         ,
         {
+          link:"/papercraft",
+          menu:"Papercraft"
+        },
+          {
+          link:"/dessin",
+          menu:"Dessin"
+        },
+          {
+          link:"/cosplay",
+          menu:"Cosplay"
+        },
+          {
+          link:"/gaming",
+          menu:"Art Gaming"
+        },
+          {
+          link:"/convention",
+          menu:"Convention"
+        },
+         {
           link:"/about",
-          menu:"About"
-        }
+          menu:"à propos"
+        },
+
       ],
       showSidenav: false,
       titre: "Menu", 
@@ -238,6 +261,7 @@ article:hover p {
   transform: translateY(-20px);
 }
 /*DISPLAY IMAGE POSTS */
+/*a supprimer */
 .gallery-row {
   display: flex;
 flex-wrap:wrap;
@@ -245,6 +269,7 @@ flex-direction:column;
 justify-content:center;
 
 }
+/* pas plus de 2 chemins  */
 .c-link-span-content p a{
   color:#60a5fa;
   font-weight: bold;
@@ -262,10 +287,11 @@ justify-content:center;
   color:#fff;
   background:#585858;
   z-index: 2;
-width:theme("width.96")
+width:theme("width.60")
 
 }
-
+.sidenav :nth-child(1){
+border:none;}
 .menu-btn {
   position: relative;
   display: flex;
@@ -276,6 +302,7 @@ width:theme("width.12");
   cursor: pointer;
    transition: 0.5s;
 }
+
 .menu-btn span {
   content: "";
   position: absolute;
@@ -305,7 +332,7 @@ width:theme("width.12");
 
 .menu-btn.open {
   transition: 0.5s ;
-  transform:translateX(-350px) rotate(180deg);
+  transform:translateX(-225px) rotate(-180deg);
   background:none;
 
   }

@@ -1,6 +1,6 @@
 <template>
   <article
-    class="h-96 w-96 lg:h-80 lg:w-80 mx-auto mb-5 relative transition duration-500 transform hover:scale-110 group"
+    class="h-72 w-72   mb-5 relative transition duration-500 transform hover:scale-110 group"
   >
     <span
       ><img
@@ -14,7 +14,7 @@
         :class="[section.color]"
       >
         <h2
-          class="uppercase font-bold text-white text-2xl lg:text-xl tracking-widest absolute top-40 left-28 lg:top-36 lg:left-24 z-30"
+          class="uppercase font-bold text-white text-2xl tracking-widest mt-32 text-center z-30"
         >
           {{ section.title }}
         </h2>
