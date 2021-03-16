@@ -3,7 +3,7 @@
 
 <!-- MAIN -->
 
-<span class=" c-text-span-content text-lg flex flex-col flex-wrap items-center mx-auto  " v-html="papercraftContent"></span>
+<span  v-html="papercraftContent"></span>
 
     </layout>
 </template>

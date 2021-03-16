@@ -2,7 +2,7 @@
   <layout>
     <!-- MAIN -->
     <!--c-link-span-content a remplacer par c-content-->
-    <span class=" c-link-span-content c-text-span-content text-lg flex flex-col items-center flex-wrap mx-auto" v-html="conventionContent"></span>
+    <span  v-html="conventionContent"></span>
   </layout>
 </template>
 

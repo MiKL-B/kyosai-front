@@ -3,12 +3,12 @@
 
     <!--main-->
 
-    <div id="wrapper" class="flex flex-wrap mx-5">
+    <div id="wrapper" class="flex flex-wrap mx-5 sm:mx-20 2xl:mx-52">
       <div id="main">
   
-          <header class="">
+          <header>
             <h1
-              class="c-paragraphe text-xl  mb-10 font-bold  flex flex-wrap w-72 "
+              class="c-paragraphe text-xl sm:text-3xl lg:text-5xl  mb-10 font-bold  flex flex-wrap w-72 sm:w-full"
             >
               Association sur la pop-culture, le papercraft, le dessin et autres
               activités manuelles.
@@ -16,7 +16,7 @@
             </h1>
 
             <p
-              class="c-paragraphe text-xl text-justify  mb-10 w-72 "
+              class="c-paragraphe text-xl sm:text-2xl lg:text-3xl text-justify  mb-10 w-72 sm:w-full"
             >
               L'association Kyosai est une association de loi 1901 qui base son
               activité sur la promotion de la pop-culture, qu'elle soit
@@ -26,7 +26,7 @@
             </p>
           </header>
           <!--section articles-->
-          <section class="flex flex-wrap flex-col ">
+          <section class="flex flex-wrap flex-col lg:flex-row ">
             <GridImage 
               v-for="section in sections"
               :key="section.title"
