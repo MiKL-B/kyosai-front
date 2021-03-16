@@ -221,6 +221,7 @@ query {
 </static-query>
 
 <style>
+
 @font-face {
   font-family: "Source Sans Pro";
   src: url("../assets/Source_Sans_Pro/SourceSansPro-Black.ttf");
@@ -262,23 +263,17 @@ article:hover p {
   transform: translateY(-20px);
 }
 /*DISPLAY IMAGE POSTS */
-/*a supprimer */
+/*impossible à supprimer */
 .gallery-row {
   display: flex;
-flex-wrap:wrap;
-flex-direction:column;
-justify-content:center;
-
+  flex-wrap:wrap;
 }
 /* pas plus de 2 chemins  */
-.c-link-span-content p a{
+.c-text-content  a{
   color:#60a5fa;
   font-weight: bold;
 }
-.c-text-span-content p {
-  text-align:justify;
-  width:theme("width.96");
-}
+
 /*MENU BURGER STYLE */
 
  .sidenav{
@@ -288,30 +283,37 @@ justify-content:center;
   color:#fff;
   background:#585858;
   z-index: 2;
-width:theme("width.60")
+  width:theme("width.60")
 
 }
 .sidenav :nth-child(1){
-border:none;}
+  border:none;}
 
 .menu-btn {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-width:theme("width.12");
+  width:theme("width.12");
   height:theme("height.10");
   cursor: pointer;
-   transition: 0.5s;
+  transition: 0.5s;
 }
-
+.menu-btn:hover::before{
+  background:#f472b6;
+}
+.menu-btn:hover::after{
+  background:#f472b6;
+}
+.menu-btn:hover span{
+  background:#f472b6;
+}
 .menu-btn span {
   content: "";
   position: absolute;
   height:theme("height.1");
   width: 100%;
   background: #585858;
-  transition: all 0.5s ease-in-out;
 }
 .menu-btn::before {
   content: "";
@@ -320,7 +322,6 @@ width:theme("width.12");
   height:theme("height.1");
   width: 100%;
   background: #585858;
-  transition: all theme("transitionDuration.500") ease-in-out;
 }
 .menu-btn::after {
   content: "";
@@ -329,27 +330,20 @@ width:theme("width.12");
   height:theme("height.1");
   width: 100%;
   background: #585858;
-  transition: all 0.5s ease-in-out;
 }
 
 .menu-btn.open {
-  transition: 0.5s ;
-  transform:translateX(-225px) rotate(-180deg);
+  transform:translateX(-220px) rotate(-180deg);
   background:none;
-
-  }
+}
 
 .menu-btn.open span{
-  transition: all 0.5s ease-in-out;
-  opacity: 0%;
-
+  display:none;
 }
 .menu-btn.open::before {
-  transition: all 0.5s ease-in-out;
   transform: translateY(17px) rotate(-45deg);
 }
 .menu-btn.open::after {
-  transition: all 0.5s ease-in-out;
   transform: translateY(-17px) rotate(45deg);
 }
 

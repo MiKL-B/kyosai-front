@@ -3,7 +3,7 @@
 
 <!-- MAIN -->
 
-<span v-html="cosplayContent"></span>
+<span class="flex flex-wrap flex-col items-center mx-auto" v-html="cosplayContent"></span>
     </layout>
 </template>
 
