@@ -12,7 +12,6 @@ export default {
 
   metaInfo: {
     title: 'About us',
-  
   },
   created(){
   

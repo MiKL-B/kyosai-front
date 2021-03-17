@@ -2,7 +2,7 @@
     <layout>
 
 
-<span class="flex flex-wrap flex-col items-center mx-auto "  v-html="dessinContent"></span>
+<span class="flex flex-wrap flex-col items-center mx-auto"  v-html="dessinContent"></span>
 
     </layout>
 </template>
