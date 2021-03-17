@@ -1,7 +1,7 @@
 <template>
     <layout>
 
-<!-- MAIN -->
+
 
 <span class="flex flex-wrap flex-col items-center mx-auto" v-html="cosplayContent"></span>
     </layout>

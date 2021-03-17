@@ -1,8 +1,7 @@
 <template>
   <layout>
-    <!-- MAIN -->
-    <!--c-link-span-content a remplacer par c-content-->
-    <span class="c-text-content" v-html="conventionContent"></span>
+
+    <span class="c-content" v-html="conventionContent"></span>
   </layout>
 </template>
 

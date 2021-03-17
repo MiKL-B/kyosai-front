@@ -1,7 +1,7 @@
 <template>
   <Layout>
 
-<span class="flex flex-wrap flex-col items-center mx-auto c-text-content" v-html="aboutContent"></span>
+<span class="flex flex-wrap flex-col items-center mx-auto c-content" v-html="aboutContent"></span>
   </Layout>
 </template>
 

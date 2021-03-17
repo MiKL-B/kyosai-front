@@ -2,11 +2,10 @@
 <div class="">
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta
+    <meta
       name="viewport"
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
-
     <link
       rel="stylesheet"
       id="fa-fonts-css"
@@ -14,69 +13,64 @@
       type="text/css"
       media="all"
     />
-
     <header class="min-w-full flex flex-wrap">
   
-      <!--logo-->
+      <!--logo et lien association-->
       <g-link to="/" class="flex flex-wrap flex-col sm:flex-row  my-5 mx-5 sm:mx-20 2xl:mx-52">
        <img class="h-28 sm:h-32 md:h-40 lg:h-52" src="/logo.png" alt />
          <span
           class="c-title text-red-400 font-black text-2xl mb-10 sm:mt-10 md:mt-14 lg:mt-20"
           >KYOSAI</span
         >
-  </g-link>
+       </g-link>
       
     
-
+      <!--NAV-->
       <nav class="min-w-full">
+       <!--MENU BURGER-->
             <div @click="showSidenav =! showSidenav" class="menu-btn right-5 top-5 xl:right-10 xl:top-10  text-7xl  font-bold  fixed rounded-lg  z-10 " :class="{'open':showSidenav}" >
             <span ></span>
             </div>
-          <!--MENU BURGER-->
-
           <div v-if="showSidenav" class="sidenav h-full " >
             <h2 class="uppercase font-bold text-2xl pl-10 my-10">{{ titre }}</h2>
             <div class="w-80" >
             <ul>
+            <!--COMPONENT BURGER-->
             <MenuBurgerLink  v-for="burger in burgers" :key="burger.menu" :burger="burger" />
-             
             </ul>
             </div>
           </div>
-      
       </nav>
     </header>
     <slot />
     <!--footer-->
-    <!--a revoir-->
-
       <footer
-        class="  py-10 md:px-0 bg-gray-100 flex flex-wrap flex-col xl:flex-row  "
+        class="py-10 md:px-0 bg-gray-100 flex flex-wrap flex-col xl:flex-row "
         id="footer"
       >
         <div class="mx-5 sm:mx-20  flex flex-col xl:flex-row xl:relative 2xl:mx-52 ">
           <!--CONTACT-->
           <section class="mb-20 lg:mb-0 xl:py-10">
             <h2
-              class="text-xl sm:text-2xl font-bold uppercase tracking-widest mb-10 text-center"
+              class="text-xl sm:text-2xl font-bold uppercase tracking-widest mb-10 text-center xl:text-left xl:mx-5"
             >
               Restons en contact
             </h2>
             <!--form-->
             <form method="POST" action="#" class="">
-              <div class="flex flex-col flex-wrap ">
+              <div class="flex flex-col flex-wrap xl:flex-row">
               <!--name-->
-                <div class="md:mx-auto">
+                <div class="md:mx-auto xl:mx-5">
                   <input
                     type="text"
                     name="name"
                     id="name"
                     placeholder="Name"
-                    class="bg-transparent  w-72 sm:w-full md:w-96   h-20 border-b-2 focus:outline-none focus:border-pink-400 text-xl"
+                    class="bg-transparent w-72  sm:w-full md:w-96   h-20 border-b-2 focus:outline-none focus:border-pink-400 text-xl"
                   />
                 </div>
                 <!--email-->
-                <div class="md:mx-auto">
+                <div class="md:mx-auto xl:mx-5">
                   <input
                     type="email"
                     name="email"
@@ -85,8 +79,8 @@
                     class="bg-transparent  w-72 sm:w-full md:w-96 mb-2 h-20 border-b-2 focus:outline-none focus:border-pink-400 text-xl "
                   />
                 </div>
-
-                <div class="md:mx-auto">
+     <!--message-->
+                <div class="md:mx-auto xl:mx-5">
                   <div >
                     <textarea
                       name="message"
@@ -106,27 +100,26 @@
                   <input
                     type="submit"
                     value="Send"
-                    class="mt-8 py-7 w-72 sm:w-full bg-gray-600 text-white font-bold uppercase rounded-md hover:bg-pink-400 cursor-pointer  text-xl"
+                    class="mt-8 py-7 w-72 xl:w-40 xl:mx-5 sm:w-full bg-gray-600 text-white font-bold uppercase rounded-md hover:bg-pink-400 cursor-pointer  text-xl"
                   />
                 </li>
               </ul>
             </form>
           </section>
           <!--FOLLOW-->
-
-          <section class="lg:py-10 xl:ml-96">
+          <section class="lg:py-10  ">
             <h2
-              class="text-xl sm:text-2xl font-bold uppercase tracking-widest mb-10 text-center"
+              class="text-xl sm:text-2xl font-bold uppercase tracking-widest mb-10 text-center xl:text-left "
             >
               Nous suivre
             </h2>
-            <ul class=" flex flex-row mx-5 md:mx-auto">
+            <ul class=" flex flex-row mx-5 md:mx-auto ">
               <SocialLink v-for="link in links" :key="link.url" :link="link" />
             </ul>
           </section>
           <!--COPYRIGHT-->
           <ul
-            class="flex flex-col sm:flex-row xl:absolute xl:bottom-0 mt-10 mx-5 text-gray-300 text-xl "
+            class="flex flex-col sm:flex-row md:mx-auto xl:absolute xl:bottom-0 mt-10 mx-5  xl:mx-5 text-gray-300 text-xl "
           >
             <li>@ untitled all rights reserved |</li>
 
@@ -269,7 +262,7 @@ article:hover p {
   flex-wrap:wrap;
 }
 /* pas plus de 2 chemins  */
-.c-text-content  a{
+.c-content  a{
   color:#60a5fa;
   font-weight: bold;
 }
