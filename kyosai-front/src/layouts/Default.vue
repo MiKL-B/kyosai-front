@@ -194,6 +194,10 @@ export default {
           link: "/about",
           menu: "à propos",
         },
+         {
+          link: "/shop",
+          menu: "Boutique",
+        },
       ],
       showSidenav: false,
       titre: "Menu",
