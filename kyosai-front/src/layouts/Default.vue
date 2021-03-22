@@ -198,6 +198,10 @@ export default {
           link: "/shop",
           menu: "Boutique",
         },
+          {
+          link: "/register",
+          menu: "Inscription",
+        },
       ],
       showSidenav: false,
       titre: "Menu",
