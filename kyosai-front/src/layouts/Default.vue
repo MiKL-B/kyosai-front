@@ -71,7 +71,7 @@
                   type="text"
                   name="name"
                   id="name"
-                  placeholder="Name"
+                  placeholder="Nom"
                   class="bg-transparent w-72  sm:w-full md:w-96   h-20 border-b-2 focus:outline-none focus:border-pink-400 text-xl"
                 />
               </div>
@@ -81,7 +81,7 @@
                   type="email"
                   name="email"
                   id="email"
-                  placeholder="Email"
+                  placeholder="Adresse email"
                   class="bg-transparent  w-72 sm:w-full md:w-96 mb-2 h-20 border-b-2 focus:outline-none focus:border-pink-400 text-xl "
                 />
               </div>
@@ -105,7 +105,7 @@
               <li>
                 <input
                   type="submit"
-                  value="Send"
+                  value="Envoyer"
                   class="mt-8 py-7 w-72 xl:w-40 xl:mx-5 sm:w-full bg-gray-600 text-white font-bold uppercase rounded-md hover:bg-pink-400 cursor-pointer  text-xl"
                 />
               </li>

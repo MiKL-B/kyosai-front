@@ -6,6 +6,7 @@
 <span class="flex flex-wrap flex-col items-center mx-auto" v-html="papercraftContent"></span>
 
     </layout>
+
 </template>
 
 <script>

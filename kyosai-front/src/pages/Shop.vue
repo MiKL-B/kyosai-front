@@ -1,22 +1,21 @@
 <template>
   <Layout>
-    <table>
-      <span
-        class="flex flex-wrap flex-col w-screen items-center mx-auto c-content align-middle"
-        v-for="content in shopContent"
+    <table class="flex flex-wrap "   v-for="content in shopContent"
         :key="content.nom"
-        :content="content"
-      >
-        <tr>
-          <thead>
-            <h1>{{ content.nom }}</h1>
-          </thead>
-          <tbody>
+        :content="content">
+   
+        <tr class="mx-auto flex flex-wrap border-2 rounded-lg bg-white">
+          <td class=" w-96 text-center">
+            <h1 class="mt-10  text-xl">{{ content.nom }}</h1>
+          </td>
+          <td  class="mx-auto">
             <img :src="content.image" />
-            <p>{{ content.prix }} €</p>
-          </tbody>
+            <p class="text-right text-xl">{{ content.prix }} €</p>
+   
+          </td>
+          
         </tr>
-      </span>
+
     </table>
   </Layout>
 </template>
