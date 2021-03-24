@@ -23,12 +23,13 @@
       </table>
     </form>
     <!--possible component-->
-    <table  class=" border-2 border-black mx-auto text-xl my-10">
-      <thead class="border-b-2 border-black bg-gray-100">
+    <table  class=" mx-auto text-xl my-10">
+      <thead class="bg-gray-100">
         <tr class="text-center ">
           <td class="w-60">Nom</td>
           <td class="w-60">Catégorie</td>
           <td class="w-60">Prix</td>
+            <td class="w-40">Image</td>
           <td class="w-60">Date dernière modification</td>
           <td class="w-60">Actions</td>
         </tr>
@@ -38,6 +39,7 @@
           <td>{{content.nom}}</td>
           <td>Papercraft</td>
           <td>{{content.prix}}€</td>
+             <td>        <img :src="content.image" /></td>
           <td>24/03/2021</td>
           <td>
             <button class="bg-blue-400 hover:bg-blue-600 p-2 text-white mr-2 rounded-lg">

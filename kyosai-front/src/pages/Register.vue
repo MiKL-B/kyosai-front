@@ -61,13 +61,14 @@ export default {
           email: this.email,
           firstname: this.name,
           mdp: this.mdp,
-          confirm_mdp:this.confirm_mdp
+       
         })
         .then(function(response) {
           console.log(response);
         });
+
         //redirection si formulaire validé
-          this.$router.push("/?"+this.foobar);
+          this.$router.push("/?");
          
       }
         //verif name
@@ -81,11 +82,12 @@ export default {
         this.error="email valide requis";
       }else if(this.validEmail(this.email) && !this.name ){
         this.success="email valide !";
-        this.error="nom requis";
+      }else if(this.validEmail(this.email) && !this.mdp ){
+        this.error="mot de passe requis";
       }
         //verif mdp
       else if(!this.mdp && !this.confirm_mdp){
-        this.error="mdp requis";
+        this.error="mot de passe requis";
       } 
       if(this.mdp !== this.confirm_mdp){
         this.error="le mot de passe ne correspond pas"
@@ -100,7 +102,6 @@ export default {
 
   data() {
     return {
-      foobar:"",
       error:"",
       success:"",
       registerContent: "",
