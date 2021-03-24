@@ -5,7 +5,7 @@
 
     <div id="wrapper" class="flex flex-wrap mx-5 sm:mx-20 2xl:mx-52">
       <div id="main">
-  
+
           <header>
           <!--presentation asso-->
             <h1
@@ -49,6 +49,7 @@ export default {
   },
   data() {
     return {
+ 
       sections: [
         {
           title: "papercraft",

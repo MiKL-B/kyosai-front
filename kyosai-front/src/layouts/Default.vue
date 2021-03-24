@@ -200,7 +200,8 @@ export default {
         },
           {
           link: "/register",
-          menu: "Inscription",
+          menu: "inscription",
+         
         },
       ],
       showSidenav: false,
