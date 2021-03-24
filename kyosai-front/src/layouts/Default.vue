@@ -167,6 +167,11 @@ export default {
       ],
       burgers: [
         {
+        link:"/admin",
+        menu:"Administration"
+        },
+
+        {
           link: "/",
           menu: "Accueil",
         },
