@@ -1,61 +1,47 @@
 <template>
-  <div class="">
-  <!--remettre dans le header gridsome voir doc-->
-    <link
-      rel="stylesheet"
-      id="fa-fonts-css"
-      href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome-font-awesome.min.css?ver=5.2"
-      type="text/css"
-      media="all"
-    />
-    <header class="min-w-full flex flex-wrap">
-      <!--logo et link association-->
-      <g-link
-        to="/"
-        class="flex flex-wrap flex-col sm:flex-row  my-5 mx-5 sm:mx-20 2xl:mx-52"
-      >
-        <img class="h-28 sm:h-32 md:h-40 lg:h-52" src="/logo.png" alt />
-        <span
-          class="c-title text-red-400 font-black text-2xl mb-10 sm:mt-10 md:mt-14 lg:mt-20"
-          >KYOSAI</span
+  <div>
+    <div class="p-4">
+      <header class="container mx-auto flex mb-4">
+        <!-- LOGO -->
+        <g-link
+          to="/"
+          class="flex flex-col items-start sm:flex-row sm:items-center p-4 -ml-4"
         >
-      </g-link>
+          <img class="h-28 sm:h-32 md:h-40 mr-4" src="/logo.png" alt />
+          <span
+            class="font-papyrus text-red-400 font-black text-2xl uppercase"
+            >Kyosai</span
+          >
+        </g-link>
 
-      <!--NAV-->
-      <nav class="min-w-full">
-        <!--MENU BURGER-->
-        <div
-          @click="showSidenav = !showSidenav"
-          class="menu-btn right-5 top-5 xl:right-10 xl:top-10  text-7xl  font-bold  fixed rounded-lg  z-10 "
-          :class="{ open: showSidenav }"
-        >
-          <span></span>
-        </div>
-        <div v-if="showSidenav" class="sidenav h-full ">
-          <h2 class="uppercase font-bold text-2xl pl-10 my-10">{{ titre }}</h2>
-          <div class="w-80">
-            <ul>
-              <!--COMPONENT BURGER-->
-              <MenuBurgerLink
-                v-for="burger in burgers"
-                :key="burger.menu"
-                :burger="burger"
-              />
-            </ul>
+        <!-- NAV -->
+        <nav class="fixed z-10 top-8 right-8">
+          <!-- MENU BURGER -->
+          <!-- Make a menu button component <MenuButton> c-menu-button -->
+          <div
+            @click="showSidenav = !showSidenav"
+            class="menu-btn text-7xl font-bold rounded-lg"
+            :class="{ open: showSidenav }"
+          >
+            <span></span>
           </div>
-        </div>
-      </nav>
-    </header>
-    <slot />
-    <!--footer-->
+        </nav>
+      </header>
+
+      <div id="wrapper" class="container mx-auto relative mb-4 text-gray-700">
+        <slot />
+      </div>
+    </div>
+
+    <!-- FOOTER -->
     <footer
-      class="py-10 md:px-0 bg-gray-100 flex flex-wrap flex-col xl:flex-row "
+      class="bg-gray-100 flex flex-wrap flex-col xl:flex-row"
       id="footer"
     >
       <div
-        class="mx-5 sm:mx-20  flex flex-col xl:flex-row xl:relative 2xl:mx-52 "
+        class="container mx-auto py-4 flex flex-col xl:flex-row xl:relative"
       >
-        <!--CONTACT-->
+        <!-- CONTACT -->
         <section class="mb-20 lg:mb-0 xl:py-10">
           <h2
             class="text-xl sm:text-2xl font-bold uppercase tracking-widest mb-10 text-center xl:text-left xl:mx-5"
@@ -112,7 +98,7 @@
             </ul>
           </form>
         </section>
-        <!--FOLLOW-->
+        <!-- FOLLOW -->
         <section class="lg:py-10  ">
           <h2
             class="text-xl sm:text-2xl font-bold uppercase tracking-widest mb-10 text-center xl:text-left "
@@ -123,7 +109,7 @@
             <SocialLink v-for="link in links" :key="link.url" :link="link" />
           </ul>
         </section>
-        <!--COPYRIGHT-->
+        <!-- COPYRIGHT -->
         <ul
           class="flex flex-col sm:flex-row md:mx-auto xl:absolute xl:bottom-0 mt-10 mx-5  xl:mx-5 text-gray-300 text-xl "
         >
@@ -135,8 +121,23 @@
         </ul>
       </div>
     </footer>
+
+    <div v-if="showSidenav" class="sidenav h-full z-20">
+      <h2 class="uppercase font-bold text-2xl pl-10 my-10">{{ titre }}</h2>
+      <div class="w-80">
+        <ul>
+          <!-- COMPONENT BURGER -->
+          <MenuBurgerLink
+            v-for="burger in burgers"
+            :key="burger.menu"
+            :burger="burger"
+          />
+        </ul>
+      </div>
+    </div>
   </div>
 </template>
+
 <script>
 import MenuBurgerLink from "~/components/MenuBurgerLink.vue";
 import SocialLink from "~/components/SocialLink.vue";
@@ -226,8 +227,18 @@ query {
 <style>
 @font-face {
   font-family: "Source Sans Pro";
-  src: url("../assets/Source_Sans_Pro/SourceSansPro-Black.ttf");
+  src: url("../assets/Source_Sans_Pro/SourceSansPro-Regular.ttf");
   font-weight: normal;
+}
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url("../assets/Source_Sans_Pro/SourceSansPro-Bold.ttf");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url("../assets/Source_Sans_Pro/SourceSansPro-Black.ttf");
+  font-weight: 900;
 }
 @font-face {
   font-family: "Papyrus";
@@ -236,19 +247,12 @@ query {
 }
 
 #app {
-  max-width: 100vw;
   background-image: url("/background.webp");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  font-family: "Source Sans Pro";
 }
-.c-title {
-  font-family: "Papyrus";
-}
-.c-paragraphe {
-  font-family: "Source sans pro";
-}
+
 h2 {
   transition: 0.5s;
 }
