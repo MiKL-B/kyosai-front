@@ -16,7 +16,7 @@
             />
           </td>
         </tr>
-        <tr>
+      <tr>
           <td>
             <input
               class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400"
@@ -38,7 +38,7 @@
             />
           </td>
         </tr>
-        <tr>
+     <tr>
           <td>
             <input
               class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400"
@@ -46,10 +46,24 @@
               name="image"
               type="file"
               placeholder="Image"
+         accept="image/*"
+  
+            />
+          </td>
+        </tr>
+          <!-- <tr>
+          <td>
+            <input
+              class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400"
+              :v-model="date"
+              name="date"
+              type="date"
+          
       
             />
           </td>
         </tr>
+        -->
         <tr>
           <td>
             <button
@@ -81,10 +95,10 @@
       >
         <tr class="text-center">
           <td>{{ content.nom }}</td>
-          <td></td>
+          <td>{{content.categories[0]}}</td>
           <td>{{ content.prix }}€</td>
-          <td><img :src="content.image" /></td>
-          <td>24/03/2021</td>
+          <td><img  :src="content.image"/></td>
+          <td>{{content.createdAt}}</td>
           <td>
             <button
               class="bg-blue-400 hover:bg-blue-600 p-2 text-white mr-2 rounded-lg"
@@ -108,6 +122,7 @@ export default {
   metaInfo: {
     title: "admin",
   },
+
   methods: {
     submit() {
       axios
@@ -115,9 +130,12 @@ export default {
           name_produit: this.name,
           prix_produit: this.prix,
           image_produit: this.image,
+          category_produit:this.category,
+         // date_produit:this.date
         })
         .then(function(response) {
           console.log(response);
+          
         });
     },
   },
@@ -135,6 +153,8 @@ export default {
       category: "",
       prix: "",
       image: "",
+     // date:"",
+ 
     };
   },
 };
