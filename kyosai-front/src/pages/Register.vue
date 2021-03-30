@@ -10,7 +10,6 @@
               class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400"
               v-model="email"
               name="email"
-              @keyup="submit()"
               type="text"
               placeholder="Adresse email"
             />
@@ -25,7 +24,6 @@
               name="name"
               type="text"
               placeholder="Nom"
-              @keyup="submit()"
               minlength="4"
             />
           </td>
@@ -39,7 +37,8 @@
               name="mdp"
               type="password"
               placeholder="Mot de passe"
-              @keyup="submit()"
+                minlength="8"
+           
             />
           </td>
         </tr>
@@ -52,6 +51,7 @@
               name="confirm_mdp"
               type="password"
               placeholder="Confirmer mot de passe"
+                   minlength="8"
             />
           </td>
         </tr>
