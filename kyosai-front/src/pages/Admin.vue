@@ -16,7 +16,7 @@
             />
           </td>
         </tr>
-      <tr>
+        <tr>
           <td>
             <input
               class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400"
@@ -38,20 +38,20 @@
             />
           </td>
         </tr>
-     <tr>
+        <tr>
           <td>
-            <input
+            toto{{ image
+            }}<input
               class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400"
-              :v-model="image"
+              @change="handleUpload"
               name="image"
               type="file"
               placeholder="Image"
-         accept="image/*"
-  
+              accept="image/*"
             />
           </td>
         </tr>
-          <!-- <tr>
+        <!-- <tr>
           <td>
             <input
               class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400"
@@ -95,10 +95,10 @@
       >
         <tr class="text-center">
           <td>{{ content.nom }}</td>
-          <td>{{content.categories[0]}}</td>
+          <td>{{ content.categories[0] }}</td>
           <td>{{ content.prix }}€</td>
-          <td><img  :src="content.image"/></td>
-          <td>{{content.createdAt}}</td>
+          <td ><img :src="content.image" /></td>
+          <td>{{ content.createdAt }}</td>
           <td>
             <button
               class="bg-blue-400 hover:bg-blue-600 p-2 text-white mr-2 rounded-lg"
@@ -118,6 +118,27 @@
 
 <script>
 const axios = require("axios");
+
+
+
+
+
+const getBase64 = file => new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = error => reject(error);
+});
+
+
+
+
+
+
+
+
+
+
 export default {
   metaInfo: {
     title: "admin",
@@ -125,18 +146,23 @@ export default {
 
   methods: {
     submit() {
+      console.log(this.image);
       axios
-        .post("http://127.0.0.1:8000/api/admin",{
+        .post("http://127.0.0.1:8000/api/admin", {
           name_produit: this.name,
           prix_produit: this.prix,
           image_produit: this.image,
-          category_produit:this.category,
-         // date_produit:this.date
+          category_produit: this.category,
+          // date_produit:this.date
         })
         .then(function(response) {
           console.log(response);
-          
         });
+    },
+   async handleUpload(event) {
+      const file = event.target.files[0];
+      this.image = await getBase64(file);
+      console.log(file)
     },
   },
   created() {
@@ -153,8 +179,7 @@ export default {
       category: "",
       prix: "",
       image: "",
-     // date:"",
- 
+      // date:"",
     };
   },
 };
