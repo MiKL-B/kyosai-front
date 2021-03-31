@@ -37,8 +37,6 @@
               name="mdp"
               type="password"
               placeholder="Mot de passe"
-                minlength="8"
-           
             />
           </td>
         </tr>
@@ -51,7 +49,6 @@
               name="confirm_mdp"
               type="password"
               placeholder="Confirmer mot de passe"
-                   minlength="8"
             />
           </td>
         </tr>
@@ -117,11 +114,16 @@ export default {
               firstname: this.name,
               mdp: this.mdp,
             })
-            .then(function(response) {
+            .then((response) => {
+              //redirection si formulaire validé
+              this.$router.push("/?");
               console.log(response);
+            })
+            .catch((error) => {
+              console.log("error", error.response.data);
+              this.error = error.response.data.errors.violations[0].title;
             });
-          //redirection si formulaire validé
-          this.$router.push("/?");
+
           break;
         case !this.email:
           this.error = "email requis";
