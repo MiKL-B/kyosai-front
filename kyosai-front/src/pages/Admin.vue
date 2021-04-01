@@ -16,7 +16,7 @@
             />
           </td>
         </tr>
-        <tr>
+      <!--  <tr>
           <td>
             <input
               class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400"
@@ -26,6 +26,15 @@
               placeholder="Catégorie"
             />
           </td>
+        </tr>-->
+        <tr><td>
+        <select v-model="category" class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400">
+          <option value="" selected>Choisissez une catégorie</option> 
+        <option  v-for="categoryContent in categoryContentList"
+        :key="categoryContent.label"
+        :categoryContent="categoryContent" >{{categoryContent.label}}</option> 
+        </select>
+        </td>
         </tr>
         <tr>
           <td>
@@ -40,8 +49,7 @@
         </tr>
         <tr>
           <td>
-            toto{{ image
-            }}<input
+            <input
               class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400"
               @change="handleUpload"
               name="image"
@@ -95,7 +103,9 @@
       >
         <tr class="text-center">
           <td>{{ content.nom }}</td>
-          <td>{{ content.categories[0] }}</td>
+          <!---->
+          <td>{{ category.label }}</td>
+          <!---->
           <td>{{ content.prix }}€</td>
           <td ><img :src="content.image" /></td>
           <td>{{ content.createdAt }}</td>
@@ -119,25 +129,12 @@
 <script>
 const axios = require("axios");
 
-
-
-
-
 const getBase64 = file => new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => resolve(reader.result);
     reader.onerror = error => reject(error);
 });
-
-
-
-
-
-
-
-
-
 
 export default {
   metaInfo: {
@@ -166,15 +163,24 @@ export default {
     },
   },
   created() {
+    //produits de la boutique
     axios.get("http://127.0.0.1:8000/api/shop/").then((response) => {
       // handle success
       console.log(response);
       this.shopContent = response.data;
     });
+    
+//categorie de la boutique
+    axios.get("http://127.0.0.1:8000/api/category/list").then((response) => {
+      // handle success
+      console.log(response);
+      this.categoryContentList = response.data;
+    });
   },
   data() {
     return {
       shopContent: "",
+      categoryContentList:"",
       name: "",
       category: "",
       prix: "",
