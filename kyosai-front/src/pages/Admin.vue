@@ -27,15 +27,15 @@
             />
           </td>
         </tr>-->
-        <tr><td>
+       <!-- <tr><td>
         <select v-model="category" class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400">
           <option value="" selected>Choisissez une catégorie</option> 
         <option  v-for="categoryContent in categoryContentList"
         :key="categoryContent.label"
-        :categoryContent="categoryContent" >{{categoryContent.label}}</option> 
+        :categoryContent="categoryContent" :value="categoryContent" >{{categoryContent.label}}</option> 
         </select>
         </td>
-        </tr>
+        </tr>-->
         <tr>
           <td>
             <input
@@ -108,7 +108,7 @@
           <!---->
           <td>{{ content.prix }}€</td>
           <td ><img :src="content.image" /></td>
-          <td>{{ content.createdAt }}</td>
+          <td>{{format_date(content.createdAt)}}</td>
           <td>
             <button
               class="bg-blue-400 hover:bg-blue-600 p-2 text-white mr-2 rounded-lg"
@@ -127,8 +127,10 @@
 </template>
 
 <script>
+import moment from 'moment';
 const axios = require("axios");
 
+//get base64 from image
 const getBase64 = file => new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
@@ -161,6 +163,13 @@ export default {
       this.image = await getBase64(file);
       console.log(file)
     },
+
+    //format date 
+      format_date(value){
+         if (value) {
+           return moment(String(value)).format('DD/MM/YYYY hh:mm:ss')
+          }
+      },
   },
   created() {
     //produits de la boutique
@@ -169,7 +178,7 @@ export default {
       console.log(response);
       this.shopContent = response.data;
     });
-    
+
 //categorie de la boutique
     axios.get("http://127.0.0.1:8000/api/category/list").then((response) => {
       // handle success
