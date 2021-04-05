@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <form @submit.prevent="submit">
-      <h1 class="text-blue-400 text-xl text-center">
+      <h1 class="text-blue-400 text-4xl text-center">
         Ajouter un nouvel élément à la boutique !
       </h1>
       <table class="flex flex-wrap flex-row justify-center my-10">
@@ -16,7 +16,7 @@
             />
           </td>
         </tr>
-      <!--  <tr>
+        <!--  <tr>
           <td>
             <input
               class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400"
@@ -27,15 +27,24 @@
             />
           </td>
         </tr>-->
-       <!-- <tr><td>
-        <select v-model="category" class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400">
-          <option value="" selected>Choisissez une catégorie</option> 
-        <option  v-for="categoryContent in categoryContentList"
-        :key="categoryContent.label"
-        :categoryContent="categoryContent" :value="categoryContent" >{{categoryContent.label}}</option> 
-        </select>
-        </td>
-        </tr>-->
+        <tr>
+          <td>
+            <select
+              v-model="category"
+              v-if="categoryContentList.length > 0"
+              class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400"
+            >
+              <option value="" selected>Choisissez une catégorie</option>
+              <option
+                v-for="categoryContent in categoryContentList"
+                :key="categoryContent.id"
+                :categoryContent="categoryContent"
+                :value="categoryContent.label"
+                >{{ categoryContent.label }}</option
+              >
+            </select>
+          </td>
+        </tr>
         <tr>
           <td>
             <input
@@ -96,6 +105,7 @@
           <td class="w-60">Actions</td>
         </tr>
       </thead>
+
       <tbody
         v-for="content in shopContent"
         :key="content.nom"
@@ -103,12 +113,19 @@
       >
         <tr class="text-center">
           <td>{{ content.nom }}</td>
-          <!---->
-          <td>{{ category.label }}</td>
-          <!---->
+          <td>
+            {{
+              content.categories[0] &&
+                getCategoryById(
+                  content.categories[0].substring(
+                    content.categories[0].lastIndexOf("/") + 1
+                  )
+                ).label
+            }}
+          </td>
           <td>{{ content.prix }}€</td>
-          <td ><img :src="content.image" /></td>
-          <td>{{format_date(content.createdAt)}}</td>
+          <td><img :src="content.image" /></td>
+          <td>{{ format_date(content.createdAt) }}</td>
           <td>
             <button
               class="bg-blue-400 hover:bg-blue-600 p-2 text-white mr-2 rounded-lg"
@@ -127,16 +144,17 @@
 </template>
 
 <script>
-import moment from 'moment';
+import moment from "moment";
 const axios = require("axios");
 
 //get base64 from image
-const getBase64 = file => new Promise((resolve, reject) => {
+const getBase64 = (file) =>
+  new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => resolve(reader.result);
-    reader.onerror = error => reject(error);
-});
+    reader.onerror = (error) => reject(error);
+  });
 
 export default {
   metaInfo: {
@@ -152,34 +170,36 @@ export default {
           prix_produit: this.prix,
           image_produit: this.image,
           category_produit: this.category,
-          // date_produit:this.date
         })
         .then(function(response) {
           console.log(response);
         });
     },
-   async handleUpload(event) {
+    async handleUpload(event) {
       const file = event.target.files[0];
       this.image = await getBase64(file);
-      console.log(file)
+      console.log(file);
     },
 
-    //format date 
-      format_date(value){
-         if (value) {
-           return moment(String(value)).format('DD/MM/YYYY hh:mm:ss')
-          }
-      },
+    //format date
+    format_date(value) {
+      if (value) {
+        return moment.locale("fr"), moment(String(value)).format("LLLL");
+      }
+    },
+    getCategoryById(id) {
+      return this.categoryContentList.find((category) => category.id == id);
+    },
   },
   created() {
     //produits de la boutique
     axios.get("http://127.0.0.1:8000/api/shop/").then((response) => {
       // handle success
-      console.log(response);
+      console.log("shop ", response);
       this.shopContent = response.data;
     });
 
-//categorie de la boutique
+    //categorie de la boutique
     axios.get("http://127.0.0.1:8000/api/category/list").then((response) => {
       // handle success
       console.log(response);
@@ -189,7 +209,7 @@ export default {
   data() {
     return {
       shopContent: "",
-      categoryContentList:"",
+      categoryContentList: "",
       name: "",
       category: "",
       prix: "",
