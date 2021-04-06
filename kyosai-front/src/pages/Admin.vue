@@ -16,17 +16,7 @@
             />
           </td>
         </tr>
-        <!--  <tr>
-          <td>
-            <input
-              class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400"
-              v-model="category"
-              name="category"
-              type="text"
-              placeholder="Catégorie"
-            />
-          </td>
-        </tr>-->
+
         <tr>
           <td>
             <select
@@ -68,19 +58,7 @@
             />
           </td>
         </tr>
-        <!-- <tr>
-          <td>
-            <input
-              class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400"
-              :v-model="date"
-              name="date"
-              type="date"
-          
-      
-            />
-          </td>
-        </tr>
-        -->
+
         <tr>
           <td>
             <button
@@ -93,22 +71,23 @@
         </tr>
       </table>
     </form>
-    <!--possible component-->
+
     <table class=" mx-auto text-xl my-10">
       <thead class="bg-gray-100">
         <tr class="text-center ">
-          <td class="w-60">Nom</td>
-          <td class="w-60">Catégorie</td>
-          <td class="w-60">Prix</td>
-          <td class="w-40">Image</td>
-          <td class="w-60">Date dernière modification</td>
-          <td class="w-60">Actions</td>
+          <th class="w-60">Nom</th>
+
+          <th class="w-60">Catégorie</th>
+          <th class="w-60">Prix</th>
+          <th class="w-40">Image</th>
+          <th class="w-60">Date dernière modification</th>
+          <th class="w-60">Actions</th>
         </tr>
       </thead>
 
       <tbody
-        v-for="content in shopContent"
-        :key="content.nom"
+        v-for="content in shopContent  "
+        :key="content.id"
         :content="content"
       >
         <tr class="text-center">
@@ -140,11 +119,13 @@
         </tr>
       </tbody>
     </table>
+
   </Layout>
 </template>
 
 <script>
-import moment from "moment";
+import dayjs from "dayjs";
+
 const axios = require("axios");
 
 //get base64 from image
@@ -184,13 +165,18 @@ export default {
     //format date
     format_date(value) {
       if (value) {
-        return moment.locale("fr"), moment(String(value)).format("LLLL");
+        return dayjs().format("DD-MMMM-YYYY HH:mm:ss");
       }
     },
+    //category
     getCategoryById(id) {
       return this.categoryContentList.find((category) => category.id == id);
     },
+
+ 
   },
+
+  //
   created() {
     //produits de la boutique
     axios.get("http://127.0.0.1:8000/api/shop/").then((response) => {
@@ -206,6 +192,7 @@ export default {
       this.categoryContentList = response.data;
     });
   },
+
   data() {
     return {
       shopContent: "",
@@ -214,7 +201,7 @@ export default {
       category: "",
       prix: "",
       image: "",
-      // date:"",
+
     };
   },
 };
