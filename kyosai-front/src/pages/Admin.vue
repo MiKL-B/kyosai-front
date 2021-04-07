@@ -71,7 +71,7 @@
         </tr>
       </table>
     </form>
-
+    <input v-model="searchKey" type="search" placeholder="Rechercher un produit par son nom"   class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400 flex mx-auto w-80"/>
     <table class=" mx-auto text-xl my-10">
       <thead class="bg-gray-100">
         <tr class="text-center ">
@@ -85,11 +85,7 @@
         </tr>
       </thead>
 
-      <tbody
-        v-for="content in shopContent  "
-        :key="content.id"
-        :content="content"
-      >
+      <tbody v-for="content in search" :key="content.id" :content="content">
         <tr class="text-center">
           <td>{{ content.nom }}</td>
           <td>
@@ -119,7 +115,6 @@
         </tr>
       </tbody>
     </table>
-
   </Layout>
 </template>
 
@@ -141,7 +136,23 @@ export default {
   metaInfo: {
     title: "admin",
   },
-
+  //<----------------->//
+  //<------DATA------->//
+  //<----------------->//
+  data() {
+    return {
+      searchKey: "",
+      shopContent: [],
+      categoryContentList: "",
+      name: "",
+      category: "",
+      prix: "",
+      image: "",
+    };
+  },
+  //<----------------->//
+  //<------METHODS---->//
+  //<----------------->//
   methods: {
     submit() {
       console.log(this.image);
@@ -162,21 +173,39 @@ export default {
       console.log(file);
     },
 
-    //format date
+    //<----------------->//
+    //<------FORMAT DATE------->//
+    //<formatter la date avec day js>//
     format_date(value) {
       if (value) {
         return dayjs().format("DD-MMMM-YYYY HH:mm:ss");
       }
     },
-    //category
+    //<----------------->//
+    //<------CATEGORY------->//
+    //<recuperer et afficher la catégorie pour chaque produit>//
+    //<----------------->//
     getCategoryById(id) {
       return this.categoryContentList.find((category) => category.id == id);
     },
-
- 
+  },
+  //<----------------->//
+  //<------COMPUTED------->//
+  //<----------------->//
+  computed: {
+    //<filtrer les produits >//
+    search() {
+      return this.shopContent.filter((content) => {
+        return content.nom.toLowerCase().includes(this.searchKey.toLowerCase());
+       
+      });
+     
+    },
   },
 
-  //
+  //<----------------->//
+  //<------CREATED------->//
+  //<----------------->//
   created() {
     //produits de la boutique
     axios.get("http://127.0.0.1:8000/api/shop/").then((response) => {
@@ -191,18 +220,6 @@ export default {
       console.log(response);
       this.categoryContentList = response.data;
     });
-  },
-
-  data() {
-    return {
-      shopContent: "",
-      categoryContentList: "",
-      name: "",
-      category: "",
-      prix: "",
-      image: "",
-
-    };
   },
 };
 </script>
