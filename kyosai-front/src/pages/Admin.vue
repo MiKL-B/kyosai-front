@@ -23,7 +23,7 @@
               v-model="category"
               v-if="categoryContentList.length > 0"
               class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400"
-            >
+            multiple>
               <option value="" selected>Choisissez une catégorie</option>
               <option
                 v-for="categoryContent in categoryContentList"
@@ -72,23 +72,23 @@
       </table>
     </form>
     <!--message si produit bien ajouté-->
-       <div
-        v-if="success"
-        class="text-center bg-green-200 rounded-lg text-green-600 w-96 mx-auto p-3 uppercase tracking-widest text-lg"
-      >
-        {{ success }}
-      </div>
-<!--rechercher produit par nom-->
+    <div
+      v-if="success"
+      class="text-center bg-green-200 rounded-lg text-green-600 w-96 mx-auto p-3 uppercase tracking-widest text-lg"
+    >
+      {{ success }}
+    </div>
+    <!--rechercher produit par nom-->
     <input
       v-model="searchKey"
       type="search"
       placeholder="Rechercher un produit par son nom"
       class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400 flex mx-auto w-80"
     />
-<!--s'affiche si la recherche ne renvois rien-->
+    <!--s'affiche si la recherche ne renvois rien-->
     <h3
       class="text-center bg-red-200 rounded-lg text-red-600 w-96 mx-auto p-3 uppercase tracking-widest text-lg my-5"
-      v-if="search.length == 0"
+      v-if="searchContentFiltered.length == 0"
     >
       Aucun Résultat
     </h3>
@@ -105,7 +105,7 @@
         </tr>
       </thead>
 
-      <tbody v-for="content in search" :key="content.id" :content="content">
+      <tbody v-for="content in searchContentFiltered" :key="content.id" :content="content">
         <tr class="text-center ">
           <td class="capitalize">{{ content.nom }}</td>
           <td class="uppercase">
@@ -122,10 +122,14 @@
           <td><img :src="content.image" /></td>
           <td>{{ format_date(content.createdAt) }}</td>
           <td>
-           <g-link to="/edit"> <button
-              class="bg-blue-400 hover:bg-blue-600 p-2 text-white mr-2 rounded-lg"
+          {{content.id}}
+            <g-link :to="`edit/${content.id}`">
+              <button
+                class="bg-blue-400 hover:bg-blue-600 p-2 text-white mr-2 rounded-lg"
+              >
+                Modifier
+              </button></g-link
             >
-              Modifier</button></g-link>
             <button
               class="bg-red-400 hover:bg-red-600 p-2 text-white rounded-lg"
             >
@@ -161,12 +165,12 @@ export default {
   //<----------------->//
   data() {
     return {
-      success:"",
+      success: "",
       searchKey: "",
       shopContent: [],
-      categoryContentList: "",
+      categoryContentList: [],
       name: "",
-      category: "",
+      category: [],
       prix: "",
       image: "",
     };
@@ -175,7 +179,7 @@ export default {
   //<------METHODS---->//
   //<----------------->//
   methods: {
-   submit() {
+    submit() {
       console.log(this.image);
       axios
         .post("http://127.0.0.1:8000/api/admin", {
@@ -186,10 +190,8 @@ export default {
         })
         .then(function(response) {
           console.log(response);
-        
         });
-       // this.success = "Produit ajouté avec succés ! "
-    
+      this.success = "Produit ajouté avec succés ! ";
     },
     async handleUpload(event) {
       const file = event.target.files[0];
@@ -218,7 +220,7 @@ export default {
   //<----------------->//
   computed: {
     //<filtrer les produits >//
-    search() {
+    searchContentFiltered() {
       return this.shopContent.filter((content) => {
         return content.nom.toLowerCase().includes(this.searchKey.toLowerCase());
       });
