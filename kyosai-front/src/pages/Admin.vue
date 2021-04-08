@@ -122,7 +122,7 @@
           <td><img :src="content.image" /></td>
           <td>{{ format_date(content.createdAt) }}</td>
           <td>
-          {{content.id}}
+       
             <g-link :to="`edit/${content.id}`">
               <button
                 class="bg-blue-400 hover:bg-blue-600 p-2 text-white mr-2 rounded-lg"
@@ -158,7 +158,7 @@ const getBase64 = (file) =>
 
 export default {
   metaInfo: {
-    title: "admin",
+    title: "Administration",
   },
   //<----------------->//
   //<------DATA------->//
