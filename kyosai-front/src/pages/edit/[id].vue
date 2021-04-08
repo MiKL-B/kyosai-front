@@ -14,20 +14,11 @@
       <!--info sur le produit-->
       <div class="flex flex-col">
         <p class="font-black capitalize text-2xl">{{ editContent.nom }}</p>
-        <p v-for="content in editContent" :key="content.id" :content="content">
-     
+
+        <p v-for="truc in editContent.categories" :key="truc.id">
           {{
-            editContent.categories &&
-              getCategoryById(
-                editContent.categories[0].substring(
-                  editContent.categories[0].lastIndexOf("/") + 1
-                )
-              ) &&
-              getCategoryById(
-                editContent.categories[2].substring(
-                  editContent.categories[0].lastIndexOf("/") + 1
-                )
-              ).label
+            getCategoryById(truc.substring(truc.lastIndexOf("/") + 1)) &&
+            getCategoryById(truc.substring(truc.lastIndexOf("/") + 1)).label
           }}
         </p>
         <p>{{ editContent.prix }} €</p>
@@ -45,7 +36,7 @@
             type="text"
             placeholder="Saisir nouveau nom"
           />
-       <select
+          <select
             v-model="category"
             v-if="categoryContentList.length > 0"
             multiple
@@ -118,8 +109,9 @@ export default {
   methods: {
     submitEdit() {
       console.log(this.image);
-              const { id } = this.$route.params;
-      axios.post(`http://127.0.0.1:8000/api/admin/edit/${id}`, {
+      const { id } = this.$route.params;
+      axios
+        .post(`http://127.0.0.1:8000/api/admin/edit/${id}`, {
           name_produit: this.name,
           prix_produit: this.prix,
           image_produit: this.image,
@@ -154,24 +146,16 @@ export default {
         this.categoryContentList.find((category) => category.id == id)
       );
     },
-   
-allMyCategories(){
-this.editContent.forEach((value, index) => {
-   
-    console.log(value);
-    console.log(index);
-});
-}
-
   },
-  computed: {},
   created() {
     const { id } = this.$route.params;
-  
-    axios.get(`http://127.0.0.1:8000/api/admin/edit/view/${id}`).then((response) => {
-      console.log(response);
-      this.editContent = response.data;
-    });
+
+    axios
+      .get(`http://127.0.0.1:8000/api/admin/edit/view/${id}`)
+      .then((response) => {
+        console.log(response);
+        this.editContent = response.data;
+      });
     axios.get("http://127.0.0.1:8000/api/category/list").then((response) => {
       console.log(response);
       this.categoryContentList = response.data;
