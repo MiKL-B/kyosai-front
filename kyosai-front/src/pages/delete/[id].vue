@@ -1,6 +1,6 @@
 <template>
   <layout>
-    <div>{{ deleteContent }}</div>
+    <div class="text-center bg-green-200 rounded-lg text-green-600 w-96 mx-auto p-3 uppercase tracking-widest text-lg">{{ deleteContent }}</div>
   </layout>
 </template>
 
@@ -16,7 +16,7 @@ export default {
   //<----------------->//
   data() {
     return {
-      deleteContent: [],
+      deleteContent: "",
     };
   },
   methods: {},
