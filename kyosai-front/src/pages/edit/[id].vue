@@ -14,11 +14,14 @@
       <!--info sur le produit-->
       <div class="flex flex-col">
         <p class="font-black capitalize text-2xl">{{ editContent.nom }}</p>
-
-        <p v-for="truc in editContent.categories" :key="truc.id">
+        <!--a redemander si faut changer de nom-->
+        <p v-for="allLabel in editContent.categories" :key="allLabel.id">
           {{
-            getCategoryById(truc.substring(truc.lastIndexOf("/") + 1)) &&
-            getCategoryById(truc.substring(truc.lastIndexOf("/") + 1)).label
+            getCategoryById(
+              allLabel.substring(allLabel.lastIndexOf("/") + 1)
+            ) &&
+              getCategoryById(allLabel.substring(allLabel.lastIndexOf("/") + 1))
+                .label
           }}
         </p>
         <p>{{ editContent.prix }} €</p>

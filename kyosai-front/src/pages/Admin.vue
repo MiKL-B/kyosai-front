@@ -95,9 +95,9 @@
     </h3>
 
     <table class=" mx-auto text-xl my-10">
-      <thead class="bg-gray-100">
+      <thead class="bg-white">
         <tr class="text-center ">
-          <th class="w-60">Nom</th>
+          <th class="w-60 h-20">Nom</th>
           <th class="w-60">Catégorie</th>
           <th class="w-60">Prix</th>
           <th class="w-40">Image</th>
@@ -110,20 +110,27 @@
         v-for="content in searchContentFiltered"
         :key="content.id"
         :content="content"
+        class="bg-gray-100 shadow-lg"
       >
-        <tr class="text-center ">
+        <tr class="text-center">
           <td class="capitalize">{{ content.nom }}</td>
           <td class="uppercase">
-            {{
-              content.categories[0] &&
-                getCategoryById(
-                  content.categories[0].substring(
-                    content.categories[0].lastIndexOf("/") + 1
-                  )
-                ).label
-            }}
+            <!--a redemander si faut changer de nom-->
+            <tr
+              class="flex justify-center"
+              v-for="allLabel in content.categories"
+              :key="allLabel.id"
+            >
+              {{
+                allLabel &&
+                  getCategoryById(
+                    allLabel.substring(allLabel.lastIndexOf("/") + 1)
+                  ).label
+              }}
+            </tr>
           </td>
-          <td>{{ content.prix }}€</td>
+
+          <td>{{ content.prix }} €</td>
           <td><img :src="content.image" /></td>
           <td>{{ format_date(content.createdAt) }}</td>
           <td>
