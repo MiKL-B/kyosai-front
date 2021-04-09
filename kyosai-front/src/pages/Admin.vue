@@ -23,7 +23,8 @@
               v-model="category"
               v-if="categoryContentList.length > 0"
               class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400"
-            multiple>
+              multiple
+            >
               <option value="" selected>Choisissez une catégorie</option>
               <option
                 v-for="categoryContent in categoryContentList"
@@ -105,7 +106,11 @@
         </tr>
       </thead>
 
-      <tbody v-for="content in searchContentFiltered" :key="content.id" :content="content">
+      <tbody
+        v-for="content in searchContentFiltered"
+        :key="content.id"
+        :content="content"
+      >
         <tr class="text-center ">
           <td class="capitalize">{{ content.nom }}</td>
           <td class="uppercase">
@@ -122,7 +127,6 @@
           <td><img :src="content.image" /></td>
           <td>{{ format_date(content.createdAt) }}</td>
           <td>
-       
             <g-link :to="`edit/${content.id}`">
               <button
                 class="bg-blue-400 hover:bg-blue-600 p-2 text-white mr-2 rounded-lg"
@@ -130,11 +134,14 @@
                 Modifier
               </button></g-link
             >
-            <button
-              class="bg-red-400 hover:bg-red-600 p-2 text-white rounded-lg"
-            >
-              Supprimer
-            </button>
+
+            <g-link :to="`delete/${content.id}`">
+              <button
+                class="bg-red-400 hover:bg-red-600 p-2 text-white rounded-lg"
+              >
+                Supprimer
+              </button>
+            </g-link>
           </td>
         </tr>
       </tbody>
