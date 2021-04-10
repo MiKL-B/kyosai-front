@@ -16,7 +16,6 @@
             />
           </td>
         </tr>
-
         <tr>
           <td>
             <select
@@ -59,7 +58,6 @@
             />
           </td>
         </tr>
-
         <tr>
           <td>
             <button
@@ -142,13 +140,12 @@
               </button></g-link
             >
 
-            <g-link :to="`delete/${content.id}`">
-              <button
-                class="bg-red-400 hover:bg-red-600 p-2 text-white rounded-lg"
-              >
-                Supprimer
-              </button>
-            </g-link>
+            <button
+              @click="confirmDelete(content.id)"
+              class="bg-red-400 hover:bg-red-600 p-2 text-white rounded-lg"
+            >
+              Supprimer
+            </button>
           </td>
         </tr>
       </tbody>
@@ -202,8 +199,9 @@ export default {
           image_produit: this.image,
           category_produit: this.category,
         })
-        .then(function(response) {
+        .then((response) => {
           console.log(response);
+          this.getProduct();
         });
       this.success = "Produit ajouté avec succés ! ";
     },
@@ -221,12 +219,36 @@ export default {
         return dayjs(value).format("DD-MMMM-YYYY HH:mm:ss");
       }
     },
-    //<----------------->//
-    //<------CATEGORY------->//
-    //<recuperer et afficher la catégorie pour chaque produit>//
-    //<----------------->//
+    /**
+     * Obtenir la categorie.
+     * @param {integer} id -The id of the category to get
+     * @return {object} -The category that corresponds to the id
+     */
     getCategoryById(id) {
       return this.categoryContentList.find((category) => category.id == id);
+    },
+
+    /**
+     * confirm delete.
+     * @param {integer} id - The id of the product to delete from
+     */
+    confirmDelete(id) {
+      const answer = confirm("Êtes vous sûr de vouloir supprimer ce produit ?");
+      if (answer) {
+        axios
+          .get(`http://127.0.0.1:8000/api/admin/delete/${id}`)
+          .then((response) => {
+            console.log("confirm delete : ", response);
+            this.getProduct();
+          });
+      }
+    },
+    getProduct() {
+      axios.get("http://127.0.0.1:8000/api/shop/").then((response) => {
+        // handle success
+        console.log("shop ", response);
+        this.shopContent = response.data;
+      });
     },
   },
   //<----------------->//
@@ -246,11 +268,7 @@ export default {
   //<----------------->//
   created() {
     //produits de la boutique
-    axios.get("http://127.0.0.1:8000/api/shop/").then((response) => {
-      // handle success
-      console.log("shop ", response);
-      this.shopContent = response.data;
-    });
+    this.getProduct();
 
     //categorie de la boutique
     axios.get("http://127.0.0.1:8000/api/category/list").then((response) => {
