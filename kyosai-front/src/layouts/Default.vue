@@ -152,6 +152,7 @@
 <script>
 import MenuBurgerLink from "~/components/MenuBurgerLink.vue";
 import SocialLink from "~/components/SocialLink.vue";
+const axios = require("axios");
 export default {
   components: { SocialLink, MenuBurgerLink },
 
@@ -222,8 +223,10 @@ export default {
       ],
       showSidenav: false,
       titre: "Menu",
+      
     };
   },
+  
 };
 </script>
 <static-query>

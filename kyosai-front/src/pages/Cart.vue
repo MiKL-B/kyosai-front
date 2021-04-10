@@ -4,8 +4,8 @@
       Mon panier
     </h1>
 
-    <div class="bg-gray-100 shadow rounded-md text-2xl my-5">
-      <div class="flex justify-around">
+    <div class="bg-gray-100 shadow rounded-md text-2xl my-5 ">
+      <div class="flex justify-around p-5">
         <div>
           <h1>Votre panier</h1>
         </div>
@@ -14,12 +14,14 @@
         </div>
       </div>
       <hr />
-      <div class="containerCart flex justify-around my-5">
+      <div class="containerCart flex justify-around my-5 ">
         <div class="imgCart h-60 w-60">
           <img src="/kyosai.jpg" />
           <div class="infoCart">
-            <h2>Titre du produit</h2>
- 
+          <h2>Titre du produit :</h2>
+            <h2>{{panier}}</h2>
+         
+
             <span>Catégorie :</span>
             </br>
             <select class="rounded-lg bg-white text-gray-600 hover:text-pink-400 cursor-pointer">
@@ -35,28 +37,44 @@
           </div>
         </div>
 
-        <div class="priceCart text-3xl">14.90 €</div>
+        <div class="priceCart text-3xl">{{panier.prix}} €</div>
       </div>
       <hr />
-      <div class="flex justify-around">
-        <h2>Sous-total (1 article) 14.90 €</h2>
+      <div class="flex justify-around p-5">
+        <h2>Sous-total {{panier.total}} €</h2>
       </div>
     </div>
   </Layout>
 </template>
 
 <script>
+const axios = require("axios");
 export default {
   metaInfo: {
     title: "Panier",
   },
 
   data() {
-    return {};
+    return {
+      panier:[],
+      name:'',
+      prix:'',
+    };
   },
 
-  methods: {},
+  methods: {
+
+ 
+    
+  },
 
   computed: {},
+  created(){
+  axios.get("http://127.0.0.1:8000/panier").then((response) => {
+      console.log(response);
+      this.panier = response.data;
+    });
+  
+  }
 };
 </script>
