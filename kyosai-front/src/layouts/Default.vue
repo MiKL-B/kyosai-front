@@ -30,12 +30,14 @@
               v-if="showSidenav"
               class="c-cart fixed top-4 right-80 text-7xl text-gray-600 hover:text-pink-400 cursor-pointer "
             >
+              <span class="text-4xl">0</span>
               <i class="fa fa-shopping-cart " aria-hidden="true"></i>
             </div>
             <div
               v-else
               class="c-cart fixed top-4 right-32 text-7xl text-gray-600 hover:text-pink-400 cursor-pointer "
             >
+              <span class="text-4xl">0</span>
               <i class="fa fa-shopping-cart " aria-hidden="true"></i>
             </div>
           </g-link>
