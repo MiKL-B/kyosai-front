@@ -8,8 +8,7 @@
           class="flex flex-col items-start sm:flex-row sm:items-center p-4 -ml-4"
         >
           <img class="h-28 sm:h-32 md:h-40 mr-4" src="/logo.png" alt />
-          <span
-            class="font-papyrus text-red-400 font-black text-2xl uppercase"
+          <span class="font-papyrus text-red-400 font-black text-2xl uppercase"
             >Kyosai</span
           >
         </g-link>
@@ -17,7 +16,7 @@
         <!-- NAV -->
         <nav class="fixed z-10 top-8 right-8">
           <!-- MENU BURGER -->
-          <!-- Make a menu button component <MenuButton> c-menu-button -->
+          <!-- Make a menu button component <MenuButton>  -->
           <div
             @click="showSidenav = !showSidenav"
             class="menu-btn text-7xl font-bold rounded-lg"
@@ -25,6 +24,21 @@
           >
             <span></span>
           </div>
+          <!--cart-->
+          <g-link to="/cart" title="Mon panier">
+            <div
+              v-if="showSidenav"
+              class="c-cart fixed top-4 right-80 text-7xl text-gray-600 hover:text-pink-400 cursor-pointer "
+            >
+              <i class="fa fa-shopping-cart " aria-hidden="true"></i>
+            </div>
+            <div
+              v-else
+              class="c-cart fixed top-4 right-32 text-7xl text-gray-600 hover:text-pink-400 cursor-pointer "
+            >
+              <i class="fa fa-shopping-cart " aria-hidden="true"></i>
+            </div>
+          </g-link>
         </nav>
       </header>
 
@@ -34,13 +48,8 @@
     </div>
 
     <!-- FOOTER -->
-    <footer
-      class="bg-gray-100 flex flex-wrap flex-col xl:flex-row"
-      id="footer"
-    >
-      <div
-        class="container mx-auto py-4 flex flex-col xl:flex-row xl:relative"
-      >
+    <footer class="bg-gray-100 flex flex-wrap flex-col xl:flex-row" id="footer">
+      <div class="container mx-auto py-4 flex flex-col xl:flex-row xl:relative">
         <!-- CONTACT -->
         <section class="mb-20 lg:mb-0 xl:py-10">
           <h2
@@ -168,8 +177,8 @@ export default {
       ],
       burgers: [
         {
-        link:"/admin",
-        menu:"Administration"
+          link: "/admin",
+          menu: "Administration",
         },
 
         {
@@ -200,14 +209,13 @@ export default {
           link: "/about",
           menu: "à propos",
         },
-         {
+        {
           link: "/shop",
           menu: "Boutique",
         },
-          {
+        {
           link: "/register",
           menu: "inscription",
-         
         },
       ],
       showSidenav: false,
@@ -280,7 +288,10 @@ article:hover p {
   color: #60a5fa;
   font-weight: bold;
 }
-
+/*cart*/
+.c-cart {
+  transition: 0.5s;
+}
 /*MENU BURGER STYLE */
 
 .sidenav {
