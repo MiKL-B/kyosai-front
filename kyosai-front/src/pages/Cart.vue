@@ -70,7 +70,8 @@ export default {
 
   computed: {},
   created(){
-  axios.get("http://127.0.0.1:8000/panier").then((response) => {
+          
+  axios.get(`http://127.0.0.1:8000/panier`).then((response) => {
       console.log(response);
       this.panier = response.data;
     });

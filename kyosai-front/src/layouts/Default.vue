@@ -223,10 +223,8 @@ export default {
       ],
       showSidenav: false,
       titre: "Menu",
-      
     };
   },
-  
 };
 </script>
 <static-query>
