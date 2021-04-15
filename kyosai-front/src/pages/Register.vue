@@ -139,7 +139,7 @@ export default {
           this.mdp == this.confirm_mdp:
           this.error = "";
           axios
-            .post("http://127.0.0.1:8000/api/user", {
+            .post("http://127.0.0.1:8000/register", {
               email: this.email,
               firstname: this.name,
               mdp: this.mdp,

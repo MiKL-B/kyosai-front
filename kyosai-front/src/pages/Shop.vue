@@ -51,8 +51,8 @@
         </tr>
       </table>
 
-      <div class="flex my-auto">
-        <img class="w-96" :src="content.image" />
+      <div class="flex my-auto ">
+        <img class="w-80 h-auto" :src="content.image" />
       </div>
     </div>
   </Layout>
@@ -135,6 +135,7 @@ export default {
     axios.get("http://127.0.0.1:8000/api/category/list").then((response) => {
       this.categoryContentList = response.data;
     });
+  
   },
 };
 </script>

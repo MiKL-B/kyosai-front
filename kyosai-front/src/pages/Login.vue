@@ -1,7 +1,7 @@
 <template>
   <layout>
     <!--a finir-->
-    <form>
+    <form @submit.prevent="connexion">
       <table class="mx-auto flex flex-col items-center">
         <h1 class="text-blue-400 text-center text-xl">
           Connetez vous à votre compte !
@@ -10,24 +10,21 @@
         <tr>
           <td>
             <input
+              v-model="email"
               class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400"
               name="email"
               placeholder="Adresse email"
             />
           </td>
         </tr>
-        <!--name-->
-        <!--<tr>
-          <td>
-            <input class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400" v-model="name" name="name" placeholder="Nom" />
-          </td>
-        </tr>-->
-        <!--mdp-->
+
         <tr>
           <td>
             <input
+              v-model="password"
               class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400"
               name="mdp"
+              type="text"
               placeholder="Mot de passe"
             />
           </td>
@@ -57,6 +54,7 @@
 </template>
 
 <script>
+const axios = require("axios");
 export default {
   metaInfo: {
     title: "Connexion",
@@ -72,7 +70,43 @@ export default {
   //==================================================================================================================================================================================================================================================================================================
 
   data() {
-    return {};
+    return {
+      tokenContent: "",
+      email: "",
+      password: "",
+    };
+  },
+  //============================================================================================================================================================================================================================================================================================================================
+  //
+  //  ###    ###  #####  ######  ##   ##   #####   ####     ####
+  //  ## #  # ##  ##       ##    ##   ##  ##   ##  ##  ##  ##
+  //  ##  ##  ##  #####    ##    #######  ##   ##  ##  ##   ###
+  //  ##      ##  ##       ##    ##   ##  ##   ##  ##  ##     ##
+  //  ##      ##  #####    ##    ##   ##   #####   ####    ####
+  //
+  //============================================================================================================================================================================================================================================================================================================================
+
+  methods: {
+    connexion() {
+      axios
+        .post("http://127.0.0.1:8000/api/login_check", {
+          email: this.email,
+          password: this.password,
+        })
+        .then((response) => {
+          // handle success
+          this.$router.push("/?");
+          console.log("token: ", response);
+
+          this.tokenContent = response.data;
+          //stockage du token
+          localStorage.setItem("jwt", this.tokenContent.token);
+        })
+        .catch((error) => {
+          console.log("error", error.response.data);
+          this.error = error.response.data.errors.violations[0].title;
+        });
+    },
   },
   //=======================================================================================================================================================================================================================================================================================================================
   //
