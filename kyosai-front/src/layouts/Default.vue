@@ -1,6 +1,8 @@
 <template>
   <div>
+  
     <div class="p-4">
+    
       <header class="container mx-auto flex mb-4">
         <!-- LOGO -->
         <g-link
@@ -11,9 +13,9 @@
           <span class="font-papyrus text-red-400 font-black text-2xl uppercase"
             >Kyosai</span
           >
+ 
         </g-link>
 
-     
         <nav class="fixed z-10 top-8 right-8">
           <!-- MENU BURGER -->
           <!-- Make a menu button component <MenuButton>  -->
@@ -30,6 +32,7 @@
               v-if="showSidenav"
               class="c-cart fixed top-4 right-80 text-7xl text-gray-600 hover:text-pink-400 cursor-pointer "
             >
+          
               <span class="text-4xl">0</span>
               <i class="fa fa-shopping-cart " aria-hidden="true"></i>
             </div>
@@ -153,22 +156,27 @@
 import MenuBurgerLink from "~/components/MenuBurgerLink.vue";
 import SocialLink from "~/components/SocialLink.vue";
 const axios = require("axios");
+//recuperation info localstorage
+var userInfo = JSON.parse(localStorage.getItem('jwt'));
+console.log('name', userInfo.name);
+
 export default {
   components: { SocialLink, MenuBurgerLink },
 
   metaInfo: {},
-//==================================================================================================================================================================================================================================================================================================
-//                                                                                                                                                                                                                                                                                                  
-//  ####      ###    ######    ###                                                                                                                                                                                                                                                                
-//  ##  ##   ## ##     ##     ## ##                                                                                                                                                                                                                                                               
-//  ##  ##  ##   ##    ##    ##   ##                                                                                                                                                                                                                                                              
-//  ##  ##  #######    ##    #######                                                                                                                                                                                                                                                              
-//  ####    ##   ##    ##    ##   ##                                                                                                                                                                                                                                                              
-//                                                                                                                                                                                                                                                                                                  
-//==================================================================================================================================================================================================================================================================================================
+  //==================================================================================================================================================================================================================================================================================================
+  //
+  //  ####      ###    ######    ###
+  //  ##  ##   ## ##     ##     ## ##
+  //  ##  ##  ##   ##    ##    ##   ##
+  //  ##  ##  #######    ##    #######
+  //  ####    ##   ##    ##    ##   ##
+  //
+  //==================================================================================================================================================================================================================================================================================================
 
   data() {
     return {
+
       links: [
         {
           url: "https://www.facebook.com/kyosai.asso",
@@ -235,6 +243,9 @@ export default {
       titre: "Menu",
     };
   },
+  created() {
+
+  },
 };
 </script>
 <static-query>
@@ -246,7 +257,6 @@ query {
 </static-query>
 
 <style>
-
 @font-face {
   font-family: "Source Sans Pro";
   src: url("../assets/Source_Sans_Pro/SourceSansPro-Regular.ttf");

@@ -99,13 +99,17 @@ export default {
           console.log("token: ", response);
 
           this.tokenContent = response.data;
+          const user = {
+            name: this.email,
+            jwt: this.tokenContent.token
+          }
           //stockage du token
-          localStorage.setItem("jwt", this.tokenContent.token);
+          localStorage.setItem("jwt", JSON.stringify(user));
         })
-        .catch((error) => {
-          console.log("error", error.response.data);
-          this.error = error.response.data.errors.violations[0].title;
-        });
+        // .catch((error) => {
+        //   console.log("error", error.response.data);
+        //   this.error = error.response.data.errors.violations[0].title;
+        // });
     },
   },
   //=======================================================================================================================================================================================================================================================================================================================
