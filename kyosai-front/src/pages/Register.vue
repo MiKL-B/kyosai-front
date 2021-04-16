@@ -146,7 +146,7 @@ export default {
             })
             .then((response) => {
               //redirection si formulaire validé
-              this.$router.push("/?");
+              this.$router.push("/login");
               console.log(response);
             })
             .catch((error) => {

@@ -137,6 +137,16 @@
       <h2 class="uppercase font-bold text-2xl pl-10 my-10">{{ titre }}</h2>
       <div class="w-80">
         <ul>
+          <li>
+            <button
+              class="pl-10 text-3xl uppercase hover:text-pink-400 border-2  text-gray-200 focus:outline-none "
+              @click="logout"
+              title="deconnexion"
+            >
+              <i class="fa fa-sign-out" aria-hidden="true"></i>
+            </button>
+            
+          </li>
           <!-- COMPONENT BURGER -->
           <MenuBurgerLink
             v-for="burger in burgers"
@@ -152,10 +162,8 @@
 <script>
 import MenuBurgerLink from "~/components/MenuBurgerLink.vue";
 import SocialLink from "~/components/SocialLink.vue";
-const axios = require("axios");
-//recuperation info localstorage
 
-let token = console.log(token);
+const axios = require("axios");
 
 export default {
   components: { SocialLink, MenuBurgerLink },
@@ -239,7 +247,14 @@ export default {
       titre: "Menu",
     };
   },
-  created() {},
+  methods: {
+    logout() {
+      localStorage.removeItem("jwt");
+      this.$store.commit("updateLogin", false);
+      delete axios.defaults.headers.common["Authorization"];
+      this.$router.push("/");
+    },
+  },
 };
 </script>
 <static-query>
