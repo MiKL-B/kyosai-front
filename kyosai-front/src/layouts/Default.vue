@@ -59,11 +59,12 @@
             Restons en contact
           </h2>
           <!--form-->
-          <form method="POST" action="#" class="">
+          <form @submit.prevent="sendMail">
             <div class="flex flex-col flex-wrap xl:flex-row">
               <!--name-->
               <div class="md:mx-auto xl:mx-5">
                 <input
+                  v-model="name"
                   type="text"
                   name="name"
                   id="name"
@@ -74,6 +75,7 @@
               <!--email-->
               <div class="md:mx-auto xl:mx-5">
                 <input
+                  v-model="email"
                   type="email"
                   name="email"
                   id="email"
@@ -85,6 +87,7 @@
               <div class="md:mx-auto xl:mx-5">
                 <div>
                   <textarea
+                    v-model="message"
                     name="message"
                     id="message"
                     placeholder="Message"
@@ -145,8 +148,8 @@
             >
               <i class="fa fa-sign-out" aria-hidden="true"></i>
             </button>
-            
           </li>
+
           <!-- COMPONENT BURGER -->
           <MenuBurgerLink
             v-for="burger in burgers"
@@ -162,8 +165,8 @@
 <script>
 import MenuBurgerLink from "~/components/MenuBurgerLink.vue";
 import SocialLink from "~/components/SocialLink.vue";
-
-const axios = require("axios");
+import axios from "axios";
+import VueSimpleAlert from "vue-simple-alert";
 
 export default {
   components: { SocialLink, MenuBurgerLink },
@@ -181,6 +184,11 @@ export default {
 
   data() {
     return {
+      name: "",
+      email: "",
+      message: "",
+      showSidenav: false,
+      titre: "Menu",
       links: [
         {
           url: "https://www.facebook.com/kyosai.asso",
@@ -243,16 +251,37 @@ export default {
           menu: "inscription",
         },
       ],
-      showSidenav: false,
-      titre: "Menu",
     };
   },
   methods: {
+    /**
+     * deconnexion
+     */
     logout() {
       localStorage.removeItem("jwt");
       this.$store.commit("updateLogin", false);
       delete axios.defaults.headers.common["Authorization"];
       this.$router.push("/");
+      this.$fire({
+        title: "Au revoir 😥",
+        text: "Vous êtes bien déconnecté",
+        type: "success",
+      });
+    },
+    /**
+     * send mail
+     */
+    sendMail() {
+      axios
+        .post("http://127.0.0.1:8000/mail/contact", {
+          name: this.name,
+          email: this.email,
+          message: this.message,
+        })
+        .then((response) => {
+          console.log("mail envoyé", response);
+          this.mailContact = response.data;
+        });
     },
   },
 };

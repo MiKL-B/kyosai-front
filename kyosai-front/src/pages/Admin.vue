@@ -155,8 +155,7 @@
 
 <script>
 import dayjs from "dayjs";
-
-const axios = require("axios");
+import axios from 'axios';
 
 //get base64 from image
 const getBase64 = (file) =>
@@ -258,7 +257,7 @@ export default {
       }
     },
     getProduct() {
-      axios.get("http://127.0.0.1:8000/api/shop/").then((response) => {
+      axios.get("http://127.0.0.1:8000/shop/").then((response) => {
         // handle success
         console.log("shop ", response);
         this.shopContent = response.data;
@@ -298,7 +297,7 @@ export default {
     this.getProduct();
 
     //categorie de la boutique
-    axios.get("http://127.0.0.1:8000/api/category/list").then((response) => {
+    axios.get("http://127.0.0.1:8000/category/list").then((response) => {
       // handle success
       console.log(response);
       this.categoryContentList = response.data;

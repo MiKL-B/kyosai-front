@@ -85,7 +85,7 @@
 
 <script>
 import dayjs from "dayjs";
-const axios = require("axios");
+import axios from 'axios';
 //get base64 from image
 const getBase64 = (file) =>
   new Promise((resolve, reject) => {

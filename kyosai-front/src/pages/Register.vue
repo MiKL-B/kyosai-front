@@ -2,7 +2,7 @@
   <Layout>
     <form @submit.prevent="submit">
       <table class="mx-auto">
-        <h1 class="text-blue-400 text-xl text-center">Créer un compte !</h1>
+        <h1 class="text-blue-400 text-4xl text-center">Créer un compte !</h1>
         <!--email-->
         <tr>
           <td>
@@ -91,8 +91,8 @@
 </template>
 
 <script>
-const axios = require("axios");
-
+import axios from "axios";
+import VueSimpleAlert from "vue-simple-alert";
 export default {
   metaInfo: {
     title: "Inscription",
@@ -147,6 +147,11 @@ export default {
             .then((response) => {
               //redirection si formulaire validé
               this.$router.push("/login");
+              this.$fire({
+                title: `Bienvenue parmis nous ${this.name} 🏆`,
+                text: "Vous êtes bien inscrit",
+                type: "success",
+              });
               console.log(response);
             })
             .catch((error) => {

@@ -1,5 +1,6 @@
 <template>
   <Layout>
+    <h1 class="text-blue-400 text-4xl text-center">Boutique</h1>
     <div
       v-if="success"
       class="text-center bg-green-200 rounded-lg text-green-600 w-96 mx-auto p-3 uppercase tracking-widest text-lg"
@@ -59,7 +60,7 @@
 </template>
 
 <script>
-const axios = require("axios");
+import axios from "axios";
 
 export default {
   metaInfo: {
@@ -126,13 +127,13 @@ export default {
   //=======================================================================================================================================================================================================================================================================================================================
 
   created() {
-    axios.get("http://127.0.0.1:8000/api/shop/").then((response) => {
+    axios.get("http://127.0.0.1:8000/shop/").then((response) => {
       // handle success
       console.log("shop :", response);
       this.shopContent = response.data;
     });
 
-    axios.get("http://127.0.0.1:8000/api/category/list").then((response) => {
+    axios.get("http://127.0.0.1:8000/category/list").then((response) => {
       this.categoryContentList = response.data;
     });
   },

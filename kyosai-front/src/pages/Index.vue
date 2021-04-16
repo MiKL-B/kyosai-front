@@ -36,7 +36,7 @@
 
 <script>
 import GridImage from "~/components/GridImage.vue";
-
+import jwt_decode from "jwt-decode";
 
 export default {
   components: { GridImage },
@@ -87,6 +87,5 @@ export default {
       ],
     };
   },
-
 };
 </script>

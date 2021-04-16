@@ -6,9 +6,11 @@ import DefaultLayout from "~/layouts/Default.vue";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
 import Vuex from "vuex";
+import VueSimpleAlert from "vue-simple-alert";
+
 export default function(Vue, { router, head, isClient, appOptions }) {
   Vue.use(Vuex);
-
+  Vue.use(VueSimpleAlert);
   //vuex
   appOptions.store = new Vuex.Store({
     state: {

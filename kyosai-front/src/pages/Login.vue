@@ -3,10 +3,20 @@
     <!--a finir-->
     <form @submit.prevent="connexion">
       <table class="mx-auto flex flex-col items-center">
-        <h1 class="text-blue-400 text-center text-xl">
+        <h1 class="text-blue-400 text-4xl text-center">
           Connetez vous à votre compte !
         </h1>
         <!--email-->
+        <tr>
+          <td>
+            <input
+              v-model="name"
+              class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400"
+              name="name"
+              placeholder="Pseudo"
+            />
+          </td>
+        </tr>
         <tr>
           <td>
             <input
@@ -24,7 +34,7 @@
               v-model="password"
               class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400"
               name="mdp"
-              type="text"
+              type="password"
               placeholder="Mot de passe"
             />
           </td>
@@ -55,6 +65,7 @@
 
 <script>
 import axios from "axios";
+import VueSimpleAlert from "vue-simple-alert";
 export default {
   metaInfo: {
     title: "Connexion",
@@ -71,6 +82,7 @@ export default {
 
   data() {
     return {
+      name: "",
       tokenContent: "",
       email: "",
       password: "",
@@ -90,6 +102,7 @@ export default {
     connexion() {
       axios
         .post("http://127.0.0.1:8000/api/login_check", {
+          name: this.name,
           email: this.email,
           password: this.password,
         })
@@ -105,9 +118,13 @@ export default {
             Authorization: `Bearer ${jwt}`,
           };
           this.$router.push("/");
+          this.$fire({
+            title: `Bonjour ${this.name} 😃`,
+            text: "Vous êtes connecté",
+            type: "success",
+          });
         });
     },
   },
-
 };
 </script>
