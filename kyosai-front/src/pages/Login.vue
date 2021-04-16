@@ -97,19 +97,14 @@ export default {
           // handle success
           this.$router.push("/?");
           console.log("token: ", response);
-
           this.tokenContent = response.data;
-          const user = {
-            name: this.email,
-            jwt: this.tokenContent.token
-          }
           //stockage du token
-          localStorage.setItem("jwt", JSON.stringify(user));
-        })
-        // .catch((error) => {
-        //   console.log("error", error.response.data);
-        //   this.error = error.response.data.errors.violations[0].title;
-        // });
+          let jwt = this.tokenContent.token;
+          console.log("jwt :", jwt);
+
+          localStorage.setItem("jwt", jwt);
+          axios.defaults.headers.common = { Authorization: `Bearer ${jwt}` };
+        });
     },
   },
   //=======================================================================================================================================================================================================================================================================================================================
