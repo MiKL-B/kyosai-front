@@ -130,6 +130,9 @@ export default {
   //============================================================================================================================================================================================================================================================================================================================
 
   methods: {
+    /**
+     * - Modify product information
+     */
     submitEdit() {
       //console.log(this.image);
 
@@ -147,24 +150,26 @@ export default {
         });
       this.success = "Produit modifié avec succés ! ";
     },
+    /**
+     * @param {event} event - Manage the download of the image asynchronously
+     */
     async handleUpload(event) {
       const file = event.target.files[0];
       this.image = await getBase64(file);
       //console.log(file);
     },
 
-    //<----------------->//
-    //<------FORMAT DATE------->//
-    //<formatter la date avec day js>//
+    /**
+     * @param {object} value - Put the date in a local format
+     */
     format_date(value) {
       if (value) {
         return dayjs(value).format("DD-MMMM-YYYY HH:mm:ss");
       }
     },
-    //<----------------->//
-    //<------CATEGORY------->//
-    //<recuperer et afficher la catégorie pour chaque produit>//
-    //<----------------->//
+    /**
+     * @param {integer} id - Get the category by its id
+     */
     getCategoryById(id) {
       return (
         this.categoryContentList &&

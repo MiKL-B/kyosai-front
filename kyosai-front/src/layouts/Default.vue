@@ -270,7 +270,7 @@ export default {
   },
   methods: {
     /**
-     * deconnexion
+     * Logout
      */
     logout() {
       localStorage.removeItem("jwt");
@@ -285,7 +285,7 @@ export default {
       this.showSidenav = false;
     },
     /**
-     * send mail
+     * Send mail
      */
     sendMail() {
       axios
@@ -300,7 +300,7 @@ export default {
         });
     },
     /**
-     * Acces a l'administration si l'utilisateur est admin
+     * Access to the administration page if the user is admin
      */
     verifUser() {
       let jwt = localStorage.getItem("jwt");

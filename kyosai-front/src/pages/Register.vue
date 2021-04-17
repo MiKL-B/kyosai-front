@@ -129,6 +129,9 @@ export default {
   //============================================================================================================================================================================================================================================================================================================================
 
   methods: {
+    /**
+     * - Register the user
+     */
     submit() {
       var bool = true;
       switch (bool) {
@@ -145,7 +148,7 @@ export default {
               mdp: this.mdp,
             })
             .then((response) => {
-              //redirection si formulaire validé
+              //redirection if form validated
               this.$router.push("/login");
               this.$fire({
                 title: `Bienvenue parmis nous ${this.name} 🏆`,
@@ -182,7 +185,9 @@ export default {
           break;
       }
     },
-    //pour une adresse mail valide
+    /**
+     * @param {string} email - Checking using a regex if the email is valid
+     */
     validEmail: function(email) {
       var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);

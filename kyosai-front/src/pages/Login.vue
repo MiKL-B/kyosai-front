@@ -99,6 +99,9 @@ export default {
   //============================================================================================================================================================================================================================================================================================================================
 
   methods: {
+    /**
+     * - Login the user
+     */
     connexion() {
       axios
         .post("http://127.0.0.1:8000/api/login_check", {
@@ -109,7 +112,7 @@ export default {
         .then((response) => {
           //console.log("token: ", response);
           this.tokenContent = response.data;
-          //stockage du token
+          //store the token
           let jwt = this.tokenContent.token;
           //console.log("jwt :", jwt);
           localStorage.setItem("jwt", jwt);

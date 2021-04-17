@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <form @submit.prevent="submit">
+    <form @submit.prevent="addNewProduct">
       <h1 class="text-blue-400 text-4xl text-center">
         Ajouter un nouvel élément à la boutique !
       </h1>
@@ -203,7 +203,10 @@ export default {
   //============================================================================================================================================================================================================================================================================================================================
 
   methods: {
-    submit() {
+    /**
+     * - Add a new product to the database
+     */
+    addNewProduct() {
       //console.log(this.image);
       axios
         .post("http://127.0.0.1:8000/api/admin", {
@@ -218,14 +221,17 @@ export default {
         });
       this.success = "Produit ajouté avec succés ! ";
     },
+    /**
+     * @param {event} event - Manage the download of the image asynchronously
+     */
     async handleUpload(event) {
       const file = event.target.files[0];
       this.image = await getBase64(file);
       //console.log(file);
     },
+
     /**
-     * formatter la date
-     *@param {object} value
+     * @param {object} value - Put the date in a local format
      */
     format_date(value) {
       if (value) {
@@ -233,7 +239,6 @@ export default {
       }
     },
     /**
-     * Obtenir la categorie.
      * @param {integer} id -The id of the category to get
      * @return {object} -The category that corresponds to the id
      */
@@ -242,7 +247,6 @@ export default {
     },
 
     /**
-     * confirm delete.
      * @param {integer} id - The id of the product to delete from
      */
     confirmDelete(id) {
@@ -274,7 +278,9 @@ export default {
   //====================================================================================================================================================================================================================================================================================================================================
 
   computed: {
-    //<filtrer les produits >//
+    /**
+     * - Filter content
+     */
     searchContentFiltered() {
       return this.shopContent.filter((content) => {
         return content.nom.toLowerCase().includes(this.searchKey.toLowerCase());

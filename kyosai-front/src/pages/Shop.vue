@@ -96,7 +96,7 @@ export default {
 
   methods: {
     /**
-     * @param {integer} id - get the category by its id
+     * @param {integer} id - Get the category by its id
      */
     getCategoryById(id) {
       return this.categoryContentList.find((category) => category.id == id);
@@ -128,7 +128,6 @@ export default {
 
   created() {
     axios.get("http://127.0.0.1:8000/shop/").then((response) => {
-      // handle success
       //console.log("shop :", response);
       this.shopContent = response.data;
     });
