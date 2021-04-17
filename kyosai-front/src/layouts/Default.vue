@@ -140,16 +140,26 @@
       <h2 class="uppercase font-bold text-2xl pl-10 my-10">{{ titre }}</h2>
       <div class="w-80">
         <ul>
-          <li>
-            <button
-              class="pl-10 text-3xl uppercase hover:text-pink-400 border-2  text-gray-200 focus:outline-none "
-              @click="logout"
-              title="deconnexion"
+          <div class="flex ">
+            <li>
+              <button
+                class="pl-10 text-3xl uppercase hover:text-pink-400 border-2  text-gray-200 focus:outline-none "
+                @click="logout"
+                title="deconnexion"
+              >
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+              </button>
+            </li>
+            <li
+              class="mx-10 uppercase text-green-400 text-xl"
+              v-if="verifUser()"
             >
-              <i class="fa fa-sign-out" aria-hidden="true"></i>
-            </button>
-          </li>
-
+              {{ log }}
+            </li>
+            <li class="mx-10 uppercase text-blue-400 text-xl" v-else>
+              {{ log }}
+            </li>
+          </div>
           <li
             v-if="verifUser()"
             class="pt-5 my-5 pl-10 text-xl uppercase hover:text-pink-400
@@ -193,6 +203,7 @@ export default {
 
   data() {
     return {
+      log: "",
       name: "",
       email: "",
       message: "",
@@ -252,7 +263,7 @@ export default {
         },
         {
           link: "/register",
-          menu: "inscription",
+          menu: "inscription / login",
         },
       ],
     };
@@ -297,12 +308,14 @@ export default {
         let token = jwt_decode(jwt);
         //console.log(token);
         if (token.roles == "ROLE_ADMIN") {
-          //console.log("ADMIN");
+          this.log = "admin";
           return true;
-        } else {
-          //console.log("not admin");
-          return false;
+        } else if (token.roles == "ROLE_USER") {
+          this.log = "connecté";
         }
+      } else {
+        this.log = "déconnecté";
+        return false;
       }
     },
   },
