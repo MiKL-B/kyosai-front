@@ -196,7 +196,7 @@ export default {
         //console.log(response);
         this.editContent = response.data;
       });
-    axios.get("http://127.0.0.1:8000/api/category/list").then((response) => {
+    axios.get("http://127.0.0.1:8000/category/list").then((response) => {
       //console.log(response);
       this.categoryContentList = response.data;
     });

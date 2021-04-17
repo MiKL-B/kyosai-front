@@ -3,6 +3,7 @@
     <div>
       <header class="container mx-auto flex mb-4">
         <!-- LOGO -->
+
         <g-link
           to="/"
           class="flex flex-col items-start sm:flex-row sm:items-center p-4 -ml-4"
@@ -15,7 +16,6 @@
 
         <nav class="fixed z-10 top-8 right-8">
           <!-- MENU BURGER -->
-          <!-- Make a menu button component <MenuButton>  -->
           <div
             @click="showSidenav = !showSidenav"
             class="menu-btn text-7xl font-bold rounded-lg"
@@ -23,7 +23,7 @@
           >
             <span></span>
           </div>
-          <!--cart-->
+          <!--CART-->
           <g-link to="/cart" title="Mon panier">
             <div
               v-if="showSidenav"
@@ -58,10 +58,10 @@
           >
             Restons en contact
           </h2>
-          <!--form-->
+          <!--FORM-->
           <form @submit.prevent="sendMail">
             <div class="flex flex-col flex-wrap xl:flex-row">
-              <!--name-->
+              <!--NAME-->
               <div class="md:mx-auto xl:mx-5">
                 <input
                   v-model="name"
@@ -72,7 +72,7 @@
                   class="bg-transparent w-72  sm:w-full md:w-96   h-20 border-b-2 focus:outline-none focus:border-pink-400 text-xl"
                 />
               </div>
-              <!--email-->
+              <!--EMAIL-->
               <div class="md:mx-auto xl:mx-5">
                 <input
                   v-model="email"
@@ -83,7 +83,7 @@
                   class="bg-transparent  w-72 sm:w-full md:w-96 mb-2 h-20 border-b-2 focus:outline-none focus:border-pink-400 text-xl "
                 />
               </div>
-              <!--message-->
+              <!--MESSAGE-->
               <div class="md:mx-auto xl:mx-5">
                 <div>
                   <textarea
@@ -99,7 +99,7 @@
                 </div>
               </div>
             </div>
-            <!--submit-->
+            <!--SUBMIT-->
             <ul>
               <li>
                 <input
@@ -135,7 +135,7 @@
         </ul>
       </div>
     </footer>
-
+    <!--SIDENAV-->
     <div v-if="showSidenav" class="sidenav h-full z-20">
       <h2 class="uppercase font-bold text-2xl pl-10 my-10">{{ titre }}</h2>
       <div class="w-80">
@@ -230,47 +230,61 @@ export default {
       ],
       burgers: [
         {
+          link: "/register",
+          menu: "inscription / login",
+        },
+        {
           link: "/",
           menu: "Accueil",
         },
         {
           link: "/papercraft",
           menu: "Papercraft",
+          color: "text-pink-400",
         },
         {
           link: "/dessin",
           menu: "Dessin",
+          color: "text-blue-400",
         },
         {
           link: "/cosplay",
           menu: "Cosplay",
+          color: "text-green-400",
         },
         {
           link: "/gaming",
           menu: "Art Gaming",
+          color: "text-yellow-400",
         },
         {
           link: "/convention",
           menu: "Convention",
         },
         {
-          link: "/about",
-          menu: "à propos",
-        },
-        {
           link: "/shop",
           menu: "Boutique",
         },
         {
-          link: "/register",
-          menu: "inscription / login",
+          link: "/about",
+          menu: "à propos",
         },
       ],
     };
   },
+  //============================================================================================================================================================================================================================================================================================================================
+  //
+  //  ###    ###  #####  ######  ##   ##   #####   ####     ####
+  //  ## #  # ##  ##       ##    ##   ##  ##   ##  ##  ##  ##
+  //  ##  ##  ##  #####    ##    #######  ##   ##  ##  ##   ###
+  //  ##      ##  ##       ##    ##   ##  ##   ##  ##  ##     ##
+  //  ##      ##  #####    ##    ##   ##   #####   ####    ####
+  //
+  //============================================================================================================================================================================================================================================================================================================================
+
   methods: {
     /**
-     * Logout
+     * Logout the user
      */
     logout() {
       localStorage.removeItem("jwt");
@@ -285,7 +299,7 @@ export default {
       this.showSidenav = false;
     },
     /**
-     * Send mail
+     * Send mail to kyosai for more information
      */
     sendMail() {
       axios

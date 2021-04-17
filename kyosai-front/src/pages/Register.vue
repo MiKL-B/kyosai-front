@@ -7,7 +7,7 @@
         <tr>
           <td>
             <input
-              class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400"
+              class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400 ring-1 ring-red-400"
               v-model="email"
               name="email"
               type="text"
@@ -19,7 +19,7 @@
         <tr>
           <td>
             <input
-              class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400"
+              class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400 ring-1 ring-red-400"
               v-model="name"
               name="name"
               type="text"
@@ -32,7 +32,7 @@
         <tr>
           <td>
             <input
-              class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400"
+              class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400 ring-1 ring-red-400"
               v-model="mdp"
               name="mdp"
               type="password"
@@ -44,7 +44,7 @@
         <tr>
           <td>
             <input
-              class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400"
+              class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400 ring-1 ring-red-400"
               v-model="confirm_mdp"
               name="confirm_mdp"
               type="password"
@@ -53,11 +53,16 @@
           </td>
         </tr>
         <tr>
-          <td class="text-center">
+          <td class="text-center text-xl">
             <span>Déjà un compte ?</span
-            ><g-link class="text-blue-400 text-lg" to="/login">
+            ><g-link class="text-blue-400" to="/login">
               Cliquez ici !
             </g-link>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span>Les champs entourés en rouge sont requis !</span>
           </td>
         </tr>
         <!--submit-->

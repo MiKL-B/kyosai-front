@@ -21,7 +21,7 @@
           <td>
             <input
               v-model="email"
-              class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400"
+              class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400 ring-1 ring-red-400"
               name="email"
               placeholder="Adresse email"
             />
@@ -32,7 +32,7 @@
           <td>
             <input
               v-model="password"
-              class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400"
+              class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400 ring-1 ring-red-400"
               name="mdp"
               type="password"
               placeholder="Mot de passe"
@@ -40,11 +40,16 @@
           </td>
         </tr>
         <tr>
-          <td>
+          <td class="text-xl">
             <span>Pas encore de compte ?</span
             ><g-link class="text-blue-400 text-lg" to="/register">
               Inscrivez vous ici !
             </g-link>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span>Les champs entourés en rouge sont requis !</span>
           </td>
         </tr>
         <!--submit-->

@@ -45,6 +45,7 @@ export default function(Vue, { router, head, isClient, appOptions }) {
   });
   var jwt = localStorage.getItem("jwt");
   if (jwt) {
+    let token = jwt_decode(jwt);
     try {
       //valid
       axios.defaults.headers.common = {
@@ -55,6 +56,9 @@ export default function(Vue, { router, head, isClient, appOptions }) {
     } catch (error) {
       appOptions.store.commit("updateLogin", false);
       console.log("veuillez vous connecter", error);
+    }
+    if (token.roles !== "ROLE_ADMIN") {
+      appOptions.store.commit("updateLogin", false);
     }
   }
 
