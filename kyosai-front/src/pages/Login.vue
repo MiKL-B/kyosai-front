@@ -107,11 +107,11 @@ export default {
           password: this.password,
         })
         .then((response) => {
-          console.log("token: ", response);
+          //console.log("token: ", response);
           this.tokenContent = response.data;
           //stockage du token
           let jwt = this.tokenContent.token;
-          console.log("jwt :", jwt);
+          //console.log("jwt :", jwt);
           localStorage.setItem("jwt", jwt);
           this.$store.commit("updateLogin", true);
           axios.defaults.headers.common = {

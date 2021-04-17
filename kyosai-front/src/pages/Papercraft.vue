@@ -44,8 +44,7 @@ export default {
         "https://public-api.wordpress.com/rest/v1.1/sites/assokyosai.wordpress.com/posts/257/"
       )
       .then((response) => {
-        // handle success
-        console.log(response);
+        //console.log(response);
         this.papercraftContent = response.data.content;
       });
   },

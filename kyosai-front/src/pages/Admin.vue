@@ -155,7 +155,7 @@
 
 <script>
 import dayjs from "dayjs";
-import axios from 'axios';
+import axios from "axios";
 
 //get base64 from image
 const getBase64 = (file) =>
@@ -204,7 +204,7 @@ export default {
 
   methods: {
     submit() {
-      console.log(this.image);
+      //console.log(this.image);
       axios
         .post("http://127.0.0.1:8000/api/admin", {
           name_produit: this.name,
@@ -213,7 +213,7 @@ export default {
           category_produit: this.category,
         })
         .then((response) => {
-          console.log(response);
+          //console.log(response);
           this.getProduct();
         });
       this.success = "Produit ajouté avec succés ! ";
@@ -221,12 +221,12 @@ export default {
     async handleUpload(event) {
       const file = event.target.files[0];
       this.image = await getBase64(file);
-      console.log(file);
+      //console.log(file);
     },
-
-    //<----------------->//
-    //<------FORMAT DATE------->//
-    //<formatter la date avec day js>//
+    /**
+     * formatter la date
+     *@param {object} value
+     */
     format_date(value) {
       if (value) {
         return dayjs(value).format("DD-MMMM-YYYY HH:mm:ss");
@@ -251,15 +251,14 @@ export default {
         axios
           .get(`http://127.0.0.1:8000/api/admin/delete/${id}`)
           .then((response) => {
-            console.log("confirm delete : ", response);
+            //console.log("confirm delete : ", response);
             this.getProduct();
           });
       }
     },
     getProduct() {
       axios.get("http://127.0.0.1:8000/shop/").then((response) => {
-        // handle success
-        console.log("shop ", response);
+        //console.log("shop ", response);
         this.shopContent = response.data;
       });
     },
@@ -298,8 +297,7 @@ export default {
 
     //categorie de la boutique
     axios.get("http://127.0.0.1:8000/category/list").then((response) => {
-      // handle success
-      console.log(response);
+      //console.log(response);
       this.categoryContentList = response.data;
     });
   },

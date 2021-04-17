@@ -111,7 +111,7 @@ export default {
         })
         .then((response) => {
           this.cartContent = response.data;
-          console.log("cart : ", response.data);
+          //console.log("cart : ", response.data);
           this.success = "Produit bien ajouté au panier !";
         });
     },
@@ -129,7 +129,7 @@ export default {
   created() {
     axios.get("http://127.0.0.1:8000/shop/").then((response) => {
       // handle success
-      console.log("shop :", response);
+      //console.log("shop :", response);
       this.shopContent = response.data;
     });
 

@@ -152,7 +152,7 @@ export default {
                 text: "Vous êtes bien inscrit",
                 type: "success",
               });
-              console.log(response);
+              //console.log(response);
             })
             .catch((error) => {
               console.log("error", error.response.data);

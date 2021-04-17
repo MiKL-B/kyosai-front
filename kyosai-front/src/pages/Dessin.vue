@@ -44,7 +44,6 @@ export default {
         "https://public-api.wordpress.com/rest/v1.1/sites/assokyosai.wordpress.com/posts/327"
       )
       .then((response) => {
-        // handle success
         //console.log(response);
         this.dessinContent = response.data.content;
       });

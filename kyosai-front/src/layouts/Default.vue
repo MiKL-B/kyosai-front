@@ -150,6 +150,15 @@
             </button>
           </li>
 
+          <li
+            v-if="verifUser()"
+            class="pt-5 my-5 pl-10 text-xl uppercase hover:text-pink-400
+            border-t-2 border-gray-200"
+          >
+            <g-link to="/admin">
+              Administration
+            </g-link>
+          </li>
           <!-- COMPONENT BURGER -->
           <MenuBurgerLink
             v-for="burger in burgers"
@@ -167,7 +176,7 @@ import MenuBurgerLink from "~/components/MenuBurgerLink.vue";
 import SocialLink from "~/components/SocialLink.vue";
 import axios from "axios";
 import VueSimpleAlert from "vue-simple-alert";
-
+import jwt_decode from "jwt-decode";
 export default {
   components: { SocialLink, MenuBurgerLink },
 
@@ -209,11 +218,6 @@ export default {
         },
       ],
       burgers: [
-        {
-          link: "/admin",
-          menu: "Administration",
-        },
-
         {
           link: "/",
           menu: "Accueil",
@@ -261,12 +265,13 @@ export default {
       localStorage.removeItem("jwt");
       this.$store.commit("updateLogin", false);
       delete axios.defaults.headers.common["Authorization"];
-      this.$router.push("/");
       this.$fire({
         title: "Au revoir 😥",
         text: "Vous êtes bien déconnecté",
         type: "success",
       });
+      this.$router.push("/");
+      this.showSidenav = false;
     },
     /**
      * send mail
@@ -279,9 +284,26 @@ export default {
           message: this.message,
         })
         .then((response) => {
-          console.log("mail envoyé", response);
+          //console.log("mail envoyé", response);
           this.mailContact = response.data;
         });
+    },
+    /**
+     * Acces a l'administration si l'utilisateur est admin
+     */
+    verifUser() {
+      let jwt = localStorage.getItem("jwt");
+      if (jwt) {
+        let token = jwt_decode(jwt);
+        //console.log(token);
+        if (token.roles == "ROLE_ADMIN") {
+          //console.log("ADMIN");
+          return true;
+        } else {
+          //console.log("not admin");
+          return false;
+        }
+      }
     },
   },
 };
