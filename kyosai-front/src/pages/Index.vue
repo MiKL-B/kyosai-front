@@ -62,6 +62,7 @@ export default {
           link: "/papercraft",
           subtitle: "Atelier de papercraft",
           color: "bg-pink-400",
+          alt: "Atelier de papercraft",
         },
         {
           title: "dessin",
@@ -69,6 +70,7 @@ export default {
           link: "/dessin",
           subtitle: "Atelier de dessin",
           color: "bg-blue-400",
+          alt: "Atelier de dessin",
         },
         {
           title: "cosplay",
@@ -76,6 +78,7 @@ export default {
           link: "/cosplay",
           subtitle: "Atelier de cosplay",
           color: "bg-green-300",
+          alt: "Atelier de cosplay",
         },
         {
           title: "art gaming",
@@ -83,6 +86,7 @@ export default {
           link: "/gaming",
           subtitle: "Atelier d'art gaming",
           color: "bg-yellow-200",
+          alt: "Atelier de d'art gaming",
         },
       ],
     };

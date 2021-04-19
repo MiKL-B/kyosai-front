@@ -15,13 +15,12 @@
       </div>
       <hr />
       <div class="containerCart flex justify-around my-5 ">
-        <div class="imgCart h-60 w-60">
+        <div class="imgCart h-80 w-60">
           <img src="/kyosai.jpg" />
           <div class="infoCart">
           <h2>Titre du produit :</h2>
             <h2>{{panier}}</h2>
-         
-
+        
             <span>Catégorie :</span>
             </br>
             <select class="rounded-lg bg-white text-gray-600 hover:text-pink-400 cursor-pointer">
@@ -33,11 +32,14 @@
               <option>5</option>
             </select>
             </br>
-            <button class="bg-red-400 hover:bg-red-600 p-2 text-white rounded-lg my-5">Supprimer</button>
+          <button class="bg-red-400 hover:bg-red-600 p-2 text-white rounded-lg my-5">Supprimer</button>
+            
           </div>
+        
         </div>
 
         <div class="priceCart text-3xl">{{panier.prix}} €</div>
+        
       </div>
       <hr />
       <div class="flex justify-around p-5">

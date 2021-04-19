@@ -145,7 +145,7 @@
               <button
                 class="pl-10 text-3xl uppercase hover:text-pink-400 border-2  text-gray-200 focus:outline-none "
                 @click="logout"
-                title="deconnexion"
+                title="Déconnexion"
               >
                 <i class="fa fa-sign-out" aria-hidden="true"></i>
               </button>

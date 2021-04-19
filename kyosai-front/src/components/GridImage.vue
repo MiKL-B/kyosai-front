@@ -6,10 +6,14 @@
       <img
         class="mx-auto object-cover h-full rounded-lg"
         :src="section.imageUrl"
-        alt
+        :alt="section.alt"
       />
     </div>
-    <g-link :to="section.link" class="absolute inset-0 flex flex-col items-center justify-center opacity-90 rounded-lg transition duration-500 hover:bg-transparent" :class="[section.color]">
+    <g-link
+      :to="section.link"
+      class="absolute inset-0 flex flex-col items-center justify-center opacity-90 rounded-lg transition duration-500 hover:bg-transparent"
+      :class="[section.color]"
+    >
       <h2
         class="uppercase font-bold text-white text-2xl tracking-widest z-30 mt-8"
       >

@@ -250,15 +250,18 @@ export default {
      * @param {integer} id - The id of the product to delete from
      */
     confirmDelete(id) {
-      const answer = confirm("Êtes vous sûr de vouloir supprimer ce produit ?");
-      if (answer) {
-        axios
-          .get(`http://127.0.0.1:8000/api/admin/delete/${id}`)
-          .then((response) => {
-            //console.log("confirm delete : ", response);
-            this.getProduct();
-          });
-      }
+      const answer = this.$confirm(
+        "Êtes vous sûr de vouloir supprimer ce produit ?"
+      ).then(() => {
+        if (answer) {
+          axios
+            .get(`http://127.0.0.1:8000/api/admin/delete/${id}`)
+            .then((response) => {
+              //console.log("confirm delete : ", response);
+              this.getProduct();
+            });
+        }
+      });
     },
     getProduct() {
       axios.get("http://127.0.0.1:8000/shop/").then((response) => {
