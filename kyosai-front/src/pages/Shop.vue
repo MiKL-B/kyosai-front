@@ -105,13 +105,18 @@ export default {
      * @param {integer} id -The id of the product to add to the cart
      */
     addCart(id) {
+      axios.get(`http://127.0.0.1:8000/test/panier`).then((response) => {
+        this.testContent = response.data;
+        console.log(response.data);
+      });
+
       axios
         .get(`http://127.0.0.1:8000/panier/add/${id}`, null, {
           withCredentials: true,
         })
         .then((response) => {
           this.cartContent = response.data;
-          //console.log("cart : ", response.data);
+          console.log("cart : ", response.data);
           this.success = "Produit bien ajouté au panier !";
         });
     },
