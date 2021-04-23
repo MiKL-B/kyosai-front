@@ -71,6 +71,8 @@
 <script>
 import axios from "axios";
 import VueSimpleAlert from "vue-simple-alert";
+import jwt_decode from "jwt-decode";
+
 export default {
   metaInfo: {
     title: "Connexion",
