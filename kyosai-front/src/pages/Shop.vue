@@ -44,6 +44,7 @@
           <td>
             <button
               @click="addCart(content.id)"
+           
               class="bg-gray-600 hover:bg-pink-400 text-xl text-white rounded-md py-7 w-40 font-bold uppercase mt-5"
             >
               Acheter
@@ -82,6 +83,7 @@ export default {
       categoryContentList: [],
       cartContent: [],
       success: "",
+  
     };
   },
   //============================================================================================================================================================================================================================================================================================================================
@@ -105,14 +107,10 @@ export default {
      * @param {integer} id -The id of the product to add to the cart
      */
     addCart(id) {
-      axios.get(`http://127.0.0.1:8000/test/panier`).then((response) => {
-        this.testContent = response.data;
-        console.log(response.data);
-      });
-
       axios
-        .get(`http://127.0.0.1:8000/panier/add/${id}`, null, {
+        .get(`http://127.0.0.1:8000/test/user/${id}`, null, {
           withCredentials: true,
+        
         })
         .then((response) => {
           this.cartContent = response.data;
