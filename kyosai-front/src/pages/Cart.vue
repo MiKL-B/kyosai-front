@@ -14,13 +14,14 @@
         </div>
       </div>
       <hr />
-      <div class="containerCart flex justify-around my-5 ">
-        <div class="imgCart h-80 w-60">
+      <div class="containerCart flex justify-around my-5 " v-for="item in panier" :key="item.id">
+
+        <div class="imgCart h-80 w-60" >
           <img src="/kyosai.jpg" />
           <div class="infoCart">
           <h2>Titre du produit :</h2>
-            <h2>{{panier}}</h2>
-        
+            <h2>{{item.produit}}</h2>
+              <p>Quantité : {{item.quantity}}</p>
             <span>Catégorie :</span>
             </br>
             <select class="rounded-lg bg-white text-gray-600 hover:text-pink-400 cursor-pointer">
@@ -31,6 +32,7 @@
               <option>4</option>
               <option>5</option>
             </select>
+      
             </br>
           <button class="bg-red-400 hover:bg-red-600 p-2 text-white rounded-lg my-5">Supprimer</button>
             
@@ -38,14 +40,17 @@
         
         </div>
 
-        <div class="priceCart text-3xl">{{panier.prix}} €</div>
+        <div class="priceCart text-3xl"> €</div>
         
       </div>
       <hr />
       <div class="flex justify-around p-5">
-        <h2>Sous-total {{panier.total}} €</h2>
+        <h2>Sous-total  €</h2>
       </div>
     </div>
+
+          
+           
   </Layout>
 </template>
 
@@ -69,10 +74,32 @@ export default {
   data() {
     return {
       panier:[],
+      shopContent:[],
       name:'',
       prix:'',
     };
   },
+//============================================================================================================================================================================================================================================================================================================================
+//                                                                                                                                                                                                                                                                                                                            
+//  ###    ###  #####  ######  ##   ##   #####   ####     ####                                                                                                                                                                                                                                                              
+//  ## #  # ##  ##       ##    ##   ##  ##   ##  ##  ##  ##                                                                                                                                                                                                                                                                 
+//  ##  ##  ##  #####    ##    #######  ##   ##  ##  ##   ###                                                                                                                                                                                                                                                               
+//  ##      ##  ##       ##    ##   ##  ##   ##  ##  ##     ##                                                                                                                                                                                                                                                              
+//  ##      ##  #####    ##    ##   ##   #####   ####    ####                                                                                                                                                                                                                                                               
+//                                                                                                                                                                                                                                                                                                                            
+//============================================================================================================================================================================================================================================================================================================================
+
+methods:{
+/**
+     * @param {integer} id - Get the product by its id
+     * @return {object} -the product that corresponds to the id
+     */
+    getProductById(id) {
+      return this.shopContent.find((product) => product.id == id)
+      
+    },
+},
+
 //=======================================================================================================================================================================================================================================================================================================================
 //                                                                                                                                                                                                                                                                                                                       
 //   ####  #####    #####    ###    ######  #####  ####                                                                                                                                                                                                                                                                
@@ -84,8 +111,12 @@ export default {
 //=======================================================================================================================================================================================================================================================================================================================
   created(){
    axios.get("http://127.0.0.1:8000/panier",null,{ withCredentials: true }).then((response) => {
-       console.log(response.data);
+       console.log("panier :",response.data);
        this.panier = response.data;
+    });
+     axios.get("http://127.0.0.1:8000/shop").then((response) => {
+      console.log("shop :", response);
+      this.shopContent = response.data;
     });
   }
 };

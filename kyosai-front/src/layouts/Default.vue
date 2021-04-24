@@ -26,17 +26,17 @@
           <!--CART-->
           <g-link to="/cart" title="Mon panier">
             <div
-              v-if="showSidenav"
+              v-if="showSidenav" v-for="item in panier" :key="item.id"
               class="c-cart fixed top-4 right-80 text-7xl text-gray-600 hover:text-pink-400 cursor-pointer "
             >
-              <span class="text-4xl">0</span>
+              <span class="text-4xl">{{item.quantity}}</span>
               <i class="fa fa-shopping-cart " aria-hidden="true"></i>
             </div>
             <div
               v-else
               class="c-cart fixed top-4 right-32 text-7xl text-gray-600 hover:text-pink-400 cursor-pointer "
             >
-              <span class="text-4xl">0</span>
+              <span class="text-4xl">{{item.quantity}}</span>
               <i class="fa fa-shopping-cart " aria-hidden="true"></i>
             </div>
           </g-link>
@@ -209,6 +209,7 @@ export default {
       message: "",
       showSidenav: false,
       titre: "Menu",
+      panier:[],
       links: [
         {
           url: "https://www.facebook.com/kyosai.asso",
@@ -333,6 +334,21 @@ export default {
       }
     },
   },
+  //=======================================================================================================================================================================================================================================================================================================================
+//                                                                                                                                                                                                                                                                                                                       
+//   ####  #####    #####    ###    ######  #####  ####                                                                                                                                                                                                                                                                
+//  ##     ##  ##   ##      ## ##     ##    ##     ##  ##                                                                                                                                                                                                                                                              
+//  ##     #####    #####  ##   ##    ##    #####  ##  ##                                                                                                                                                                                                                                                              
+//  ##     ##  ##   ##     #######    ##    ##     ##  ##                                                                                                                                                                                                                                                              
+//   ####  ##   ##  #####  ##   ##    ##    #####  ####                                                                                                                                                                                                                                                                
+//                                                                                                                                                                                                                                                                                                                       
+//=======================================================================================================================================================================================================================================================================================================================
+created(){
+  axios.get('http://127.0.0.1:8000/panier').then((response)=>{
+    this.panier = response.data;
+    console.log(response);
+  })
+}
 };
 </script>
 <static-query>

@@ -193,11 +193,11 @@ export default {
     axios
       .get(`http://127.0.0.1:8000/api/admin/edit/view/${id}`)
       .then((response) => {
-        //console.log(response);
+        console.log("editcontent : ",response);
         this.editContent = response.data;
       });
     axios.get("http://127.0.0.1:8000/category/list").then((response) => {
-      //console.log(response);
+      console.log("categorycontentlist : ",response);
       this.categoryContentList = response.data;
     });
   },

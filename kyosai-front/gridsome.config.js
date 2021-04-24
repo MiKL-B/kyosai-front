@@ -13,6 +13,7 @@ if (process.env.NODE_ENV === "production")
 
 module.exports = {
   siteName: "kyosai-front",
+  icon: "src/favicon.png",
   plugins: [],
   css: {
     loaderOptions: {
