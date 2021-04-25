@@ -23,23 +23,8 @@
           >
             <span></span>
           </div>
-          <!--CART-->
-          <g-link to="/cart" title="Mon panier">
-            <div
-              v-if="showSidenav" v-for="item in panier" :key="item.id"
-              class="c-cart fixed top-4 right-80 text-7xl text-gray-600 hover:text-pink-400 cursor-pointer "
-            >
-              <span class="text-4xl">{{item.quantity}}</span>
-              <i class="fa fa-shopping-cart " aria-hidden="true"></i>
-            </div>
-            <div
-              v-else
-              class="c-cart fixed top-4 right-32 text-7xl text-gray-600 hover:text-pink-400 cursor-pointer "
-            >
-              <span class="text-4xl">{{item.quantity}}</span>
-              <i class="fa fa-shopping-cart " aria-hidden="true"></i>
-            </div>
-          </g-link>
+        
+
         </nav>
       </header>
 
@@ -140,7 +125,16 @@
       <h2 class="uppercase font-bold text-2xl pl-10 my-10">{{ titre }}</h2>
       <div class="w-80">
         <ul>
+             <!--CART-->
+          <li class="c-cart pl-10 text-3xl my-4 hover:text-pink-400 cursor-pointer" >
+          <g-link to="/cart" title="Mon panier">
+          <i class="fa fa-shopping-cart " aria-hidden="true"></i>
+              <span class="text-xl mx-10 uppercase">panier : <span v-for="item in panier" :key="item.id">{{item.quantity}}</span></span>
+          </g-link>
+            </li>
+
           <div class="flex ">
+      
             <li>
               <button
                 class="pl-10 text-3xl uppercase hover:text-pink-400 border-2  text-gray-200 focus:outline-none "
@@ -154,12 +148,13 @@
               class="mx-10 uppercase text-green-400 text-xl"
               v-if="verifUser()"
             >
-              {{ log }}
+              {{ role }}
             </li>
             <li class="mx-10 uppercase text-blue-400 text-xl" v-else>
-              {{ log }}
+              {{ role }}
             </li>
           </div>
+           
           <li
             v-if="verifUser()"
             class="pt-5 my-5 pl-10 text-xl uppercase hover:text-pink-400
@@ -203,7 +198,7 @@ export default {
 
   data() {
     return {
-      log: "",
+      role: "",
       name: "",
       email: "",
       message: "",
@@ -323,13 +318,13 @@ export default {
         let token = jwt_decode(jwt);
         //console.log(token);
         if (token.roles == "ROLE_ADMIN") {
-          this.log = "admin";
+          this.role = "admin";
           return true;
         } else if (token.roles == "ROLE_USER") {
-          this.log = "connecté";
+          this.role = "connecté";
         }
       } else {
-        this.log = "déconnecté";
+        this.role = "déconnecté";
         return false;
       }
     },

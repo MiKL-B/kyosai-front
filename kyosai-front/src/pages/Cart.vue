@@ -4,7 +4,7 @@
       Mon panier
     </h1>
 
-    <div class="bg-gray-100 shadow rounded-md text-2xl my-5 ">
+    <div v-if="verifUserCart()" class="bg-gray-100 shadow rounded-md text-2xl my-5 ">
       <div class="flex justify-around p-5">
         <div>
           <h1>Votre panier</h1>
@@ -98,6 +98,18 @@ methods:{
       return this.shopContent.find((product) => product.id == id)
       
     },
+    verifUserCart(){
+         let jwt = localStorage.getItem("jwt");
+      if (jwt) {
+        return true;
+      }else{
+        this.$router.push("/login");
+         this.$fire({
+        title: "Connectez vous pour accéder à votre panier",
+        type: "info",
+      });
+      }
+    }
 },
 
 //=======================================================================================================================================================================================================================================================================================================================

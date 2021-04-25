@@ -116,7 +116,14 @@ export default {
           this.cartContent = response.data;
           console.log("cart : ", response.data);
           this.success = "Produit bien ajouté au panier !";
+        }).catch((error)=>{
+        this.$router.push("/login");
+         this.$fire({
+                title: `Merci de vous connecter pour effectuer des achats`,
+                type: "warning",
+              });
         });
+;
     },
   },
   //=======================================================================================================================================================================================================================================================================================================================
