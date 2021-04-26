@@ -14,7 +14,7 @@
         </div>
       </div>
       <hr />
-      <div class="containerCart flex justify-around my-5 " v-for="item in panier" :key="item.id">
+      <div class="containerCart flex justify-around my-5 " v-for="item in panier" :key="item.id"  >
 
         <div class="imgCart h-80 w-60" >
           <img :src='getProductById(item.produit.substring(item.produit.lastIndexOf("/")+1)).image' />
@@ -23,7 +23,7 @@
             <h2 class="capitalize">  {{getProductById(item.produit.substring(item.produit.lastIndexOf("/")+1)).nom}}</h2>
               <p>Quantité : {{item.quantity}}</p>
 
-            </br>
+          
             <select class="rounded-lg bg-white text-gray-600 hover:text-pink-400 cursor-pointer">
               <option selected>Qté: </option>
               <option>1</option>
@@ -33,21 +33,21 @@
               <option>5</option>
             </select>
       
-            </br>
+         
           <button class="bg-red-400 hover:bg-red-600 p-2 text-white rounded-lg my-5">Supprimer</button>
             
           </div>
         
         </div>
 
-        <div class="priceCart text-3xl">{{getProductById(item.produit.substring(item.produit.lastIndexOf("/")+1)).prix}} €</div>
+        <div class="priceCart text-3xl">{{ item.quantity * getProductById(item.produit.substring(item.produit.lastIndexOf("/")+1)).prix }} €</div>
         
       
-      <hr />
+      
     
-        <h2> Sous-total {{item.quantity}}* {{getProductById(item.produit.substring(item.produit.lastIndexOf("/")+1)).prix}} €</h2>
      
       </div>
+    
     </div>
 
 
@@ -129,6 +129,8 @@ methods:{
       this.image = await getBase64(file);
       //console.log(file);
     },
+
+  
 },
 
 //=======================================================================================================================================================================================================================================================================================================================
@@ -150,6 +152,7 @@ methods:{
       this.shopContent = response.data;
     });
  
-  }
+  },
+
 };
 </script>
