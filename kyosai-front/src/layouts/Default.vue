@@ -129,7 +129,7 @@
           <li class="c-cart pl-10 text-3xl my-4 hover:text-pink-400 cursor-pointer" >
           <g-link to="/cart" title="Mon panier">
           <i class="fa fa-shopping-cart " aria-hidden="true"></i>
-              <span class="text-xl mx-10 uppercase">panier : <span v-for="item in panier" :key="item.id">{{item.quantity}}</span></span>
+              <span class="text-xl mx-10 uppercase">panier</span>
           </g-link>
             </li>
 
@@ -339,10 +339,7 @@ export default {
 //                                                                                                                                                                                                                                                                                                                       
 //=======================================================================================================================================================================================================================================================================================================================
 created(){
-  axios.get('http://127.0.0.1:8000/panier').then((response)=>{
-    this.panier = response.data;
-    console.log(response);
-  })
+ 
 }
 };
 </script>

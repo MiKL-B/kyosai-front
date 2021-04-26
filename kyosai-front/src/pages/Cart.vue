@@ -4,7 +4,7 @@
       Mon panier
     </h1>
 
-    <div v-if="verifUserCart()" class="bg-gray-100 shadow rounded-md text-2xl my-5 ">
+   <div v-if="verifUserCart()" class="bg-gray-100 shadow rounded-md text-2xl my-5 ">
       <div class="flex justify-around p-5">
         <div>
           <h1>Votre panier</h1>
@@ -17,12 +17,12 @@
       <div class="containerCart flex justify-around my-5 " v-for="item in panier" :key="item.id">
 
         <div class="imgCart h-80 w-60" >
-          <img src="/kyosai.jpg" />
+          <img :src='getProductById(item.produit.substring(item.produit.lastIndexOf("/")+1)).image' />
           <div class="infoCart">
-          <h2>Titre du produit :</h2>
-            <h2>{{item.produit}}</h2>
+        
+            <h2 class="capitalize">  {{getProductById(item.produit.substring(item.produit.lastIndexOf("/")+1)).nom}}</h2>
               <p>Quantité : {{item.quantity}}</p>
-            <span>Catégorie :</span>
+
             </br>
             <select class="rounded-lg bg-white text-gray-600 hover:text-pink-400 cursor-pointer">
               <option selected>Qté: </option>
@@ -40,16 +40,18 @@
         
         </div>
 
-        <div class="priceCart text-3xl"> €</div>
+        <div class="priceCart text-3xl">{{getProductById(item.produit.substring(item.produit.lastIndexOf("/")+1)).prix}} €</div>
         
-      </div>
+      
       <hr />
-      <div class="flex justify-around p-5">
-        <h2>Sous-total  €</h2>
+    
+        <h2> Sous-total {{item.quantity}}* {{getProductById(item.produit.substring(item.produit.lastIndexOf("/")+1)).prix}} €</h2>
+     
       </div>
     </div>
 
-          
+
+      
            
   </Layout>
 </template>
@@ -57,6 +59,14 @@
 <script>
 import axios from 'axios';
 import jwt_decode from "jwt-decode";
+//get base64 from image
+const getBase64 = (file) =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = (error) => reject(error);
+  });
 export default {
   metaInfo: {
     title: "Panier",
@@ -77,6 +87,7 @@ export default {
       shopContent:[],
       name:'',
       prix:'',
+     
     };
   },
 //============================================================================================================================================================================================================================================================================================================================
@@ -95,9 +106,9 @@ methods:{
      * @return {object} -the product that corresponds to the id
      */
     getProductById(id) {
-      return this.shopContent.find((product) => product.id == id)
-      
+      return this.shopContent && this.shopContent.find((product) => product.id == id); 
     },
+  
     verifUserCart(){
          let jwt = localStorage.getItem("jwt");
       if (jwt) {
@@ -109,7 +120,15 @@ methods:{
         type: "info",
       });
       }
-    }
+    },
+        /**
+     * @param {event} event - Manage the download of the image asynchronously
+     */
+    async handleUpload(event) {
+      const file = event.target.files[0];
+      this.image = await getBase64(file);
+      //console.log(file);
+    },
 },
 
 //=======================================================================================================================================================================================================================================================================================================================
@@ -130,6 +149,7 @@ methods:{
       console.log("shop :", response);
       this.shopContent = response.data;
     });
+ 
   }
 };
 </script>
