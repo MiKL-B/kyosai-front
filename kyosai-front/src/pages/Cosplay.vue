@@ -45,8 +45,8 @@ export default {
         "https://public-api.wordpress.com/rest/v1.1/sites/assokyosai.wordpress.com/posts/2187/"
       )
       .then((response) => {
-        //console.log(response);
         this.cosplayContent = response.data.content;
+        
       });
   },
 };

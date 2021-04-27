@@ -160,10 +160,8 @@ export default {
                 text: "Vous êtes bien inscrit",
                 type: "success",
               });
-              //console.log(response);
             })
             .catch((error) => {
-              console.log("error", error.response.data);
               this.error = error.response.data.errors.violations[0].title;
             });
 

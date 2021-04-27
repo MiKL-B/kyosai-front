@@ -134,7 +134,6 @@ export default {
      * - Modify product information
      */
     submitEdit() {
-      //console.log(this.image);
 
       const { id } = this.$route.params;
       axios
@@ -146,7 +145,6 @@ export default {
         })
         .then((response) => {
           this.$router.push("/admin");
-          //console.log(response);
         });
       this.success = "Produit modifié avec succés ! ";
     },
@@ -156,7 +154,6 @@ export default {
     async handleUpload(event) {
       const file = event.target.files[0];
       this.image = await getBase64(file);
-      //console.log(file);
     },
 
     /**
@@ -193,11 +190,9 @@ export default {
     axios
       .get(`http://127.0.0.1:8000/api/admin/edit/view/${id}`)
       .then((response) => {
-        console.log("editcontent : ",response);
         this.editContent = response.data;
       });
     axios.get("http://127.0.0.1:8000/category/list").then((response) => {
-      console.log("categorycontentlist : ",response);
       this.categoryContentList = response.data;
     });
   },

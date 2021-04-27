@@ -15,27 +15,16 @@
       </div>
       <hr />
       <div class="containerCart flex justify-around my-5 " v-for="item in panier" :key="item.id"  >
-
         <div class="imgCart h-80 w-60" >
-          <img :src='getProductById(item.produit.substring(item.produit.lastIndexOf("/")+1)).image' />
-          <div class="infoCart">
-        
+          <img class="h-40" :src='getProductById(item.produit.substring(item.produit.lastIndexOf("/")+1)).image' />
             <h2 class="capitalize">  {{getProductById(item.produit.substring(item.produit.lastIndexOf("/")+1)).nom}}</h2>
               <p>Quantité : {{item.quantity}}</p>
-
-      
-          <button @click="deleteCart(item.id)" class="bg-red-400 hover:bg-red-600 p-2 text-white rounded-lg my-5">Supprimer</button>
-            
-          </div>
-        
+          <button @click="deleteCart(item.id)" class="bg-red-400 hover:bg-red-600 p-2 text-white rounded-lg my-5">Supprimer</button> 
         </div>
-
         <div class="priceCart text-3xl">{{ item.quantity * getProductById(item.produit.substring(item.produit.lastIndexOf("/")+1)).prix }} €</div>
-
       </div>
-    
     </div>
-
+   
 
       
            
@@ -113,7 +102,6 @@ methods:{
     async handleUpload(event) {
       const file = event.target.files[0];
       this.image = await getBase64(file);
-      //console.log(file);
     },
 
   deleteCart(id){
@@ -135,7 +123,6 @@ methods:{
   },
   getCart(){
       axios.get("http://127.0.0.1:8000/panier",null,{ withCredentials: true }).then((response) => {
-       console.log("panier :",response.data);
        this.panier = response.data;
     });
   }
@@ -154,11 +141,11 @@ methods:{
 
    this.getCart();
      axios.get("http://127.0.0.1:8000/shop").then((response) => {
-      console.log("shop :", response);
       this.shopContent = response.data;
     });
  
   },
+
 
 };
 </script>

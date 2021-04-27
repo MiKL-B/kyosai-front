@@ -129,7 +129,7 @@
           <li class="c-cart pl-10 text-3xl my-4 hover:text-pink-400 cursor-pointer" >
           <g-link to="/cart" title="Mon panier">
           <i class="fa fa-shopping-cart " aria-hidden="true"></i>
-              <span class="text-xl mx-10 uppercase">panier</span>
+              <span class="text-xl mx-10 uppercase">panier : {{totalProducts}}</span>
           </g-link>
             </li>
 
@@ -305,8 +305,11 @@ export default {
           message: this.message,
         })
         .then((response) => {
-          //console.log("mail envoyé", response);
           this.mailContact = response.data;
+                   this.$fire({
+        title: "Mail bien envoyé 😁",
+        type: "success",
+      });
         });
     },
     /**
@@ -316,7 +319,6 @@ export default {
       let jwt = localStorage.getItem("jwt");
       if (jwt) {
         let token = jwt_decode(jwt);
-        //console.log(token);
         if (token.roles == "ROLE_ADMIN") {
           this.role = "admin";
           return true;
@@ -339,8 +341,17 @@ export default {
 //                                                                                                                                                                                                                                                                                                                       
 //=======================================================================================================================================================================================================================================================================================================================
 created(){
- 
-}
+      axios.get("http://127.0.0.1:8000/panier",null,{ withCredentials: true }).then((response) => {
+       this.panier = response.data;
+    });
+},
+  computed:{
+    totalProducts () {
+      return this.panier.reduce((sum, product)=>{
+        return sum + product.quantity 
+      }, 0)
+    }
+  }
 };
 </script>
 <static-query>

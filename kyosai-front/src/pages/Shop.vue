@@ -1,12 +1,7 @@
 <template>
   <Layout>
     <h1 class="text-blue-400 text-4xl text-center">Boutique</h1>
-    <div
-      v-if="success"
-      class="text-center bg-green-200 rounded-lg text-green-600 w-96 mx-auto p-3 uppercase tracking-widest text-lg"
-    >
-      {{ success }}
-    </div>
+  
     <div
       class="flex flex-wrap justify-around my-10 bg-gray-100 shadow-lg rounded-lg"
       v-for="content in shopContent"
@@ -81,8 +76,6 @@ export default {
       shopContent: "",
       categoryContentList: [],
       cartContent: [],
-      success: "",
-  
     };
   },
   //============================================================================================================================================================================================================================================================================================================================
@@ -108,14 +101,16 @@ export default {
   
     addCart(id) {
       axios
-        .get(`http://127.0.0.1:8000/test/user/${id}`, null, {
+        .get(`http://127.0.0.1:8000/add/cart/${id}`, null, {
           withCredentials: true,
         
         })
         .then((response) => {
           this.cartContent = response.data;
-          console.log("cart : ", response.data);
-          this.success = "Produit bien ajouté au panier !";
+            this.$fire({
+        title: "Produit ajouté au panier",
+        type: "success",
+      });
         }).catch((error)=>{
         this.$router.push("/login");
          this.$fire({
@@ -140,7 +135,6 @@ export default {
 
   created() {
     axios.get("http://127.0.0.1:8000/shop/").then((response) => {
-      //console.log("shop :", response);
       this.shopContent = response.data;
     });
 

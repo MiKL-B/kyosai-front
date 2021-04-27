@@ -207,7 +207,6 @@ export default {
      * - Add a new product to the database
      */
     addNewProduct() {
-      //console.log(this.image);
       axios
         .post("http://127.0.0.1:8000/api/admin", {
           name_produit: this.name,
@@ -216,7 +215,6 @@ export default {
           category_produit: this.category,
         })
         .then((response) => {
-          //console.log(response);
           this.getProduct();
         });
       this.success = "Produit ajouté avec succés ! ";
@@ -227,7 +225,6 @@ export default {
     async handleUpload(event) {
       const file = event.target.files[0];
       this.image = await getBase64(file);
-      //console.log(file);
     },
 
     /**
@@ -257,7 +254,6 @@ export default {
           axios
             .get(`http://127.0.0.1:8000/api/admin/delete/${id}`)
             .then((response) => {
-              //console.log("confirm delete : ", response);
               this.getProduct();
             });
         }
@@ -265,7 +261,6 @@ export default {
     },
     getProduct() {
       axios.get("http://127.0.0.1:8000/shop/").then((response) => {
-        //console.log("shop ", response);
         this.shopContent = response.data;
       });
     },
