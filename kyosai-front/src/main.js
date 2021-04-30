@@ -2,15 +2,16 @@
 // The Client API can be used here. Learn more: gridsome.org/docs/client-api
 require("~/style.css");
 
-import DefaultLayout from "~/layouts/Default.vue";
+import Layout from "~/layouts/Default.vue";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
 import Vuex from "vuex";
 import VueSimpleAlert from "vue-simple-alert";
 
-export default function(Vue, { router, head, isClient, appOptions }) {
+export default function (Vue, { router, head, isClient, appOptions }) {
   Vue.use(Vuex);
   Vue.use(VueSimpleAlert);
+  Vue.component('Layout', Layout);
   //vuex
   appOptions.store = new Vuex.Store({
     state: {
@@ -27,9 +28,6 @@ export default function(Vue, { router, head, isClient, appOptions }) {
     href:
       "https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome-font-awesome.min.css?ver=5.2",
   });
-
-  // Set default layout as a global component
-  Vue.component("Layout", DefaultLayout);
 
   router.beforeEach((to, from, next) => {
     if (to.path === "/admin") {

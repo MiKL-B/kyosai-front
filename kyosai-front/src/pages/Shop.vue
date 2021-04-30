@@ -98,7 +98,6 @@ export default {
     /**
      * @param {integer} id -The id of the product to add to the cart
      */
-  
     addCart(id) {
       axios
         .get(`http://127.0.0.1:8000/add/cart/${id}`, null, {

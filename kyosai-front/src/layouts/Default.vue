@@ -23,8 +23,6 @@
           >
             <span></span>
           </div>
-        
-
         </nav>
       </header>
 
@@ -125,16 +123,19 @@
       <h2 class="uppercase font-bold text-2xl pl-10 my-10">{{ titre }}</h2>
       <div class="w-80">
         <ul>
-             <!--CART-->
-          <li class="c-cart pl-10 text-3xl my-4 hover:text-pink-400 cursor-pointer" >
-          <g-link to="/cart" title="Mon panier">
-          <i class="fa fa-shopping-cart " aria-hidden="true"></i>
-              <span class="text-xl mx-10 uppercase">panier : {{totalProducts}}</span>
-          </g-link>
-            </li>
+          <!--CART-->
+          <li
+            class="c-cart pl-10 text-3xl my-4 hover:text-pink-400 cursor-pointer"
+          >
+            <g-link to="/cart" title="Mon panier">
+              <i class="fa fa-shopping-cart " aria-hidden="true"></i>
+              <span class="text-xl mx-10 uppercase"
+                >panier : {{ totalProducts }}</span
+              >
+            </g-link>
+          </li>
 
           <div class="flex ">
-      
             <li>
               <button
                 class="pl-10 text-3xl uppercase hover:text-pink-400 border-2  text-gray-200 focus:outline-none "
@@ -154,7 +155,7 @@
               {{ role }}
             </li>
           </div>
-           
+
           <li
             v-if="verifUser()"
             class="pt-5 my-5 pl-10 text-xl uppercase hover:text-pink-400
@@ -183,6 +184,7 @@ import axios from "axios";
 import VueSimpleAlert from "vue-simple-alert";
 import jwt_decode from "jwt-decode";
 export default {
+  name: "Layout",
   components: { SocialLink, MenuBurgerLink },
 
   metaInfo: {},
@@ -204,68 +206,68 @@ export default {
       message: "",
       showSidenav: false,
       titre: "Menu",
-      panier:[],
+      panier: [],
       links: [
         {
           url: "https://www.facebook.com/kyosai.asso",
-          icone: "fa fa-facebook",
+          icone: "fa fa-facebook"
         },
         {
           url:
             "https://www.instagram.com/asso_kyosai/?fbclid=IwAR1IxNP1jUFVc7XRr0R-Adpen4RHWzgB1Yia9MIPNu5a0o5YW6RjLwvJ0zY",
-          icone: "fa fa-instagram",
+          icone: "fa fa-instagram"
         },
         {
           url: "https://twitter.com/AssoKyosai",
-          icone: "fa fa-twitter",
+          icone: "fa fa-twitter"
         },
         {
           url: "",
-          icone: "fa fa-phone",
-        },
+          icone: "fa fa-phone"
+        }
       ],
       burgers: [
         {
           link: "/register",
-          menu: "inscription / login",
+          menu: "inscription / login"
         },
         {
           link: "/",
-          menu: "Accueil",
+          menu: "Accueil"
         },
         {
           link: "/papercraft",
           menu: "Papercraft",
-          color: "text-pink-400",
+          color: "text-pink-400"
         },
         {
           link: "/dessin",
           menu: "Dessin",
-          color: "text-blue-400",
+          color: "text-blue-400"
         },
         {
           link: "/cosplay",
           menu: "Cosplay",
-          color: "text-green-400",
+          color: "text-green-400"
         },
         {
           link: "/gaming",
           menu: "Art Gaming",
-          color: "text-yellow-400",
+          color: "text-yellow-400"
         },
         {
           link: "/convention",
-          menu: "Convention",
+          menu: "Convention"
         },
         {
           link: "/shop",
-          menu: "Boutique",
+          menu: "Boutique"
         },
         {
           link: "/about",
-          menu: "à propos",
-        },
-      ],
+          menu: "à propos"
+        }
+      ]
     };
   },
   //============================================================================================================================================================================================================================================================================================================================
@@ -289,7 +291,7 @@ export default {
       this.$fire({
         title: "Au revoir 😥",
         text: "Vous êtes bien déconnecté",
-        type: "success",
+        type: "success"
       });
       this.$router.push("/");
       this.showSidenav = false;
@@ -302,14 +304,14 @@ export default {
         .post("http://127.0.0.1:8000/mail/contact", {
           name: this.name,
           email: this.email,
-          message: this.message,
+          message: this.message
         })
-        .then((response) => {
+        .then(response => {
           this.mailContact = response.data;
-                   this.$fire({
-        title: "Mail bien envoyé 😁",
-        type: "success",
-      });
+          this.$fire({
+            title: "Mail bien envoyé 😁",
+            type: "success"
+          });
         });
     },
     /**
@@ -329,27 +331,29 @@ export default {
         this.role = "déconnecté";
         return false;
       }
-    },
+    }
   },
   //=======================================================================================================================================================================================================================================================================================================================
-//                                                                                                                                                                                                                                                                                                                       
-//   ####  #####    #####    ###    ######  #####  ####                                                                                                                                                                                                                                                                
-//  ##     ##  ##   ##      ## ##     ##    ##     ##  ##                                                                                                                                                                                                                                                              
-//  ##     #####    #####  ##   ##    ##    #####  ##  ##                                                                                                                                                                                                                                                              
-//  ##     ##  ##   ##     #######    ##    ##     ##  ##                                                                                                                                                                                                                                                              
-//   ####  ##   ##  #####  ##   ##    ##    #####  ####                                                                                                                                                                                                                                                                
-//                                                                                                                                                                                                                                                                                                                       
-//=======================================================================================================================================================================================================================================================================================================================
-created(){
-      axios.get("http://127.0.0.1:8000/panier",null,{ withCredentials: true }).then((response) => {
-       this.panier = response.data;
-    });
-},
-  computed:{
-    totalProducts () {
-      return this.panier.reduce((sum, product)=>{
-        return sum + product.quantity 
-      }, 0)
+  //
+  //   ####  #####    #####    ###    ######  #####  ####
+  //  ##     ##  ##   ##      ## ##     ##    ##     ##  ##
+  //  ##     #####    #####  ##   ##    ##    #####  ##  ##
+  //  ##     ##  ##   ##     #######    ##    ##     ##  ##
+  //   ####  ##   ##  #####  ##   ##    ##    #####  ####
+  //
+  //=======================================================================================================================================================================================================================================================================================================================
+  created() {
+    axios
+      .get("http://127.0.0.1:8000/panier", null, { withCredentials: true })
+      .then(response => {
+        this.panier = response.data;
+      });
+  },
+  computed: {
+    totalProducts() {
+      return this.panier.reduce((sum, product) => {
+        return sum + product.quantity;
+      }, 0);
     }
   }
 };
