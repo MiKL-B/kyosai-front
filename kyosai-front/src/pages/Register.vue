@@ -19,12 +19,15 @@
         <tr>
           <td>
             <input
-              class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400 ring-1 ring-red-400"
+              class="p-5 text-lg border-2 rounded-lg focus:outline-none
+            focus:ring-2 focus:ring-pink-400 focus:text-pink-400 ring-1
+            ring-red-400"
               v-model="name"
               name="name"
               type="text"
               placeholder="Nom"
-              minlength="4"
+              pattern="[a-zA-Z]{4,8}"
+              title="4 à 8 lettres"
             />
           </td>
         </tr>
@@ -100,7 +103,7 @@ import axios from "axios";
 import VueSimpleAlert from "vue-simple-alert";
 export default {
   metaInfo: {
-    title: "Inscription",
+    title: "Inscription"
   },
   //==================================================================================================================================================================================================================================================================================================
   //
@@ -120,7 +123,7 @@ export default {
       email: "",
       mdp: "",
       name: "",
-      confirm_mdp: "",
+      confirm_mdp: ""
     };
   },
   //============================================================================================================================================================================================================================================================================================================================
@@ -150,18 +153,18 @@ export default {
             .post("http://127.0.0.1:8000/register", {
               email: this.email,
               firstname: this.name,
-              mdp: this.mdp,
+              mdp: this.mdp
             })
-            .then((response) => {
+            .then(response => {
               //redirection if form validated
               this.$router.push("/login");
               this.$fire({
                 title: `Bienvenue parmis nous ${this.name} 🏆`,
                 text: "Vous êtes bien inscrit",
-                type: "success",
+                type: "success"
               });
             })
-            .catch((error) => {
+            .catch(error => {
               this.error = error.response.data.errors.violations[0].title;
             });
 
@@ -194,7 +197,7 @@ export default {
     validEmail: function(email) {
       var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
-    },
-  },
+    }
+  }
 };
 </script>

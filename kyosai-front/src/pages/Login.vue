@@ -14,6 +14,8 @@
               class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400"
               name="name"
               placeholder="Pseudo"
+              pattern="[a-zA-Z]{4,8}"
+              title="4 à 8 lettres"
             />
           </td>
         </tr>
@@ -75,7 +77,7 @@ import jwt_decode from "jwt-decode";
 
 export default {
   metaInfo: {
-    title: "Connexion",
+    title: "Connexion"
   },
   //==================================================================================================================================================================================================================================================================================================
   //
@@ -92,7 +94,7 @@ export default {
       name: "",
       tokenContent: "",
       email: "",
-      password: "",
+      password: ""
     };
   },
   //============================================================================================================================================================================================================================================================================================================================
@@ -114,25 +116,31 @@ export default {
         .post("http://127.0.0.1:8000/api/login_check", {
           name: this.name,
           email: this.email,
-          password: this.password,
+          password: this.password
         })
-        .then((response) => {
+        .then(response => {
           this.tokenContent = response.data;
           //store the token
           let jwt = this.tokenContent.token;
           localStorage.setItem("jwt", jwt);
           this.$store.commit("updateLogin", true);
           axios.defaults.headers.common = {
-            Authorization: `Bearer ${jwt}`,
+            Authorization: `Bearer ${jwt}`
           };
           this.$router.push("/");
           this.$fire({
             title: `Bonjour ${this.name} 😃`,
             text: "Vous êtes connecté",
-            type: "success",
+            type: "success"
+          });
+        })
+        .catch(error => {
+          this.$fire({
+            title: "Ces identifiants n'existent pas",
+            type: "warning"
           });
         });
-    },
-  },
+    }
+  }
 };
 </script>
