@@ -6,12 +6,12 @@
       class="flex flex-wrap justify-around my-10 bg-gray-100 shadow-lg rounded-lg"
       v-for="content in shopContent"
       :key="content.nom"
-      :content="content"
+      :content="content" 
     >
       <table class="w-96 my-10">
         <tr>
           <td>
-            <h3 class="text-3xl capitalize ">{{ content.nom }}</h3>
+            <h3 class="text-3xl capitalize " >{{ content.nom }}</h3>
           </td>
         </tr>
         <tr>
@@ -38,7 +38,7 @@
         <tr>
           <td>
             <button
-              @click="addCart(content.id)"
+              @click="addCart(content.id)" data-cy="addToCart"
            
               class="bg-gray-600 hover:bg-pink-400 text-xl text-white rounded-md py-7 w-40 font-bold uppercase mt-5"
             >

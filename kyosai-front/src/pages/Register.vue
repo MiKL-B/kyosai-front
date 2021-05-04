@@ -58,7 +58,7 @@
         <tr>
           <td class="text-center text-xl">
             <span>Déjà un compte ?</span
-            ><g-link class="text-blue-400" to="/login">
+            ><g-link class="text-blue-400" to="/login"  data-cy="toLogin" >
               Cliquez ici !
             </g-link>
           </td>

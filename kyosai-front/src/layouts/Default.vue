@@ -1,7 +1,7 @@
 <template>
   <div class="p-4">
-    <div>
-      <header class="container mx-auto flex mb-4">
+    <div >
+      <header class="container mx-auto flex mb-4" >
         <!-- LOGO -->
 
         <g-link
@@ -14,7 +14,7 @@
           >
         </g-link>
 
-        <nav class="fixed z-10 top-8 right-8">
+        <nav class="fixed z-10 top-8 right-8" data-cy="menu">
           <!-- MENU BURGER -->
           <div
             @click="showSidenav = !showSidenav"
@@ -127,11 +127,9 @@
           <li
             class="c-cart pl-10 text-3xl my-4 hover:text-pink-400 cursor-pointer"
           >
-            <g-link to="/cart" title="Mon panier">
+            <g-link to="/cart" title="Mon panier" data-cy="cart">
               <i class="fa fa-shopping-cart " aria-hidden="true"></i>
-              <span class="text-xl mx-10 uppercase"
-                >panier : {{ totalProducts }}</span
-              >
+              <span class="text-xl mx-10 uppercase">panier </span>
             </g-link>
           </li>
 
@@ -229,43 +227,52 @@ export default {
       burgers: [
         {
           link: "/register",
-          menu: "inscription / login"
+          menu: "inscription / login",
+          cy: "register"
         },
         {
           link: "/",
-          menu: "Accueil"
+          menu: "Accueil",
+          cy: "accueil"
         },
         {
           link: "/papercraft",
           menu: "Papercraft",
-          color: "text-pink-400"
+          color: "text-pink-400",
+          cy: "papercraft"
         },
         {
           link: "/dessin",
           menu: "Dessin",
-          color: "text-blue-400"
+          color: "text-blue-400",
+          cy: "dessin"
         },
         {
           link: "/cosplay",
           menu: "Cosplay",
-          color: "text-green-400"
+          color: "text-green-400",
+          cy: "cosplay"
         },
         {
           link: "/gaming",
           menu: "Art Gaming",
-          color: "text-yellow-400"
+          color: "text-yellow-400",
+          cy: "gaming"
         },
         {
           link: "/convention",
-          menu: "Convention"
+          menu: "Convention",
+          cy: "convention"
         },
         {
           link: "/shop",
-          menu: "Boutique"
+          menu: "Boutique",
+          cy: "shop"
         },
         {
           link: "/about",
-          menu: "à propos"
+          menu: "à propos",
+          cy: "about"
         }
       ]
     };
@@ -332,30 +339,24 @@ export default {
         return false;
       }
     }
-  },
-  //=======================================================================================================================================================================================================================================================================================================================
-  //
-  //   ####  #####    #####    ###    ######  #####  ####
-  //  ##     ##  ##   ##      ## ##     ##    ##     ##  ##
-  //  ##     #####    #####  ##   ##    ##    #####  ##  ##
-  //  ##     ##  ##   ##     #######    ##    ##     ##  ##
-  //   ####  ##   ##  #####  ##   ##    ##    #####  ####
-  //
-  //=======================================================================================================================================================================================================================================================================================================================
-  created() {
-    axios
-      .get("http://127.0.0.1:8000/panier", null, { withCredentials: true })
-      .then(response => {
-        this.panier = response.data;
-      });
-  },
-  computed: {
-    totalProducts() {
-      return this.panier.reduce((sum, product) => {
-        return sum + product.quantity;
-      }, 0);
-    }
   }
+  //====================================================================================================================================================================================================================================================================================================================================
+  //
+  //   ####   #####   ###    ###  #####   ##   ##  ######  #####  ####
+  //  ##     ##   ##  ## #  # ##  ##  ##  ##   ##    ##    ##     ##  ##
+  //  ##     ##   ##  ##  ##  ##  #####   ##   ##    ##    #####  ##  ##
+  //  ##     ##   ##  ##      ##  ##      ##   ##    ##    ##     ##  ##
+  //   ####   #####   ##      ##  ##       #####     ##    #####  ####
+  //
+  //====================================================================================================================================================================================================================================================================================================================================
+
+  // computed: {
+  //   totalProducts() {
+  //     return this.panier.reduce((sum, product) => {
+  //       return sum + product.quantity;
+  //     }, 0);
+  //   }
+  // }
 };
 </script>
 <static-query>

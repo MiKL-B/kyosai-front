@@ -118,13 +118,14 @@ export default {
     verifyUserCart() {
       let jwt = localStorage.getItem("jwt");
       if (jwt) {
+        let token = jwt_decode(jwt);
         return true;
       } else {
         this.$router.push("/login");
-        // this.$fire({
-        //   title: "Connectez vous pour accéder à votre panier",
-        //   type: "info"
-        // });
+        this.$fire({
+          title: "Connectez vous pour accéder à votre panier",
+          type: "info"
+        });
       }
     },
     /**

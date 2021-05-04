@@ -26,6 +26,7 @@
               class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400 ring-1 ring-red-400"
               name="email"
               placeholder="Adresse email"
+              data-cy="email"
             />
           </td>
         </tr>
@@ -38,6 +39,7 @@
               name="mdp"
               type="password"
               placeholder="Mot de passe"
+              data-cy="mdp"
             />
           </td>
         </tr>
@@ -60,6 +62,7 @@
             <button
               class="p-3 text-lg flex my-2 mx-auto bg-gray-600 hover:bg-pink-400 rounded-lg text-white uppercase"
               type="submit"
+              data-cy="submitLogin"
             >
               Connexion
             </button>
@@ -131,7 +134,8 @@ export default {
           this.$fire({
             title: `Bonjour ${this.name} 😃`,
             text: "Vous êtes connecté",
-            type: "success"
+            type: "success",
+           
           });
         })
         .catch(error => {
