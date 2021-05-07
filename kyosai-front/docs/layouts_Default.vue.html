@@ -1,52 +1,80 @@
-<template>
-  <div class="p-4">
-    <div>
-      <header class="container mx-auto flex mb-4">
-        <!-- LOGO -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: layouts/Default.vue</title>
 
-        <g-link
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: layouts/Default.vue</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>&lt;template>
+  &lt;div class="p-4">
+    &lt;div>
+      &lt;header class="container mx-auto flex mb-4">
+        &lt;!-- LOGO -->
+
+        &lt;g-link
           to="/"
           class="flex flex-col items-start sm:flex-row sm:items-center p-4 -ml-4"
         >
-          <img class="h-28 sm:h-32 md:h-40 mr-4" src="/logo.png" alt />
-          <span class="font-papyrus text-red-400 font-black text-2xl uppercase"
-            >Kyosai</span
+          &lt;img class="h-28 sm:h-32 md:h-40 mr-4" src="/logo.png" alt />
+          &lt;span class="font-papyrus text-red-400 font-black text-2xl uppercase"
+            >Kyosai&lt;/span
           >
-        </g-link>
+        &lt;/g-link>
 
-        <nav class="fixed z-10 top-8 right-8" data-cy="menu">
-          <!-- MENU BURGER -->
-          <div
+        &lt;nav class="fixed z-10 top-8 right-8" data-cy="menu">
+          &lt;!-- MENU BURGER -->
+          &lt;div
             @click="showSidenav = !showSidenav"
             class="menu-btn text-7xl font-bold rounded-lg"
             :class="{ open: showSidenav }"
           >
-            <span></span>
-          </div>
-        </nav>
-      </header>
+            &lt;span>&lt;/span>
+          &lt;/div>
+        &lt;/nav>
+      &lt;/header>
 
-      <div id="wrapper" class="container mx-auto relative mb-4 text-gray-700">
-        <slot />
-      </div>
-    </div>
+      &lt;div id="wrapper" class="container mx-auto relative mb-4 text-gray-700">
+        &lt;slot />
+      &lt;/div>
+    &lt;/div>
 
-    <!-- FOOTER -->
-    <footer class="bg-gray-100 flex flex-wrap flex-col xl:flex-row" id="footer">
-      <div class="container mx-auto py-4 flex flex-col xl:flex-row xl:relative">
-        <!-- CONTACT -->
-        <section class="mb-20 lg:mb-0 xl:py-10">
-          <h2
+    &lt;!-- FOOTER -->
+    &lt;footer class="bg-gray-100 flex flex-wrap flex-col xl:flex-row" id="footer">
+      &lt;div class="container mx-auto py-4 flex flex-col xl:flex-row xl:relative">
+        &lt;!-- CONTACT -->
+        &lt;section class="mb-20 lg:mb-0 xl:py-10">
+          &lt;h2
             class="text-xl sm:text-2xl font-bold uppercase tracking-widest mb-10 text-center xl:text-left xl:mx-5"
           >
             Restons en contact
-          </h2>
-          <!--FORM-->
-          <form @submit.prevent="sendMail">
-            <div class="flex flex-col flex-wrap xl:flex-row">
-              <!--NAME-->
-              <div class="md:mx-auto xl:mx-5">
-                <input
+          &lt;/h2>
+          &lt;!--FORM-->
+          &lt;form @submit.prevent="sendMail">
+            &lt;div class="flex flex-col flex-wrap xl:flex-row">
+              &lt;!--NAME-->
+              &lt;div class="md:mx-auto xl:mx-5">
+                &lt;input
                   v-model="name"
                   type="text"
                   name="name"
@@ -54,10 +82,10 @@
                   placeholder="Nom"
                   class="bg-transparent w-72  sm:w-full md:w-96   h-20 border-b-2 focus:outline-none focus:border-pink-400 text-xl"
                 />
-              </div>
-              <!--EMAIL-->
-              <div class="md:mx-auto xl:mx-5">
-                <input
+              &lt;/div>
+              &lt;!--EMAIL-->
+              &lt;div class="md:mx-auto xl:mx-5">
+                &lt;input
                   v-model="email"
                   type="email"
                   name="email"
@@ -65,11 +93,11 @@
                   placeholder="Adresse email"
                   class="bg-transparent  w-72 sm:w-full md:w-96 mb-2 h-20 border-b-2 focus:outline-none focus:border-pink-400 text-xl "
                 />
-              </div>
-              <!--MESSAGE-->
-              <div class="md:mx-auto xl:mx-5">
-                <div>
-                  <textarea
+              &lt;/div>
+              &lt;!--MESSAGE-->
+              &lt;div class="md:mx-auto xl:mx-5">
+                &lt;div>
+                  &lt;textarea
                     v-model="message"
                     name="message"
                     id="message"
@@ -78,104 +106,104 @@
                     rows="45"
                     style="overflow: hidden; resize: none; height: 100px"
                     class="bg-transparent w-72 sm:w-full md:w-96 my-2 h-20 border-b-2 focus:outline-none focus:border-pink-400 text-xl "
-                  ></textarea>
-                </div>
-              </div>
-            </div>
-            <!--SUBMIT-->
-            <ul>
-              <li>
-                <input
+                  >&lt;/textarea>
+                &lt;/div>
+              &lt;/div>
+            &lt;/div>
+            &lt;!--SUBMIT-->
+            &lt;ul>
+              &lt;li>
+                &lt;input
                   type="submit"
                   value="Envoyer"
                   class="mt-8 py-7 w-72 xl:w-40 xl:mx-5 sm:w-full bg-gray-600 text-white font-bold uppercase rounded-md hover:bg-pink-400 cursor-pointer  text-xl"
                 />
-              </li>
-            </ul>
-          </form>
-        </section>
-        <!-- FOLLOW -->
-        <section class="lg:py-10  ">
-          <h2
+              &lt;/li>
+            &lt;/ul>
+          &lt;/form>
+        &lt;/section>
+        &lt;!-- FOLLOW -->
+        &lt;section class="lg:py-10  ">
+          &lt;h2
             class="text-xl sm:text-2xl font-bold uppercase tracking-widest mb-10 text-center xl:text-left "
           >
             Nous suivre
-          </h2>
-          <ul class=" flex flex-row mx-5 md:mx-auto ">
-            <SocialLink v-for="link in links" :key="link.url" :link="link" />
-          </ul>
-        </section>
-        <!-- COPYRIGHT -->
+          &lt;/h2>
+          &lt;ul class=" flex flex-row mx-5 md:mx-auto ">
+            &lt;SocialLink v-for="link in links" :key="link.url" :link="link" />
+          &lt;/ul>
+        &lt;/section>
+        &lt;!-- COPYRIGHT -->
 
-        <ul
+        &lt;ul
           class="flex flex-col sm:flex-row md:mx-auto xl:absolute xl:bottom-0 mt-10 mx-5  xl:mx-5 text-gray-300 text-xl "
         >
-          <li>@ untitled all rights reserved |</li>
+          &lt;li>@ untitled all rights reserved |&lt;/li>
 
-          <li>design: <a href="#"> </a> |</li>
+          &lt;li>design: &lt;a href="#"> &lt;/a> |&lt;/li>
 
-          <li>demo image <a href="#"></a></li>
-        </ul>
-      </div>
-    </footer>
-    <!--SIDENAV-->
-    <div v-if="showSidenav" class="sidenav h-full z-20">
-      <h2 class="uppercase font-bold text-2xl pl-10 my-10">{{ titre }}</h2>
-      <div class="w-80">
-        <ul>
-          <!--CART-->
-          <li
+          &lt;li>demo image &lt;a href="#">&lt;/a>&lt;/li>
+        &lt;/ul>
+      &lt;/div>
+    &lt;/footer>
+    &lt;!--SIDENAV-->
+    &lt;div v-if="showSidenav" class="sidenav h-full z-20">
+      &lt;h2 class="uppercase font-bold text-2xl pl-10 my-10">{{ titre }}&lt;/h2>
+      &lt;div class="w-80">
+        &lt;ul>
+          &lt;!--CART-->
+          &lt;li
             class="c-cart pl-10 text-3xl my-4 hover:text-pink-400 cursor-pointer"
           >
-            <g-link to="/cart" title="Mon panier" data-cy="cart">
-              <i class="fa fa-shopping-cart " aria-hidden="true"></i>
-              <span class="text-xl mx-10 uppercase">panier </span>
-            </g-link>
-          </li>
+            &lt;g-link to="/cart" title="Mon panier" data-cy="cart">
+              &lt;i class="fa fa-shopping-cart " aria-hidden="true">&lt;/i>
+              &lt;span class="text-xl mx-10 uppercase">panier &lt;/span>
+            &lt;/g-link>
+          &lt;/li>
 
-          <div class="flex ">
-            <li>
-              <button
+          &lt;div class="flex ">
+            &lt;li>
+              &lt;button
                 class="pl-10 text-3xl uppercase hover:text-pink-400 border-2  text-gray-200 focus:outline-none "
                 @click="logout"
                 title="Déconnexion"
               >
-                <i class="fa fa-sign-out" aria-hidden="true"></i>
-              </button>
-            </li>
-            <li
+                &lt;i class="fa fa-sign-out" aria-hidden="true">&lt;/i>
+              &lt;/button>
+            &lt;/li>
+            &lt;li
               class="mx-10 uppercase text-green-400 text-xl"
               v-if="verifUser()"
             >
               {{ role }}
-            </li>
-            <li class="mx-10 uppercase text-blue-400 text-xl" v-else>
+            &lt;/li>
+            &lt;li class="mx-10 uppercase text-blue-400 text-xl" v-else>
               {{ role }}
-            </li>
-          </div>
+            &lt;/li>
+          &lt;/div>
 
-          <li
+          &lt;li
             v-if="verifUser()"
             class="pt-5 my-5 pl-10 text-xl uppercase hover:text-pink-400
             border-t-2 border-gray-200"
           >
-            <g-link to="/admin">
+            &lt;g-link to="/admin">
               Administration
-            </g-link>
-          </li>
-          <!-- COMPONENT BURGER -->
-          <MenuBurgerLink
+            &lt;/g-link>
+          &lt;/li>
+          &lt;!-- COMPONENT BURGER -->
+          &lt;MenuBurgerLink
             v-for="burger in burgers"
             :key="burger.menu"
             :burger="burger"
           />
-        </ul>
-      </div>
-    </div>
-  </div>
-</template>
+        &lt;/ul>
+      &lt;/div>
+    &lt;/div>
+  &lt;/div>
+&lt;/template>
 
-<script>
+&lt;script>
 import MenuBurgerLink from "~/components/MenuBurgerLink.vue";
 import SocialLink from "~/components/SocialLink.vue";
 import axios from "axios";
@@ -371,16 +399,16 @@ export default {
   //   }
   // }
 };
-</script>
-<static-query>
+&lt;/script>
+&lt;static-query>
 query {
   metadata {
     siteName
   }
 }
-</static-query>
+&lt;/static-query>
 
-<style>
+&lt;style>
 @font-face {
   font-family: "Source Sans Pro";
   src: url("../assets/Source_Sans_Pro/SourceSansPro-Regular.ttf");
@@ -512,4 +540,27 @@ article:hover p {
 .menu-btn.open::after {
   transform: translateY(-17px) rotate(45deg);
 }
-</style>
+&lt;/style>
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-About.html">About</a></li><li><a href="module-Admin.html">Admin</a></li><li><a href="module-Default.html">Default</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Fri May 07 2021 20:56:32 GMT+0200 (heure d’été d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

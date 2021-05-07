@@ -8,11 +8,13 @@
 </template>
 
 <script>
-import axios from 'axios';
-
+import axios from "axios";
+/**
+ * @vue-data {String} aboutContent - Page content about
+ */
 export default {
   metaInfo: {
-    title: "A propos",
+    title: "A propos"
   },
   //==================================================================================================================================================================================================================================================================================================
   //
@@ -26,7 +28,7 @@ export default {
 
   data() {
     return {
-      aboutContent: "",
+      aboutContent: ""
     };
   },
   //=======================================================================================================================================================================================================================================================================================================================
@@ -44,9 +46,9 @@ export default {
       .get(
         "https://public-api.wordpress.com/rest/v1.1/sites/assokyosai.wordpress.com/posts/297/"
       )
-      .then((response) => {
+      .then(response => {
         this.aboutContent = response.data.content;
       });
-  },
+  }
 };
 </script>

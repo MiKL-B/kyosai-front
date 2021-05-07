@@ -2,7 +2,6 @@ describe('Cart', function () {
     it('Ajouter un produit au panier', function () {
         cy.server()
         cy.route('GET', /shop./, 'fixture:product.json').as('getProduct')
-     
         cy.visit('http://127.0.0.1:8080/')
         cy.get('[data-cy=menu]').click()
         cy.get('[data-cy=register]').click()

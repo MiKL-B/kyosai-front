@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Login.vue</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Login.vue</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>&lt;template>
+  &lt;layout>
+    &lt;!--a finir-->
+    &lt;form @submit.prevent="connexion">
+      &lt;table class="mx-auto flex flex-col items-center">
+        &lt;h1 class="text-blue-400 text-4xl text-center">
+          Connetez vous à votre compte !
+        &lt;/h1>
+        &lt;!--email-->
+        &lt;tr>
+          &lt;td>
+            &lt;input
+              v-model="name"
+              class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400"
+              name="name"
+              placeholder="Pseudo"
+              pattern="[a-zA-Z]{4,8}"
+              title="4 à 8 lettres"
+            />
+          &lt;/td>
+        &lt;/tr>
+        &lt;tr>
+          &lt;td>
+            &lt;input
+              v-model="email"
+              class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400 ring-1 ring-red-400"
+              name="email"
+              placeholder="Adresse email"
+              data-cy="email"
+            />
+          &lt;/td>
+        &lt;/tr>
+
+        &lt;tr>
+          &lt;td>
+            &lt;input
+              v-model="password"
+              class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400 ring-1 ring-red-400"
+              name="mdp"
+              type="password"
+              placeholder="Mot de passe"
+              data-cy="mdp"
+            />
+          &lt;/td>
+        &lt;/tr>
+        &lt;tr>
+          &lt;td class="text-xl">
+            &lt;span>Pas encore de compte ?&lt;/span
+            >&lt;g-link class="text-blue-400 text-lg" to="/register">
+              Inscrivez vous ici !
+            &lt;/g-link>
+          &lt;/td>
+        &lt;/tr>
+        &lt;tr>
+          &lt;td>
+            &lt;span>Les champs entourés en rouge sont requis !&lt;/span>
+          &lt;/td>
+        &lt;/tr>
+        &lt;!--submit-->
+        &lt;tr>
+          &lt;td>
+            &lt;button
+              class="p-3 text-lg flex my-2 mx-auto bg-gray-600 hover:bg-pink-400 rounded-lg text-white uppercase"
+              type="submit"
+              data-cy="submitLogin"
+            >
+              Connexion
+            &lt;/button>
+          &lt;/td>
+        &lt;/tr>
+      &lt;/table>
+    &lt;/form>
+  &lt;/layout>
+&lt;/template>
+
+&lt;script>
+import axios from "axios";
+import VueSimpleAlert from "vue-simple-alert";
+import jwt_decode from "jwt-decode";
+
+export default {
+  metaInfo: {
+    title: "Connexion"
+  },
+  //==================================================================================================================================================================================================================================================================================================
+  //
+  //  ####      ###    ######    ###
+  //  ##  ##   ## ##     ##     ## ##
+  //  ##  ##  ##   ##    ##    ##   ##
+  //  ##  ##  #######    ##    #######
+  //  ####    ##   ##    ##    ##   ##
+  //
+  //==================================================================================================================================================================================================================================================================================================
+
+  data() {
+    return {
+      name: "",
+      tokenContent: "",
+      email: "",
+      password: ""
+    };
+  },
+  //============================================================================================================================================================================================================================================================================================================================
+  //
+  //  ###    ###  #####  ######  ##   ##   #####   ####     ####
+  //  ## #  # ##  ##       ##    ##   ##  ##   ##  ##  ##  ##
+  //  ##  ##  ##  #####    ##    #######  ##   ##  ##  ##   ###
+  //  ##      ##  ##       ##    ##   ##  ##   ##  ##  ##     ##
+  //  ##      ##  #####    ##    ##   ##   #####   ####    ####
+  //
+  //============================================================================================================================================================================================================================================================================================================================
+
+  methods: {
+    /**
+     * - Login the user
+     */
+    connexion() {
+      axios
+        .post("http://127.0.0.1:8000/api/login_check", {
+          name: this.name,
+          email: this.email,
+          password: this.password
+        })
+        .then(response => {
+          this.tokenContent = response.data;
+          //store the token
+          let jwt = this.tokenContent.token;
+          localStorage.setItem("jwt", jwt);
+          this.$store.commit("updateLogin", true);
+          axios.defaults.headers.common = {
+            Authorization: `Bearer ${jwt}`
+          };
+          this.$router.push("/");
+          this.$fire({
+            title: `Bonjour ${this.name} 😃`,
+            text: "Vous êtes connecté",
+            type: "success",
+           
+          });
+        })
+        .catch(error => {
+          this.$fire({
+            title: "Ces identifiants n'existent pas",
+            type: "warning"
+          });
+        });
+    }
+  }
+};
+&lt;/script>
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-About.html">About</a></li><li><a href="module-Admin.html">Admin</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Fri May 07 2021 20:50:54 GMT+0200 (heure d’été d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

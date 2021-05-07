@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: pages/Cart.vue</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: pages/Cart.vue</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>&lt;template>
+  &lt;Layout>
+    &lt;h1 class="text-blue-400 text-4xl text-center">
+      Mon panier
+    &lt;/h1>
+
+    &lt;div
+      v-if="verifyUserCart()"
+      class="bg-gray-100 shadow rounded-md text-2xl my-5 "
+    >
+      &lt;div class="flex justify-around p-5">
+        &lt;div>
+          &lt;h1>Votre panier&lt;/h1>
+        &lt;/div>
+        &lt;div>
+          &lt;h1>Prix&lt;/h1>
+        &lt;/div>
+      &lt;/div>
+      &lt;hr />
+      &lt;div
+        class="containerCart flex justify-around my-5 "
+        v-for="item in panier"
+        :key="item.id"
+      >
+        &lt;div class="imgCart h-80 w-60">
+          &lt;img
+            class="h-40"
+            :src="
+              getProductById(
+                item.produit.substring(item.produit.lastIndexOf('/') + 1)
+              ).image
+            "
+          />
+          &lt;h2 class="capitalize">
+            {{
+              getProductById(
+                item.produit.substring(item.produit.lastIndexOf("/") + 1)
+              ).nom
+            }}
+          &lt;/h2>
+          &lt;p>Quantité : {{ item.quantity }}&lt;/p>
+          &lt;button
+            @click="deleteCart(item.id)"
+            class="bg-red-400 hover:bg-red-600 p-2 text-white rounded-lg my-5"
+          >
+            Supprimer
+          &lt;/button>
+        &lt;/div>
+        &lt;div class="priceCart text-3xl">
+          {{
+            item.quantity *
+              getProductById(
+                item.produit.substring(item.produit.lastIndexOf("/") + 1)
+              ).prix
+          }}
+          €
+        &lt;/div>
+      &lt;/div>
+    &lt;/div>
+  &lt;/Layout>
+&lt;/template>
+
+&lt;script>
+import axios from "axios";
+import jwt_decode from "jwt-decode";
+import VueSimpleAlert from "vue-simple-alert";
+//get base64 from image
+const getBase64 = file =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = error => reject(error);
+  });
+export default {
+  metaInfo: {
+    title: "Panier"
+  },
+  //==================================================================================================================================================================================================================================================================================================
+  //
+  //  ####      ###    ######    ###
+  //  ##  ##   ## ##     ##     ## ##
+  //  ##  ##  ##   ##    ##    ##   ##
+  //  ##  ##  #######    ##    #######
+  //  ####    ##   ##    ##    ##   ##
+  //
+  //==================================================================================================================================================================================================================================================================================================
+
+  data() {
+    return {
+      panier: [],
+      shopContent: [],
+      name: "",
+      prix: ""
+    };
+  },
+  //============================================================================================================================================================================================================================================================================================================================
+  //
+  //  ###    ###  #####  ######  ##   ##   #####   ####     ####
+  //  ## #  # ##  ##       ##    ##   ##  ##   ##  ##  ##  ##
+  //  ##  ##  ##  #####    ##    #######  ##   ##  ##  ##   ###
+  //  ##      ##  ##       ##    ##   ##  ##   ##  ##  ##     ##
+  //  ##      ##  #####    ##    ##   ##   #####   ####    ####
+  //
+  //============================================================================================================================================================================================================================================================================================================================
+
+  methods: {
+    /**
+     * @param {integer} id - Get the product by its id
+     * @return {object} -the product that corresponds to the id
+     */
+    getProductById(id) {
+      return (
+        this.shopContent &amp;&amp; this.shopContent.find(product => product.id == id)
+      );
+    },
+
+    verifyUserCart() {
+      let jwt = localStorage.getItem("jwt");
+      if (jwt) {
+        let token = jwt_decode(jwt);
+        return true;
+      } else {
+        this.$router.push("/login");
+        this.$fire({
+          title: "Connectez vous pour accéder à votre panier",
+          type: "info"
+        });
+      }
+    },
+    /**
+     * @param {event} event - Manage the download of the image asynchronously
+     */
+    async handleUpload(event) {
+      const file = event.target.files[0];
+      this.image = await getBase64(file);
+    },
+
+    deleteCart(id) {
+      const answer = this.$confirm(
+        "Êtes vous sûr de vouloir supprimer ce produit ?"
+      ).then(() => {
+        if (answer) {
+          axios
+            .delete(`http://127.0.0.1:8000/delete/cart/${id}`)
+            .then(response => {
+              this.deleteContent = response.data;
+              this.getCart();
+              this.$fire({
+                title: "Le produit a bien été supprimé",
+                type: "success"
+              });
+            });
+        }
+      });
+    },
+    getCart() {
+      axios
+        .get("http://127.0.0.1:8000/panier", null, { withCredentials: true })
+        .then(response => {
+          this.panier = response.data;
+        });
+    }
+  },
+
+  //=======================================================================================================================================================================================================================================================================================================================
+  //
+  //   ####  #####    #####    ###    ######  #####  ####
+  //  ##     ##  ##   ##      ## ##     ##    ##     ##  ##
+  //  ##     #####    #####  ##   ##    ##    #####  ##  ##
+  //  ##     ##  ##   ##     #######    ##    ##     ##  ##
+  //   ####  ##   ##  #####  ##   ##    ##    #####  ####
+  //
+  //=======================================================================================================================================================================================================================================================================================================================
+  created() {
+    this.getCart();
+    axios.get("http://127.0.0.1:8000/shop").then(response => {
+      this.shopContent = response.data;
+    });
+  }
+};
+&lt;/script>
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-About.html">About</a></li><li><a href="module-Admin.html">Admin</a></li><li><a href="module-Default.html">Default</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Fri May 07 2021 20:56:32 GMT+0200 (heure d’été d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

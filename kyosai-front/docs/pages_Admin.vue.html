@@ -1,54 +1,82 @@
-<template>
-  <Layout>
-    <form @submit.prevent="addNewProduct">
-      <h1 class="text-blue-400 text-4xl text-center">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: pages/Admin.vue</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: pages/Admin.vue</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>&lt;template>
+  &lt;Layout>
+    &lt;form @submit.prevent="addNewProduct">
+      &lt;h1 class="text-blue-400 text-4xl text-center">
         Ajouter un nouvel élément à la boutique !
-      </h1>
-      <table class="flex flex-wrap flex-row justify-center my-10">
-        <tr>
-          <td>
-            <input
+      &lt;/h1>
+      &lt;table class="flex flex-wrap flex-row justify-center my-10">
+        &lt;tr>
+          &lt;td>
+            &lt;input
               class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400"
               v-model="name"
               name="name"
               type="text"
               placeholder="Nom"
             />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <select
+          &lt;/td>
+        &lt;/tr>
+        &lt;tr>
+          &lt;td>
+            &lt;select
               v-model="category"
               v-if="categoryContentList.length > 0"
               class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400"
               multiple
             >
-              <option value="" selected>Choisissez une catégorie</option>
-              <option
+              &lt;option value="" selected>Choisissez une catégorie&lt;/option>
+              &lt;option
                 v-for="categoryContent in categoryContentList"
                 :key="categoryContent.id"
                 :categoryContent="categoryContent"
                 :value="categoryContent.label"
-                >{{ categoryContent.label }}</option
+                >{{ categoryContent.label }}&lt;/option
               >
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <input
+            &lt;/select>
+          &lt;/td>
+        &lt;/tr>
+        &lt;tr>
+          &lt;td>
+            &lt;input
               class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400"
               v-model="prix"
               name="prix"
               type="number"
               placeholder="Prix"
             />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <input
+          &lt;/td>
+        &lt;/tr>
+        &lt;tr>
+          &lt;td>
+            &lt;input
               class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400"
               @change="handleUpload"
               name="image"
@@ -56,104 +84,104 @@
               placeholder="Image"
               accept="image/*"
             />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <button
+          &lt;/td>
+        &lt;/tr>
+        &lt;tr>
+          &lt;td>
+            &lt;button
               class="p-3 text-lg flex my-2 mx-auto bg-gray-600 hover:bg-pink-400 rounded-lg text-white uppercase"
               type="submit"
             >
               Ajouter
-            </button>
-          </td>
-        </tr>
-      </table>
-    </form>
-    <!--message si produit bien ajouté-->
-    <div
+            &lt;/button>
+          &lt;/td>
+        &lt;/tr>
+      &lt;/table>
+    &lt;/form>
+    &lt;!--message si produit bien ajouté-->
+    &lt;div
       v-if="success"
       class="text-center bg-green-200 rounded-lg text-green-600 w-96 mx-auto p-3 uppercase tracking-widest text-lg"
     >
       {{ success }}
-    </div>
-    <!--rechercher produit par nom-->
-    <input
+    &lt;/div>
+    &lt;!--rechercher produit par nom-->
+    &lt;input
       v-model="searchKey"
       type="search"
       placeholder="Rechercher un produit par son nom"
       class="p-5 text-lg border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 focus:text-pink-400 flex mx-auto w-80"
     />
-    <!--s'affiche si la recherche ne renvois rien-->
-    <h3
+    &lt;!--s'affiche si la recherche ne renvois rien-->
+    &lt;h3
       class="text-center bg-red-200 rounded-lg text-red-600 w-96 mx-auto p-3 uppercase tracking-widest text-lg my-5"
       v-if="searchContentFiltered.length == 0"
     >
       Aucun Résultat
-    </h3>
+    &lt;/h3>
 
-    <table class=" mx-auto text-xl my-10">
-      <thead class="bg-white">
-        <tr class="text-center ">
-          <th class="w-60 h-20">Nom</th>
-          <th class="w-60">Catégorie</th>
-          <th class="w-60">Prix</th>
-          <th class="w-40">Image</th>
-          <th class="w-60">Date dernière modification</th>
-          <th class="w-60">Actions</th>
-        </tr>
-      </thead>
+    &lt;table class=" mx-auto text-xl my-10">
+      &lt;thead class="bg-white">
+        &lt;tr class="text-center ">
+          &lt;th class="w-60 h-20">Nom&lt;/th>
+          &lt;th class="w-60">Catégorie&lt;/th>
+          &lt;th class="w-60">Prix&lt;/th>
+          &lt;th class="w-40">Image&lt;/th>
+          &lt;th class="w-60">Date dernière modification&lt;/th>
+          &lt;th class="w-60">Actions&lt;/th>
+        &lt;/tr>
+      &lt;/thead>
 
-      <tbody
+      &lt;tbody
         v-for="content in searchContentFiltered"
         :key="content.id"
         :content="content"
         class="bg-gray-100 shadow-lg"
       >
-        <tr class="text-center">
-          <td class="capitalize">{{ content.nom }}</td>
-          <td class="uppercase">
-            <!--a redemander si faut changer de nom-->
-            <tr
+        &lt;tr class="text-center">
+          &lt;td class="capitalize">{{ content.nom }}&lt;/td>
+          &lt;td class="uppercase">
+            &lt;!--a redemander si faut changer de nom-->
+            &lt;tr
               class="flex justify-center"
               v-for="allLabel in content.categories"
               :key="allLabel.id"
             >
               {{
-                allLabel &&
+                allLabel &amp;&amp;
                   getCategoryById(
                     allLabel.substring(allLabel.lastIndexOf("/") + 1)
                   ).label
               }}
-            </tr>
-          </td>
+            &lt;/tr>
+          &lt;/td>
 
-          <td>{{ content.prix }} €</td>
-          <td><img :src="content.image" /></td>
-          <td>{{ format_date(content.createdAt) }}</td>
-          <td>
-            <g-link :to="`edit/${content.id}`">
-              <button
+          &lt;td>{{ content.prix }} €&lt;/td>
+          &lt;td>&lt;img :src="content.image" />&lt;/td>
+          &lt;td>{{ format_date(content.createdAt) }}&lt;/td>
+          &lt;td>
+            &lt;g-link :to="`edit/${content.id}`">
+              &lt;button
                 class="bg-blue-400 hover:bg-blue-600 p-2 text-white mr-2 rounded-lg"
               >
                 Modifier
-              </button></g-link
+              &lt;/button>&lt;/g-link
             >
 
-            <button
+            &lt;button
               @click="confirmDelete(content.id)"
               class="bg-red-400 hover:bg-red-600 p-2 text-white rounded-lg"
             >
               Supprimer
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </Layout>
-</template>
+            &lt;/button>
+          &lt;/td>
+        &lt;/tr>
+      &lt;/tbody>
+    &lt;/table>
+  &lt;/Layout>
+&lt;/template>
 
-<script>
+&lt;script>
 import dayjs from "dayjs";
 import axios from "axios";
 
@@ -308,4 +336,27 @@ export default {
     });
   },
 };
-</script>
+&lt;/script>
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-About.html">About</a></li><li><a href="module-Admin.html">Admin</a></li><li><a href="module-Default.html">Default</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Fri May 07 2021 20:56:32 GMT+0200 (heure d’été d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
