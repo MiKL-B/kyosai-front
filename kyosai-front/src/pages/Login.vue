@@ -77,6 +77,12 @@
 import axios from "axios";
 import VueSimpleAlert from "vue-simple-alert";
 import jwt_decode from "jwt-decode";
+/**
+ * @vue-data {String} name - User name
+ * @vue-data {String} email - User email
+ * @vue-data {String} password - User password
+ * @vue-data {String} tokenContent - User token
+ */
 
 export default {
   metaInfo: {
@@ -112,7 +118,7 @@ export default {
 
   methods: {
     /**
-     * - Login the user
+     *  Login the user
      */
     connexion() {
       axios
@@ -134,8 +140,7 @@ export default {
           this.$fire({
             title: `Bonjour ${this.name} 😃`,
             text: "Vous êtes connecté",
-            type: "success",
-           
+            type: "success"
           });
         })
         .catch(error => {

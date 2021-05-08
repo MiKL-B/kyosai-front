@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: Default</title>
+    <title>JSDoc: Module: Register</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: Default</h1>
+    <h1 class="page-title">Module: Register</h1>
 
     
 
@@ -54,45 +54,35 @@
     </tr>
     </thead>
     <tbody><tr>
-        <td><code>role</code></td>
+        <td><code>error</code></td>
         <td>String</td>
         <td>-</td>
-        <td>User role</td>
+        <td>Displays an error message</td>
     </tr><tr>
-        <td><code>name</code></td>
+        <td><code>success</code></td>
         <td>String</td>
         <td>-</td>
-        <td>User name</td>
+        <td>Displays a success message</td>
     </tr><tr>
         <td><code>email</code></td>
         <td>String</td>
         <td>-</td>
         <td>User email</td>
     </tr><tr>
-        <td><code>message</code></td>
+        <td><code>mdp</code></td>
         <td>String</td>
         <td>-</td>
-        <td>User message</td>
+        <td>User password</td>
     </tr><tr>
-        <td><code>titre</code></td>
+        <td><code>name</code></td>
         <td>String</td>
         <td>-</td>
-        <td>Navigation menu title</td>
+        <td>User name</td>
     </tr><tr>
-        <td><code>links</code></td>
-        <td>Array</td>
+        <td><code>confirm_mdp</code></td>
+        <td>String</td>
         <td>-</td>
-        <td>Social media link</td>
-    </tr><tr>
-        <td><code>burgers</code></td>
-        <td>Array</td>
-        <td>-</td>
-        <td>Page titles</td>
-    </tr><tr>
-        <td><code>showSidenav</code></td>
-        <td>Boolean</td>
-        <td>-</td>
-        <td>Navigation menu</td>
+        <td>User password to be confirmed</td>
     </tr></tbody>
 </table>
 
@@ -204,7 +194,7 @@
     
 
     
-    <h4 class="name" id="logout"><span class="type-signature"></span>logout<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="submit"><span class="type-signature"></span>submit<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -212,7 +202,7 @@
 
 
 <div class="description">
-    Logout the user
+    Register the user
 </div>
 
 
@@ -256,7 +246,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="layouts_Default.vue.html">layouts/Default.vue</a>, <a href="layouts_Default.vue.html#line304">line 304</a>
+        <a href="pages_Register.vue.html">pages/Register.vue</a>, <a href="pages_Register.vue.html#line150">line 150</a>
     </li></ul></dd>
     
 
@@ -292,16 +282,13 @@
     
 
     
-    <h4 class="name" id="sendMail"><span class="type-signature"></span>sendMail<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="validEmail"><span class="type-signature"></span>validEmail<span class="signature">(email)</span><span class="type-signature"></span></h4>
     
 
     
 
 
 
-<div class="description">
-    Send mail to kyosai for more information
-</div>
 
 
 
@@ -310,93 +297,53 @@
 
 
 
-
-
-
-
-
-<dl class="details">
-
+    <h5>Parameters:</h5>
     
 
-    
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="layouts_Default.vue.html">layouts/Default.vue</a>, <a href="layouts_Default.vue.html#line320">line 320</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        <th>Type</th>
 
         
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>email</code></td>
             
 
-    
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Checking using a regex if the email is valid</td>
+        </tr>
 
     
-    <h4 class="name" id="verifUser"><span class="type-signature"></span>verifUser<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Access to the administration page if the user is admin
-</div>
-
-
-
-
-
-
-
+    </tbody>
+</table>
 
 
 
@@ -432,7 +379,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="layouts_Default.vue.html">layouts/Default.vue</a>, <a href="layouts_Default.vue.html#line340">line 340</a>
+        <a href="pages_Register.vue.html">pages/Register.vue</a>, <a href="pages_Register.vue.html#line204">line 204</a>
     </li></ul></dd>
     
 
@@ -457,28 +404,6 @@
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    if user is admin
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">boolean</span>
-
-
-    </dd>
-</dl>
-
-    
 
 
 

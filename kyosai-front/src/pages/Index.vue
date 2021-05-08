@@ -37,11 +37,14 @@
 <script>
 import GridImage from "~/components/GridImage.vue";
 import jwt_decode from "jwt-decode";
+/**
+ * @vue-data {Array} sections - The different workshops
+ */
 
 export default {
   components: { GridImage },
   metaInfo: {
-    title: "Association Kyosai",
+    title: "Association Kyosai"
   },
   //==================================================================================================================================================================================================================================================================================================
   //
@@ -62,7 +65,7 @@ export default {
           link: "/papercraft",
           subtitle: "Atelier de papercraft",
           color: "bg-pink-400",
-          alt: "Atelier de papercraft",
+          alt: "Atelier de papercraft"
         },
         {
           title: "dessin",
@@ -70,7 +73,7 @@ export default {
           link: "/dessin",
           subtitle: "Atelier de dessin",
           color: "bg-blue-400",
-          alt: "Atelier de dessin",
+          alt: "Atelier de dessin"
         },
         {
           title: "cosplay",
@@ -78,7 +81,7 @@ export default {
           link: "/cosplay",
           subtitle: "Atelier de cosplay",
           color: "bg-green-300",
-          alt: "Atelier de cosplay",
+          alt: "Atelier de cosplay"
         },
         {
           title: "art gaming",
@@ -86,10 +89,10 @@ export default {
           link: "/gaming",
           subtitle: "Atelier d'art gaming",
           color: "bg-yellow-200",
-          alt: "Atelier de d'art gaming",
-        },
-      ],
+          alt: "Atelier de d'art gaming"
+        }
+      ]
     };
-  },
+  }
 };
 </script>

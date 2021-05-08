@@ -58,7 +58,7 @@
         <tr>
           <td class="text-center text-xl">
             <span>Déjà un compte ?</span
-            ><g-link class="text-blue-400" to="/login"  data-cy="toLogin" >
+            ><g-link class="text-blue-400" to="/login" data-cy="toLogin">
               Cliquez ici !
             </g-link>
           </td>
@@ -101,6 +101,14 @@
 <script>
 import axios from "axios";
 import VueSimpleAlert from "vue-simple-alert";
+/**
+ * @vue-data {String} error - Displays an error message
+ * @vue-data {String} success - Displays a success message
+ * @vue-data {String} email - User email
+ * @vue-data {String} mdp - User password
+ * @vue-data {String} name - User name
+ * @vue-data {String} confirm_mdp - User password to be confirmed
+ */
 export default {
   metaInfo: {
     title: "Inscription"
@@ -119,7 +127,6 @@ export default {
     return {
       error: "",
       success: "",
-      registerContent: "",
       email: "",
       mdp: "",
       name: "",
@@ -138,7 +145,7 @@ export default {
 
   methods: {
     /**
-     * - Register the user
+     *  Register the user
      */
     submit() {
       var bool = true;

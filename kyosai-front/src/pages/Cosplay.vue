@@ -9,7 +9,7 @@
 
 <script>
 import axios from 'axios';
-
+/** * @vue-data {String} cosplayContent - Page content cosplay */
 export default {
   metaInfo: {
     title: "Cosplay",

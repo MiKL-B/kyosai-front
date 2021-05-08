@@ -9,6 +9,7 @@
 
 <script>
 import axios from 'axios';
+/** * @vue-data {String} dessinContent - Page content drawings */
 export default {
   metaInfo: {
     title: "Dessin",

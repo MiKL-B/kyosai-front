@@ -64,14 +64,19 @@
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import VueSimpleAlert from "vue-simple-alert";
-//get base64 from image
-const getBase64 = file =>
+/** Get base64 from image * @method */ const getBase64 = file =>
   new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => resolve(reader.result);
     reader.onerror = error => reject(error);
   });
+/**
+ * @vue-data {Array} panier - User cart
+ * @vue-data {Array} shopContent - Database product list
+ * @vue-data {Number} prix - Product price
+ */
+
 export default {
   metaInfo: {
     title: "Panier"
@@ -90,7 +95,6 @@ export default {
     return {
       panier: [],
       shopContent: [],
-      name: "",
       prix: ""
     };
   },
@@ -107,14 +111,16 @@ export default {
   methods: {
     /**
      * @param {integer} id - Get the product by its id
-     * @return {object} -the product that corresponds to the id
+     * @return {object} The product that corresponds to the id
      */
     getProductById(id) {
       return (
         this.shopContent && this.shopContent.find(product => product.id == id)
       );
     },
-
+    /**
+     * Displays the cart if the user is logged in
+     */
     verifyUserCart() {
       let jwt = localStorage.getItem("jwt");
       if (jwt) {
@@ -129,13 +135,16 @@ export default {
       }
     },
     /**
+     * @async
      * @param {event} event - Manage the download of the image asynchronously
      */
     async handleUpload(event) {
       const file = event.target.files[0];
       this.image = await getBase64(file);
     },
-
+    /**
+     * @param {integer} id - Remove the product from the cart
+     */
     deleteCart(id) {
       const answer = this.$confirm(
         "Êtes vous sûr de vouloir supprimer ce produit ?"

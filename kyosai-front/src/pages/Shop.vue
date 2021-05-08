@@ -1,17 +1,17 @@
 <template>
   <Layout>
     <h1 class="text-blue-400 text-4xl text-center">Boutique</h1>
-  
+
     <div
       class="flex flex-wrap justify-around my-10 bg-gray-100 shadow-lg rounded-lg"
       v-for="content in shopContent"
       :key="content.nom"
-      :content="content" 
+      :content="content"
     >
       <table class="w-96 my-10">
         <tr>
           <td>
-            <h3 class="text-3xl capitalize " >{{ content.nom }}</h3>
+            <h3 class="text-3xl capitalize ">{{ content.nom }}</h3>
           </td>
         </tr>
         <tr>
@@ -38,8 +38,8 @@
         <tr>
           <td>
             <button
-              @click="addCart(content.id)" data-cy="addToCart"
-           
+              @click="addCart(content.id)"
+              data-cy="addToCart"
               class="bg-gray-600 hover:bg-pink-400 text-xl text-white rounded-md py-7 w-40 font-bold uppercase mt-5"
             >
               Acheter
@@ -57,9 +57,14 @@
 
 <script>
 import axios from "axios";
+/**
+ * @vue-data {String} shopContent - Shop product list
+ * @vue-data {Array} categoryContentList - List of product categories
+ * @vue-data {Array} cartContent - The contents of the user's basket
+ */
 export default {
   metaInfo: {
-    title: "Boutique",
+    title: "Boutique"
   },
   //==================================================================================================================================================================================================================================================================================================
   //
@@ -75,7 +80,7 @@ export default {
     return {
       shopContent: "",
       categoryContentList: [],
-      cartContent: [],
+      cartContent: []
     };
   },
   //============================================================================================================================================================================================================================================================================================================================
@@ -93,34 +98,32 @@ export default {
      * @param {integer} id - Get the category by its id
      */
     getCategoryById(id) {
-      return this.categoryContentList.find((category) => category.id == id);
+      return this.categoryContentList.find(category => category.id == id);
     },
     /**
+     * Add a product to the cart
      * @param {integer} id -The id of the product to add to the cart
      */
     addCart(id) {
       axios
         .get(`http://127.0.0.1:8000/add/cart/${id}`, null, {
-          withCredentials: true,
-        
+          withCredentials: true
         })
-        .then((response) => {
+        .then(response => {
           this.cartContent = response.data;
-            this.$fire({
-        title: "Produit ajouté au panier",
-        type: "success",
-      });
-        }).catch((error)=>{
-        this.$router.push("/login");
-         this.$fire({
-                title: `Merci de vous connecter pour effectuer des achats`,
-                type: "warning",
-              });
+          this.$fire({
+            title: "Produit ajouté au panier",
+            type: "success"
+          });
+        })
+        .catch(error => {
+          this.$router.push("/login");
+          this.$fire({
+            title: `Merci de vous connecter pour effectuer des achats`,
+            type: "warning"
+          });
         });
-;
-    },
-   
-
+    }
   },
   //=======================================================================================================================================================================================================================================================================================================================
   //
@@ -133,13 +136,13 @@ export default {
   //=======================================================================================================================================================================================================================================================================================================================
 
   created() {
-    axios.get("http://127.0.0.1:8000/shop/").then((response) => {
+    axios.get("http://127.0.0.1:8000/shop/").then(response => {
       this.shopContent = response.data;
     });
 
-    axios.get("http://127.0.0.1:8000/category/list").then((response) => {
+    axios.get("http://127.0.0.1:8000/category/list").then(response => {
       this.categoryContentList = response.data;
     });
-  },
+  }
 };
 </script>

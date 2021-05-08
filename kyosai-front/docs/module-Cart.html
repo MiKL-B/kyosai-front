@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: Admin</title>
+    <title>JSDoc: Module: Cart</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: Admin</h1>
+    <h1 class="page-title">Module: Cart</h1>
 
     
 
@@ -54,65 +54,24 @@
     </tr>
     </thead>
     <tbody><tr>
-        <td><code>success</code></td>
-        <td>String</td>
+        <td><code>panier</code></td>
+        <td>Array</td>
         <td>-</td>
-        <td>displays a message if the product has been added successfully</td>
-    </tr><tr>
-        <td><code>searchKey</code></td>
-        <td>String</td>
-        <td>-</td>
-        <td>Filtered content</td>
+        <td>User cart</td>
     </tr><tr>
         <td><code>shopContent</code></td>
         <td>Array</td>
         <td>-</td>
         <td>Database product list</td>
     </tr><tr>
-        <td><code>categoryContentList</code></td>
-        <td>Array</td>
-        <td>-</td>
-        <td>List of product categories</td>
-    </tr><tr>
-        <td><code>name</code></td>
-        <td>String</td>
-        <td>-</td>
-        <td>Product name</td>
-    </tr><tr>
-        <td><code>category</code></td>
-        <td>Array</td>
-        <td>-</td>
-        <td>Product category</td>
-    </tr><tr>
         <td><code>prix</code></td>
-        <td>String</td>
+        <td>Number</td>
         <td>-</td>
         <td>Product price</td>
-    </tr><tr>
-        <td><code>image</code></td>
-        <td>String</td>
-        <td>-</td>
-        <td>Product image</td>
     </tr></tbody>
 </table>
 
 
-
-<h3 class="subsection-title" style="margin-top: 1em" data-jsdoc-vuejs="section-computed">Computed</h3>
-<table data-jsdoc-vuejs="table-computed">
-    <thead>
-    <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-    </tr>
-    </thead>
-    <tbody><tr>
-        <td><code>searchContentFiltered</code></td>
-        <td>Object</td>
-        <td>Return a filtered product</td>
-    </tr></tbody>
-</table>
 
 
 
@@ -220,95 +179,7 @@
     
 
     
-    <h4 class="name" id="addNewProduct"><span class="type-signature"></span>addNewProduct<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Add a new product to the database
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="pages_Admin.vue.html">pages/Admin.vue</a>, <a href="pages_Admin.vue.html#line220">line 220</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="confirmDelete"><span class="type-signature"></span>confirmDelete<span class="signature">(id)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="deleteCart"><span class="type-signature"></span>deleteCart<span class="signature">(id)</span><span class="type-signature"></span></h4>
     
 
     
@@ -364,7 +235,7 @@
 
             
 
-            <td class="description last">The id of the product to delete from</td>
+            <td class="description last">Remove the product from the cart</td>
         </tr>
 
     
@@ -405,7 +276,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="pages_Admin.vue.html">pages/Admin.vue</a>, <a href="pages_Admin.vue.html#line262">line 262</a>
+        <a href="pages_Cart.vue.html">pages/Cart.vue</a>, <a href="pages_Cart.vue.html#line148">line 148</a>
     </li></ul></dd>
     
 
@@ -441,162 +312,7 @@
     
 
     
-    <h4 class="name" id="format_date"><span class="type-signature"></span>format_date<span class="signature">(value)</span><span class="type-signature"> &rarr; {value}</span></h4>
-    
-
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>value</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Put the date in a local format</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="pages_Admin.vue.html">pages/Admin.vue</a>, <a href="pages_Admin.vue.html#line246">line 246</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    Formatted date
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">value</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="getCategoryById"><span class="type-signature"></span>getCategoryById<span class="signature">(id)</span><span class="type-signature"> &rarr; {object}</span></h4>
+    <h4 class="name" id="getProductById"><span class="type-signature"></span>getProductById<span class="signature">(id)</span><span class="type-signature"> &rarr; {object}</span></h4>
     
 
     
@@ -652,7 +368,7 @@
 
             
 
-            <td class="description last">The id of the category to get</td>
+            <td class="description last">Get the product by its id</td>
         </tr>
 
     
@@ -693,7 +409,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="pages_Admin.vue.html">pages/Admin.vue</a>, <a href="pages_Admin.vue.html#line255">line 255</a>
+        <a href="pages_Cart.vue.html">pages/Cart.vue</a>, <a href="pages_Cart.vue.html#line116">line 116</a>
     </li></ul></dd>
     
 
@@ -722,7 +438,7 @@
 
         
 <div class="param-desc">
-    The category that corresponds to the id
+    The product that corresponds to the id
 </div>
 
 
@@ -848,7 +564,95 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="pages_Admin.vue.html">pages/Admin.vue</a>, <a href="pages_Admin.vue.html#line237">line 237</a>
+        <a href="pages_Cart.vue.html">pages/Cart.vue</a>, <a href="pages_Cart.vue.html#line141">line 141</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="verifyUserCart"><span class="type-signature"></span>verifyUserCart<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Displays the cart if the user is logged in
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="pages_Cart.vue.html">pages/Cart.vue</a>, <a href="pages_Cart.vue.html#line124">line 124</a>
     </li></ul></dd>
     
 

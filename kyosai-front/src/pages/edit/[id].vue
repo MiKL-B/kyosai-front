@@ -86,17 +86,26 @@
 <script>
 import dayjs from "dayjs";
 import axios from "axios";
-//get base64 from image
-const getBase64 = (file) =>
+/** Get base64 from image * @method */
+const getBase64 = file =>
   new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => resolve(reader.result);
-    reader.onerror = (error) => reject(error);
+    reader.onerror = error => reject(error);
   });
+/**
+ * @vue-data {String} success - Displays a success message
+ * @vue-data {Array} editContent - Product information to be modified
+ * @vue-data {Array} categoryContentList - List of product categories
+ * @vue-data {String} name - Product name
+ * @vue-data {Array} category - Product categories
+ * @vue-data {String} prix - Product price
+ * @vue-data {String} image - Product image
+ */
 export default {
   metaInfo: {
-    title: "Edition de produit",
+    title: "Edition de produit"
   },
   //==================================================================================================================================================================================================================================================================================================
   //
@@ -116,7 +125,7 @@ export default {
       name: "",
       category: [],
       prix: "",
-      image: "",
+      image: ""
     };
   },
   //============================================================================================================================================================================================================================================================================================================================
@@ -131,24 +140,24 @@ export default {
 
   methods: {
     /**
-     * - Modify product information
+     *  Modify product information
      */
     submitEdit() {
-
       const { id } = this.$route.params;
       axios
         .post(`http://127.0.0.1:8000/api/admin/edit/${id}`, {
           name_produit: this.name,
           prix_produit: this.prix,
           image_produit: this.image,
-          category_produit: this.category,
+          category_produit: this.category
         })
-        .then((response) => {
+        .then(response => {
           this.$router.push("/admin");
         });
       this.success = "Produit modifié avec succés ! ";
     },
     /**
+     * @async
      * @param {event} event - Manage the download of the image asynchronously
      */
     async handleUpload(event) {
@@ -158,6 +167,7 @@ export default {
 
     /**
      * @param {object} value - Put the date in a local format
+     * @return {value} Formatted date
      */
     format_date(value) {
       if (value) {
@@ -170,9 +180,9 @@ export default {
     getCategoryById(id) {
       return (
         this.categoryContentList &&
-        this.categoryContentList.find((category) => category.id == id)
+        this.categoryContentList.find(category => category.id == id)
       );
-    },
+    }
   },
   //=======================================================================================================================================================================================================================================================================================================================
   //
@@ -189,12 +199,12 @@ export default {
 
     axios
       .get(`http://127.0.0.1:8000/api/admin/edit/view/${id}`)
-      .then((response) => {
+      .then(response => {
         this.editContent = response.data;
       });
-    axios.get("http://127.0.0.1:8000/category/list").then((response) => {
+    axios.get("http://127.0.0.1:8000/category/list").then(response => {
       this.categoryContentList = response.data;
     });
-  },
+  }
 };
 </script>

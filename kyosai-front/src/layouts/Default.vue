@@ -190,9 +190,6 @@ import jwt_decode from "jwt-decode";
  * @vue-data {Array} links - Social media link
  * @vue-data {Array} burgers - Page titles
  * @vue-data {Boolean} showSidenav - Navigation menu
- * @vue-event {Boolean} logout - Disconnects the user
- * @vue-event {} sendMail - Email sending form
- * @vue-event {} verifUser - Show user status
  */
 export default {
   name: "Layout",
@@ -302,6 +299,7 @@ export default {
   methods: {
     /**
      * Logout the user
+     * @method
      */
     logout() {
       localStorage.removeItem("jwt");
@@ -317,6 +315,7 @@ export default {
     },
     /**
      * Send mail to kyosai for more information
+     * @method
      */
     sendMail() {
       axios
@@ -335,6 +334,7 @@ export default {
     },
     /**
      * Access to the administration page if the user is admin
+     * @method
      * @return {boolean} if user is admin
      */
     verifUser() {
@@ -353,15 +353,6 @@ export default {
       }
     }
   }
-  //====================================================================================================================================================================================================================================================================================================================================
-  //
-  //   ####   #####   ###    ###  #####   ##   ##  ######  #####  ####
-  //  ##     ##   ##  ## #  # ##  ##  ##  ##   ##    ##    ##     ##  ##
-  //  ##     ##   ##  ##  ##  ##  #####   ##   ##    ##    #####  ##  ##
-  //  ##     ##   ##  ##      ##  ##      ##   ##    ##    ##     ##  ##
-  //   ####   #####   ##      ##  ##       #####     ##    #####  ####
-  //
-  //====================================================================================================================================================================================================================================================================================================================================
 
   // computed: {
   //   totalProducts() {

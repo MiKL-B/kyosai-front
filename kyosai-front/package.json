@@ -2,7 +2,7 @@
   "name": "kyosai-front",
   "private": true,
   "scripts": {
-     "docs": "jsdoc -d docs -c .jsdoc.js",
+    "docs": "jsdoc -d docs -c .jsdoc.js",
     "build": "gridsome build",
     "test:unit": "vue-cli-service test:unit",
     "develop": "gridsome develop",

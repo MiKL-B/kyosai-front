@@ -157,20 +157,28 @@
 import dayjs from "dayjs";
 import axios from "axios";
 
-//get base64 from image
-const getBase64 = (file) =>
+/** Get base64 from image * @method */
+const getBase64 = file =>
   new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => resolve(reader.result);
-    reader.onerror = (error) => reject(error);
+    reader.onerror = error => reject(error);
   });
 /**
- * @vue-data {String} success - if ok
+ * @vue-data {String} success - displays a message if the product has been added successfully
+ * @vue-data {String} searchKey - Filtered content
+ * @vue-data {Array} shopContent - Database product list
+ * @vue-data {Array} categoryContentList - List of product categories
+ * @vue-data {String} name - Product name
+ * @vue-data {Array} category - Product category
+ * @vue-data {String} prix - Product price
+ * @vue-data {String} image - Product image
+ * @vue-computed {Object} searchContentFiltered - Return a filtered product
  */
 export default {
   metaInfo: {
-    title: "Administration",
+    title: "Administration"
   },
   //==================================================================================================================================================================================================================================================================================================
   //
@@ -191,7 +199,7 @@ export default {
       name: "",
       category: [],
       prix: "",
-      image: "",
+      image: ""
     };
   },
   //============================================================================================================================================================================================================================================================================================================================
@@ -206,7 +214,8 @@ export default {
 
   methods: {
     /**
-     * - Add a new product to the database
+     *  Add a new product to the database
+     * @method
      */
     addNewProduct() {
       axios
@@ -214,14 +223,15 @@ export default {
           name_produit: this.name,
           prix_produit: this.prix,
           image_produit: this.image,
-          category_produit: this.category,
+          category_produit: this.category
         })
-        .then((response) => {
+        .then(response => {
           this.getProduct();
         });
       this.success = "Produit ajouté avec succés ! ";
     },
     /**
+     * @async
      * @param {event} event - Manage the download of the image asynchronously
      */
     async handleUpload(event) {
@@ -231,6 +241,7 @@ export default {
 
     /**
      * @param {object} value - Put the date in a local format
+     * @return {value}  Formatted date
      */
     format_date(value) {
       if (value) {
@@ -239,10 +250,10 @@ export default {
     },
     /**
      * @param {integer} id -The id of the category to get
-     * @return {object} -The category that corresponds to the id
+     * @return {object} The category that corresponds to the id
      */
     getCategoryById(id) {
-      return this.categoryContentList.find((category) => category.id == id);
+      return this.categoryContentList.find(category => category.id == id);
     },
 
     /**
@@ -255,17 +266,18 @@ export default {
         if (answer) {
           axios
             .get(`http://127.0.0.1:8000/api/admin/delete/${id}`)
-            .then((response) => {
+            .then(response => {
               this.getProduct();
             });
         }
       });
     },
+
     getProduct() {
-      axios.get("http://127.0.0.1:8000/shop/").then((response) => {
+      axios.get("http://127.0.0.1:8000/shop/").then(response => {
         this.shopContent = response.data;
       });
-    },
+    }
   },
   //====================================================================================================================================================================================================================================================================================================================================
   //
@@ -278,14 +290,11 @@ export default {
   //====================================================================================================================================================================================================================================================================================================================================
 
   computed: {
-    /**
-     * - Filter content
-     */
     searchContentFiltered() {
-      return this.shopContent.filter((content) => {
+      return this.shopContent.filter(content => {
         return content.nom.toLowerCase().includes(this.searchKey.toLowerCase());
       });
-    },
+    }
   },
   //=======================================================================================================================================================================================================================================================================================================================
   //
@@ -302,10 +311,10 @@ export default {
     this.getProduct();
 
     //categorie de la boutique
-    axios.get("http://127.0.0.1:8000/category/list").then((response) => {
+    axios.get("http://127.0.0.1:8000/category/list").then(response => {
       //console.log(response);
       this.categoryContentList = response.data;
     });
-  },
+  }
 };
 </script>

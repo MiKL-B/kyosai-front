@@ -9,7 +9,7 @@
 
 <script>
 import axios from 'axios';
-
+/** * @vue-data {String} gamingContent - Page content gaming */
 export default {
   metaInfo: {
     title: "Art Gaming",

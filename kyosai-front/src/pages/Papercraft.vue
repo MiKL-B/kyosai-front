@@ -9,6 +9,7 @@
 
 <script>
 import axios from 'axios';
+/** * @vue-data {String} papercraftContent - Page content papercraft */
 export default {
   metaInfo: {
     title: "Papercraft",
