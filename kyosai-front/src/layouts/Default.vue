@@ -95,7 +95,7 @@
           </form>
         </section>
         <!-- FOLLOW -->
-        <section class="lg:py-10  ">
+        <section class="lg:py-10 ">
           <h2
             class="text-xl sm:text-2xl font-bold uppercase tracking-widest mb-10 text-center xl:text-left "
           >
@@ -104,18 +104,14 @@
           <ul class=" flex flex-row mx-5 md:mx-auto ">
             <SocialLink v-for="link in links" :key="link.url" :link="link" />
           </ul>
+
+          <!-- COPYRIGHT -->
+          <g-link
+            class="text-gray-600 text-xl font-bold flex my-20"
+            to="/mentions"
+            >Mentions légales</g-link
+          >
         </section>
-        <!-- COPYRIGHT -->
-
-        <ul
-          class="flex flex-col sm:flex-row md:mx-auto xl:absolute xl:bottom-0 mt-10 mx-5  xl:mx-5 text-gray-300 text-xl "
-        >
-          <li>@ untitled all rights reserved |</li>
-
-          <li>design: <a href="#"> </a> |</li>
-
-          <li>demo image <a href="#"></a></li>
-        </ul>
       </div>
     </footer>
     <!--SIDENAV-->
